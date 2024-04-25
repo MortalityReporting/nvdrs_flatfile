@@ -8,8 +8,8 @@ import java.util.Objects;
  * Note: Does not support negative numbers
  */
 public class CharLimitedInteger {
-    protected final Integer value;
-    protected final Integer size;
+    protected Integer value;
+    protected Integer size;
 
     public CharLimitedInteger(Integer value, Integer size){
         this.value = value;

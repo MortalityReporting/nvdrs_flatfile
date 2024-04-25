@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum AutopsyPerformed {
+public enum AutopsyPerformed implements BaseSerialEnum{
     YES("Y", "Yes, autopsy performed"),
     NO("N", "No"),
     UNKNOWN("U", "Unknown");

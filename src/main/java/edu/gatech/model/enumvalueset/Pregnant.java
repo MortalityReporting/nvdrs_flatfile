@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum Pregnant {
+public enum Pregnant implements BaseSerialEnum{
     NOT_PREGNANT_WITHIN_LAST_YEAR("1", "Not pregnant within last year"),
     PREGNANT_AT_TIME_OF_DEATH("2", "Pregnant at time of death"),
     NOT_PREGNANT_BUT_PREGNANT_WITHIN_42_DAYS("3", "Not pregnant, but pregnant within 42 days of death"),

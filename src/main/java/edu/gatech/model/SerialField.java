@@ -8,6 +8,7 @@ public class SerialField<T> implements Comparable<SerialField>{
     protected int firstColumn;
     protected int lastColumn;
     protected T value;
+    private int length;
 
     public SerialField() {
     }
@@ -16,12 +17,14 @@ public class SerialField<T> implements Comparable<SerialField>{
         this.name = name;
         this.firstColumn = firstColumn;
         this.lastColumn = lastColumn;
+        this.length =  this.lastColumn - this.firstColumn + 1;
     }
 
     public SerialField(String name, int firstColumn, int lastColumn, T value) {
         this.name = name;
         this.firstColumn = firstColumn;
         this.lastColumn = lastColumn;
+        this.length =  this.lastColumn - this.firstColumn + 1;
         this.value = value;
     }
 
@@ -34,7 +37,7 @@ public class SerialField<T> implements Comparable<SerialField>{
     }
 
     public int getLength() {
-        return this.lastColumn - this.firstColumn + 1;
+        return length;
     }
 
     public int getOffset() {
@@ -43,6 +46,7 @@ public class SerialField<T> implements Comparable<SerialField>{
 
     public void setOffset(int offset) {
         this.firstColumn = offset;
+        this.length =  this.lastColumn - this.firstColumn + 1;
     }
 
     public int getFirstColumn() {
@@ -51,6 +55,7 @@ public class SerialField<T> implements Comparable<SerialField>{
 
     public void setFirstColumn(int firstColumn) {
         this.firstColumn = firstColumn;
+        this.length =  this.lastColumn - this.firstColumn + 1;
     }
 
     public int getLastColumn() {
@@ -59,6 +64,7 @@ public class SerialField<T> implements Comparable<SerialField>{
 
     public void setLastColumn(int lastColumn) {
         this.lastColumn = lastColumn;
+        this.length =  this.lastColumn - this.firstColumn + 1;
     }
 
     public T getValue() {

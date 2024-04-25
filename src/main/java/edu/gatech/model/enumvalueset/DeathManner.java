@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum DeathManner {
+public enum DeathManner implements BaseSerialEnum{
     NATURAL("N", "Natural"),
     ACCIDENT("A", "Accident"),
     SUICIDE("S", "Suicide"),

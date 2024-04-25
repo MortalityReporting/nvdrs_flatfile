@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum UnspecifiedRace {
+public enum UnspecifiedRace implements BaseSerialEnum{
     YES("1", "Yes"),
     NO("0", "No");
 

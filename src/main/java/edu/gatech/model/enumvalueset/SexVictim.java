@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum SexVictim {
+public enum SexVictim implements BaseSerialEnum{
     MALE("M", "Male"),
     FEMALE("F", "Female"),
     UNKNOWN("U", "Unknown");

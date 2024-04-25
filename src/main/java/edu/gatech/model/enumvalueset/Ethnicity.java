@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum Ethnicity {
+public enum Ethnicity implements BaseSerialEnum{
     HISPANIC("1", "Hispanic"),
     NOT_HISPANIC("0", "Not Hispanic"),
     UNKNOWN("9", "Unknown");

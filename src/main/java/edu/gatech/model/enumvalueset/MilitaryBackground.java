@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum MilitaryBackground {
+public enum MilitaryBackground implements BaseSerialEnum{
     YES("1", "Yes"),
     NO("0", "No"),
     UNKNOWN("9", "Unknown");

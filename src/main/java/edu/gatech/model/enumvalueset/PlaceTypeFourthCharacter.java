@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum PlaceTypeFourthCharacter {
+public enum PlaceTypeFourthCharacter implements BaseSerialEnum{
     HOME("0", "Home"),
     RESIDENTIAL_INSTITUTION("1", "Residential Institution"),
     SCHOOL_INSTITUTION_PUBLIC_ADMINISTRATIVE_AREA("2", "School, institution, public administrative area"),

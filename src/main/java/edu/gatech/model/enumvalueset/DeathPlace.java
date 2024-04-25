@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum DeathPlace {
+public enum DeathPlace implements BaseSerialEnum{
     HOSPITAL_INPATIENT("1", "Hospital inpatient"),
     ED_OUTPATIENT("2", "ED/Outpatient"),
     DEAD_ON_ARRIVAL("3", "Dead on Arrival"),

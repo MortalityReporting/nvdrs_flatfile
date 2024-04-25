@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum FIPSCountryCodes {
+public enum FIPSCountryCodes implements BaseSerialEnum{
     CROATIA("HR", "Croatia"),
     CUBA("CU", "Cuba"),
     CURACAO("CW", "Curacao"),

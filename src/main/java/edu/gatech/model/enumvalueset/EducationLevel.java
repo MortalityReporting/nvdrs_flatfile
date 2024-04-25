@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum EducationLevel {
+public enum EducationLevel implements BaseSerialEnum{
     EIGHTH_GRADE_OR_LESS("1", "8th Grade or Less"),
     NINTH_TO_TWELFTH_GRADE_NO_DIPLOMA("2", "9th to 12th Grade; no diploma"),
     HIGH_SCHOOL_GRADUATE_OR_GED_COMPLETED("3", "High school graduate or GED completed"),

@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum MaritalStatus {
+public enum MaritalStatus implements BaseSerialEnum{
     MARRIED("M", "Married / Civil Union / Domestic Partnership"),
     MARRIED_SEPARATED("A", "Married / Civil Union / Domestic Partnership, but separated"),
     WIDOWED("W", "Widowed"),

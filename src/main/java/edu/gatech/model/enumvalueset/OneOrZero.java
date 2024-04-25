@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum OneOrZero {
+public enum OneOrZero implements BaseSerialEnum{
     ONE("1", "The value 1 (for yes)"),
     ZERO("0", "The value 0 (for no)");
 

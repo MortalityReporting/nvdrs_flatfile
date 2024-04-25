@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum InjuryLocation {
+public enum InjuryLocation implements BaseSerialEnum{
     HOUSE_APARTMENT_ROOMING_HOUSE("A", "House, apartment, rooming house, including driveway, porch, yard, garage"),
     FARM("B", "Farm"),
     SUPERVISED_RESIDENTIAL_FACILITY("C", "Supervised residential facility (e.g., shelter, halfway house, group home)"),

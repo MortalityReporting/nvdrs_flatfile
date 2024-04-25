@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum BirthPlaceCnt {
+public enum BirthPlaceCnt implements BaseSerialEnum{
     OTHER_COUNTRY(59, "Other country (Specify in birthplace text)"),
     UNKNOWN(99, "Unknown"),
     PUERTO_RICO("RQ", "Puerto Rico"),

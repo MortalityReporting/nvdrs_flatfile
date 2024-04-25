@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum InjuredAtWork {
+public enum InjuredAtWork implements BaseSerialEnum{
     YES("Y", "Yes"),
     NO("N", "No"),
     UNKNOWN("U", "Unknown"),

@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum YesOrBlank {
+public enum YesOrBlank implements BaseSerialEnum{
     YES("1", "Yes"),
     BLANK("", "Blank");
 
