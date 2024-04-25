@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum PlaceTypeFifthCharacter {
+public enum ActivityTypeFifthCharacter {
     SPORTS_ACTIVITY("0", "While engaged in sports activity"),
     LEISURE_ACTIVITY("1", "While engaged in leisure activity"),
     WORK_FOR_INCOME("2", "While working for income"),
@@ -12,7 +12,7 @@ public enum PlaceTypeFifthCharacter {
     private final String code;
     private final String description;
 
-    PlaceTypeFifthCharacter(String code, String description) {
+    ActivityTypeFifthCharacter(String code, String description) {
         this.code = code;
         this.description = description;
     }

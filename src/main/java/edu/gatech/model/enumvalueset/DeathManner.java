@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum DeathMannerDC {
+public enum DeathManner {
     NATURAL("N", "Natural"),
     ACCIDENT("A", "Accident"),
     SUICIDE("S", "Suicide"),
@@ -11,7 +11,7 @@ public enum DeathMannerDC {
     private final String code;
     private final String description;
 
-    DeathMannerDC(String code, String description) {
+    DeathManner(String code, String description) {
         this.code = code;
         this.description = description;
     }

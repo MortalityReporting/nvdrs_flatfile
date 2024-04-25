@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum FIPSCode {
+public enum FIPSCodes {
     AL("01"), AK("02"), AZ("04"), AR("05"), CA("06"),
     CO("08"), CT("09"), DE("10"), DC("11"), FL("12"),
     GA("13"), HI("15"), ID("16"), IL("17"), IN("18"),
@@ -15,7 +15,7 @@ public enum FIPSCode {
 
     private final String code;
 
-    FIPSCode(String code) {
+    FIPSCodes(String code) {
         this.code = code;
     }
 

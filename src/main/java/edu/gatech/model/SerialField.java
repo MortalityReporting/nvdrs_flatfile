@@ -9,17 +9,16 @@ public class SerialField<T> implements Comparable<SerialField>{
     protected int lastColumn;
     protected T value;
 
+    public SerialField() {
+    }
+
     public SerialField(String name, int firstColumn, int lastColumn){
         this.name = name;
         this.firstColumn = firstColumn;
         this.lastColumn = lastColumn;
     }
 
-
-    public SerialField() {
-    }
-
-    public SerialField(String name, int length, int offset, int firstColumn, int lastColumn, T value) {
+    public SerialField(String name, int firstColumn, int lastColumn, T value) {
         this.name = name;
         this.firstColumn = firstColumn;
         this.lastColumn = lastColumn;
@@ -96,14 +95,6 @@ public class SerialField<T> implements Comparable<SerialField>{
     public SerialField value(T value) {
         setValue(value);
         return this;
-    }
-    
-
-    public SerialField(String name, int firstColumn, int lastColumn, T value) {
-        this.name = name;
-        this.firstColumn = firstColumn;
-        this.lastColumn = lastColumn;
-        this.value = value;
     }
 
     @Override
