@@ -2,16 +2,11 @@ package edu.gatech.model;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.io.StringWriter;
 import java.io.Writer;
 import java.lang.reflect.Field;
-import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import edu.gatech.model.enumvalueset.BaseSerialEnum;
 
@@ -21,8 +16,8 @@ import edu.gatech.model.enumvalueset.BaseSerialEnum;
  */
 @SuppressWarnings("rawtypes")
 public abstract class BaseSerializedFormat {
-    protected List<SerialField> orderedSerialFieldList;
-    protected Boolean ordered = false;
+    public List<SerialField> orderedSerialFieldList;
+    public Boolean ordered = false;
 
     /**
      * Internal structure for organzing fields once the class has been declared and ready
@@ -31,8 +26,9 @@ public abstract class BaseSerializedFormat {
      * @throws IllegalAccessException
      */
     @SuppressWarnings("unchecked")
-    protected List<SerialField> organizeFields() throws IllegalArgumentException, IllegalAccessException{
-        for (Field f: this.getClass().getFields()){
+    public List<SerialField> organizeFields() throws IllegalArgumentException, IllegalAccessException{
+        orderedSerialFieldList = new ArrayList<SerialField>();
+        for (Field f: this.getClass().getDeclaredFields()){
             if(f.getType().equals(SerialField.class)){
                 orderedSerialFieldList.add((SerialField)f.get(this));
             }
@@ -72,9 +68,7 @@ public abstract class BaseSerializedFormat {
             if(value instanceof Enum<?> && value instanceof BaseSerialEnum){
                 @SuppressWarnings("unchecked") //This should be safe with the check before
                 SerialField<? super BaseSerialEnum> typedSerialField = (SerialField<? super BaseSerialEnum>) sf;
-                Enum<?> thisEnum = (Enum<?>) value;
                 Class enumClass = value.getClass();
-                enumClass.getEnumConstants()
                 Object[] values = enumClass.getEnumConstants(); //get the constants
                 for(Object enumValue:values){
                     BaseSerialEnum typedEnum = (BaseSerialEnum)enumValue; //This seems unsafe...
@@ -115,47 +109,15 @@ public abstract class BaseSerializedFormat {
             }
         }
         for(SerialField sf:orderedSerialFieldList){
-            String serializedString = sf.getValue().toString();
+            String serializedString = sf.getValue() == null ? "" : sf.getValue().toString();
             //Check for length and padding
             if(serializedString.length() < sf.getLength()){
                 String formatString = "%"+sf.getLength()+"s"; //Should look like '%4s' or "4 length of string". Left padding happens automatically
                 serializedString = String.format(formatString, serializedString);
             }
-            writer.write(sf.getValue().toString());
+            writer.write(serializedString);
         }
+        writer.flush();
         return writer;
-    }
-
-    public ObjectNode mapToJson() {
-        ObjectNode returnNode = JsonNodeFactory.instance.objectNode();
-        ArrayNode schemaReport = JsonNodeFactory.instance.arrayNode();
-        ArrayNode errors = JsonNodeFactory.instance.arrayNode();
-        if(!ordered){
-            try{
-                organizeFields();
-            }
-            catch(IllegalArgumentException | IllegalAccessException e){
-                errors.add(JsonNodeFactory.instance.textNode(e.getMessage()));
-            }
-        }
-        for(SerialField sf:orderedSerialFieldList){
-            ObjectNode fieldNode = JsonNodeFactory.instance.objectNode();
-            fieldNode.put("name", sf.getName());
-            fieldNode.put("firstColumn", sf.getFirstColumn());
-            fieldNode.put("lastColumn", sf.getLastColumn());
-            fieldNode.put("value", sf.getValue() != null ? sf.getValue().toString() : "");
-            schemaReport.add(fieldNode);
-        }
-        returnNode.put("schemaReport", schemaReport);
-        try{
-            StringWriter stringWriter = new StringWriter();
-            writeSerializedFormat(stringWriter);
-            returnNode.put("serializedFormat", stringWriter.toString());
-        }
-        catch(IOException e){
-            errors.add(JsonNodeFactory.instance.textNode(e.getMessage()));
-        }
-        returnNode.put("errors", errors);
-        return returnNode;
     }
 }

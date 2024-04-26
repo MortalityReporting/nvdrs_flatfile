@@ -24,4 +24,8 @@ public enum Pregnant implements BaseSerialEnum{
     public String getDescription() {
         return description;
     }
+
+    public String toString(){
+        return code;
+    }
 }

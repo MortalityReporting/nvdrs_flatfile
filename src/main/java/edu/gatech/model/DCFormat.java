@@ -2,6 +2,7 @@ package edu.gatech.model;
 import java.util.Objects;
 
 import edu.gatech.model.enumvalueset.ActivityTypeFifthCharacter;
+import edu.gatech.model.enumvalueset.AgeUnits;
 import edu.gatech.model.enumvalueset.AutopsyPerformed;
 import edu.gatech.model.enumvalueset.BirthPlaceCnt;
 import edu.gatech.model.enumvalueset.DeathManner;
@@ -32,7 +33,7 @@ public class DCFormat extends BaseSerializedFormat {
     protected SerialField<FIPSCodes> stateOrTerritoryOfDeath = new SerialField<FIPSCodes>("State or territory of death", 36, 37);
     protected SerialField<CharLimitedInteger> countyOfDeath = new SerialField<CharLimitedInteger>("County of death", 38, 40);
     protected SerialField<String> sex = new SerialField<String>("Sex", 41, 41);
-    protected SerialField<CharLimitedInteger> ageUnit = new SerialField<CharLimitedInteger>("Age Unit", 42, 42);
+    protected SerialField<AgeUnits> ageUnit = new SerialField<AgeUnits>("Age Unit", 42, 42);
     protected SerialField<CharLimitedInteger> age = new SerialField<CharLimitedInteger>("Age", 43, 45);
     protected SerialField<BirthPlaceCnt> birthCountry = new SerialField<BirthPlaceCnt>("Birth country", 46, 47);
     protected SerialField<CharLimitedInteger> birthStateTerritoryOrCountry = new SerialField<CharLimitedInteger>("Birth state, territory or country", 48, 49);
@@ -130,7 +131,7 @@ public class DCFormat extends BaseSerializedFormat {
 
     }
 
-    public DCFormat(String forceNewRecord, String overwriteConflicts, CharLimitedInteger incidentYear, String incidentNumber, CharLimitedInteger nvdrsVictimNumber, String last4CharactersOfDC, String last4CharactersOfCME, String firstInitialOfLastName, CharLimitedInteger dayOfBirth, CharLimitedInteger dateOfDeathYear, FIPSCodes stateOrTerritoryOfDeath, CharLimitedInteger countyOfDeath, String sex, CharLimitedInteger ageUnit, CharLimitedInteger age, BirthPlaceCnt birthCountry, CharLimitedInteger birthStateTerritoryOrCountry, CharLimitedInteger cityOfResidence, CharLimitedInteger countyOfResidence, CharLimitedInteger stateOrTerritoryOfResidence, FIPSCountryCodes countryOfResidence, MaritalStatus maritalStatus, DeathPlace placeOfDeath, CharLimitedInteger dateOfDeathMonth, CharLimitedInteger dateOfDeathDay, EducationLevel educationByDegree, Ethnicity hispanicLatinoSpanish1, Ethnicity hispanicLatinoSpanish2, Ethnicity hispanicLatinoSpanish3, Ethnicity hispanicLatinoSpanish4, YesOrBlank white, YesOrBlank blackOrAfricanAmerican, YesOrBlank americanIndianOrAlaskaNative, YesOrBlank asian, YesOrBlank asianIndian, YesOrBlank chinese, YesOrBlank filipino, YesOrBlank japanese, YesOrBlank korean, YesOrBlank vietnamese, YesOrBlank nativeHawaiianOrOtherPacificIslander, YesOrBlank nativeHawaiian, YesOrBlank guamanianOrChamorro, YesOrBlank samoan, YesOrBlank otherRace, UnspecifiedRace unspecifiedRace, String usualOccupationText, CharLimitedInteger usualOccupationCode, String usualIndustryText, CharLimitedInteger kindOfBusinessIndustryCode, String immediateCauseOfDeath, String causeLeadingToImmediateCauseOfDeath, String nextAntecedentCauseOfDeath, String underlyingCauseOfDeath, Pregnant victimWasPregnant, DeathManner mannerOfDeathOnDC, CharLimitedInteger dateOfInjuryMonth, CharLimitedInteger dateOfInjuryDay, CharLimitedInteger dateOfInjuryYear, CharLimitedInteger timeOfInjury, String notesColumn, InjuredAtWork injuredAtWork, AutopsyPerformed autopsyPerformed, String underlyingCauseOfDeathICD10Code, ActivityTypeFifthCharacter icd10TypeOfActivityWhenInjured, InjuryLocation typeOfLocationWhereInjured, PlaceTypeFourthCharacter icd10TypeOfPlaceWhereInjured, String multipleConditionsOnDC1, String multipleConditionsOnDC2, String multipleConditionsOnDC3, String multipleConditionsOnDC4, String multipleConditionsOnDC5, String multipleConditionsOnDC6, String multipleConditionsOnDC7, String multipleConditionsOnDC8, String multipleConditionsOnDC9, String multipleConditionsOnDC10, CharLimitedInteger zipCodeOfResidence, CharLimitedInteger educationByNumberOfYears, CharLimitedInteger datePronouncedDeadMonth, CharLimitedInteger datePronouncedDeadDay, CharLimitedInteger datePronouncedDeadYear, FIPSCodes stateOrTerritoryWhereInjuryOccurred, CharLimitedInteger countyWhereInjuryOccurred, String countryOfResidence2, String usCensusTractOfResidence, String usCensusBlockGroupOfResidence, String birthCountryIfOther, CharLimitedInteger currentOrFormerMilitaryPersonnel, String placeOfDeathIfOther, CharLimitedInteger cityWhereInjuryOccurred, CharLimitedInteger usCensusBlockGroupWhereInjuryOccurred, String usCensusTractWhereInjuryOccurred, CharLimitedInteger survivalTimeNumberOfUnits, CharLimitedInteger unitOfTimeUsedInSurvivalTime, CharLimitedInteger zipCodeWhereInjuryOccurred, CharLimitedInteger mannerOfDeathPerAbstractor, String otherSignificantConditionsContributingToDeath, String howInjuryOccurred, String otherAsian, String otherAsianSpecify, String otherPacificIslander, String otherPacificIslanderSpecify, String nameOfTheEnrolledOrPrincipalTribe, String otherRaceSpecify) {
+    public DCFormat(String forceNewRecord, String overwriteConflicts, CharLimitedInteger incidentYear, String incidentNumber, CharLimitedInteger nvdrsVictimNumber, String last4CharactersOfDC, String last4CharactersOfCME, String firstInitialOfLastName, CharLimitedInteger dayOfBirth, CharLimitedInteger dateOfDeathYear, FIPSCodes stateOrTerritoryOfDeath, CharLimitedInteger countyOfDeath, String sex, AgeUnits ageUnit, CharLimitedInteger age, BirthPlaceCnt birthCountry, CharLimitedInteger birthStateTerritoryOrCountry, CharLimitedInteger cityOfResidence, CharLimitedInteger countyOfResidence, CharLimitedInteger stateOrTerritoryOfResidence, FIPSCountryCodes countryOfResidence, MaritalStatus maritalStatus, DeathPlace placeOfDeath, CharLimitedInteger dateOfDeathMonth, CharLimitedInteger dateOfDeathDay, EducationLevel educationByDegree, Ethnicity hispanicLatinoSpanish1, Ethnicity hispanicLatinoSpanish2, Ethnicity hispanicLatinoSpanish3, Ethnicity hispanicLatinoSpanish4, YesOrBlank white, YesOrBlank blackOrAfricanAmerican, YesOrBlank americanIndianOrAlaskaNative, YesOrBlank asian, YesOrBlank asianIndian, YesOrBlank chinese, YesOrBlank filipino, YesOrBlank japanese, YesOrBlank korean, YesOrBlank vietnamese, YesOrBlank nativeHawaiianOrOtherPacificIslander, YesOrBlank nativeHawaiian, YesOrBlank guamanianOrChamorro, YesOrBlank samoan, YesOrBlank otherRace, UnspecifiedRace unspecifiedRace, String usualOccupationText, CharLimitedInteger usualOccupationCode, String usualIndustryText, CharLimitedInteger kindOfBusinessIndustryCode, String immediateCauseOfDeath, String causeLeadingToImmediateCauseOfDeath, String nextAntecedentCauseOfDeath, String underlyingCauseOfDeath, Pregnant victimWasPregnant, DeathManner mannerOfDeathOnDC, CharLimitedInteger dateOfInjuryMonth, CharLimitedInteger dateOfInjuryDay, CharLimitedInteger dateOfInjuryYear, CharLimitedInteger timeOfInjury, String notesColumn, InjuredAtWork injuredAtWork, AutopsyPerformed autopsyPerformed, String underlyingCauseOfDeathICD10Code, ActivityTypeFifthCharacter icd10TypeOfActivityWhenInjured, InjuryLocation typeOfLocationWhereInjured, PlaceTypeFourthCharacter icd10TypeOfPlaceWhereInjured, String multipleConditionsOnDC1, String multipleConditionsOnDC2, String multipleConditionsOnDC3, String multipleConditionsOnDC4, String multipleConditionsOnDC5, String multipleConditionsOnDC6, String multipleConditionsOnDC7, String multipleConditionsOnDC8, String multipleConditionsOnDC9, String multipleConditionsOnDC10, CharLimitedInteger zipCodeOfResidence, CharLimitedInteger educationByNumberOfYears, CharLimitedInteger datePronouncedDeadMonth, CharLimitedInteger datePronouncedDeadDay, CharLimitedInteger datePronouncedDeadYear, FIPSCodes stateOrTerritoryWhereInjuryOccurred, CharLimitedInteger countyWhereInjuryOccurred, String countryOfResidence2, String usCensusTractOfResidence, String usCensusBlockGroupOfResidence, String birthCountryIfOther, CharLimitedInteger currentOrFormerMilitaryPersonnel, String placeOfDeathIfOther, CharLimitedInteger cityWhereInjuryOccurred, CharLimitedInteger usCensusBlockGroupWhereInjuryOccurred, String usCensusTractWhereInjuryOccurred, CharLimitedInteger survivalTimeNumberOfUnits, CharLimitedInteger unitOfTimeUsedInSurvivalTime, CharLimitedInteger zipCodeWhereInjuryOccurred, CharLimitedInteger mannerOfDeathPerAbstractor, String otherSignificantConditionsContributingToDeath, String howInjuryOccurred, String otherAsian, String otherAsianSpecify, String otherPacificIslander, String otherPacificIslanderSpecify, String nameOfTheEnrolledOrPrincipalTribe, String otherRaceSpecify) {
         this.forceNewRecord.setValue(forceNewRecord);
         this.overwriteConflicts.setValue(overwriteConflicts);
         this.incidentYear.setValue(incidentYear);
@@ -342,11 +343,11 @@ public class DCFormat extends BaseSerializedFormat {
         this.sex = sex;
     }
 
-    public SerialField<CharLimitedInteger> getAgeUnit() {
+    public SerialField<AgeUnits> getAgeUnit() {
         return this.ageUnit;
     }
 
-    public void setAgeUnit(SerialField<CharLimitedInteger> ageUnit) {
+    public void setAgeUnit(SerialField<AgeUnits> ageUnit) {
         this.ageUnit = ageUnit;
     }
 
@@ -1143,7 +1144,7 @@ public class DCFormat extends BaseSerializedFormat {
         return this;
     }
 
-    public DCFormat ageUnit(SerialField<CharLimitedInteger> ageUnit) {
+    public DCFormat ageUnit(SerialField<AgeUnits> ageUnit) {
         setAgeUnit(ageUnit);
         return this;
     }

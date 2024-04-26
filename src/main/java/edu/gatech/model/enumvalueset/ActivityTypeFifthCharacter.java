@@ -1,6 +1,6 @@
 package edu.gatech.model.enumvalueset;
 
-public enum ActivityTypeFifthCharacter {
+public enum ActivityTypeFifthCharacter implements BaseSerialEnum{
     SPORTS_ACTIVITY("0", "While engaged in sports activity"),
     LEISURE_ACTIVITY("1", "While engaged in leisure activity"),
     WORK_FOR_INCOME("2", "While working for income"),
@@ -23,5 +23,9 @@ public enum ActivityTypeFifthCharacter {
 
     public String getDescription() {
         return description;
+    }
+
+    public String toString(){
+        return code;
     }
 }

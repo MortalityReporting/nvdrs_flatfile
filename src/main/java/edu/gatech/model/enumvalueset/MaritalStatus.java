@@ -23,4 +23,8 @@ public enum MaritalStatus implements BaseSerialEnum{
     public String getDescription() {
         return description;
     }
+
+    public String toString(){
+        return code;
+    }
 }

@@ -12,6 +12,7 @@ import edu.gatech.model.enumvalueset.MaritalStatus;
 import edu.gatech.model.enumvalueset.MilitaryBackground;
 import edu.gatech.model.enumvalueset.OneOrZero;
 import edu.gatech.model.enumvalueset.YesOrBlank;
+
 import java.util.Objects;
 
 public class LECMEFormat extends BaseSerializedFormat{
