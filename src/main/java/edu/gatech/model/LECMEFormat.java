@@ -13,564 +13,564 @@ import edu.gatech.model.enumvalueset.MilitaryBackground;
 import edu.gatech.model.enumvalueset.OneOrZero;
 import edu.gatech.model.enumvalueset.YesOrBlank;
 
-import java.util.Objects;
-
 public class LECMEFormat extends BaseSerializedFormat{
-    protected SerialField<YesOrBlank> forceNewRecord = new SerialField<YesOrBlank>("ForceNewRecord", 1, 1);
-    protected SerialField<YesOrBlank> overwriteConflicts = new SerialField<YesOrBlank>("OverwriteConflicts", 2, 2);
-    protected SerialField<CharLimitedInteger> incidentYear = new SerialField<CharLimitedInteger>("IncidentYear", 3, 6);
-    protected SerialField<CharLimitedInteger> incidentNumber = new SerialField<CharLimitedInteger>("IncidentNumber", 7, 16);
-    protected SerialField<CharLimitedInteger> victimNumber = new SerialField<CharLimitedInteger>("VictimNumber", 17, 20);
-    protected SerialField<String> lastFourDCNumber = new SerialField<String>("LastFourDCNumber", 21, 24);
-    protected SerialField<String> lastFourCMENumber = new SerialField<String>("LastFourCMENumber", 25, 28);
-    protected SerialField<String> initialOfLastName = new SerialField<String>("InitialOfLastName", 29, 29);
-    protected SerialField<CharLimitedInteger> birthDayOfMonth = new SerialField<CharLimitedInteger>("BirthDayofMonth", 30, 31);
-    protected SerialField<DeathManner> deathMannerAbstractor = new SerialField<DeathManner>("DeathMannerAbstractor", 32, 33);
-    protected SerialField<DeathManner> deathMannerDC = new SerialField<DeathManner>("DeathMannerDC", 34, 34);
-    protected SerialField<DeathManner> deathMannerCME = new SerialField<DeathManner>("DeathMannerCME", 35, 35);
-    protected SerialField<DeathManner> deathMannerLE = new SerialField<DeathManner>("DeathMannerLE", 36, 36);
-    protected SerialField<CharLimitedInteger> deathDateYear = new SerialField<CharLimitedInteger>("DeathDateYear", 37, 40);
-    protected SerialField<CharLimitedInteger> deathDateMonth = new SerialField<CharLimitedInteger>("DeathDateMonth", 41, 42);
-    protected SerialField<CharLimitedInteger> deathDateDay = new SerialField<CharLimitedInteger>("DeathDateDay", 43, 44);
-    protected SerialField<CharLimitedInteger> deathState = new SerialField<CharLimitedInteger>("DeathState", 45, 46);
-    protected SerialField<CharLimitedInteger> deathCounty = new SerialField<CharLimitedInteger>("DeathCounty", 47, 49);
-    protected SerialField<CharLimitedInteger> deathPronouncedDateYear = new SerialField<CharLimitedInteger>("DeathPronouncedDateYear", 50, 53);
-    protected SerialField<CharLimitedInteger> deathPronouncedDateMonth = new SerialField<CharLimitedInteger>("DeathPronouncedDateMonth", 54, 55);
-    protected SerialField<CharLimitedInteger> deathPronouncedDateDay = new SerialField<CharLimitedInteger>("DeathPronouncedDateDay", 56, 57);
-    protected SerialField<DeathPlace> deathPlace = new SerialField<DeathPlace>("DeathPlace", 58, 58);
-    protected SerialField<String> deathPlaceText = new SerialField<String>("DeathPlaceText", 59, 88);
-    protected SerialField<AutopsyPerformed> autopsyPerformed = new SerialField<AutopsyPerformed>("AutopsyPerformed", 89, 89);
-    protected SerialField<CharLimitedInteger> injuryDateYear = new SerialField<CharLimitedInteger>("InjuryDateYear", 90, 93);
-    protected SerialField<CharLimitedInteger> injuryDateMonth = new SerialField<CharLimitedInteger>("InjuryDateMonth", 94, 95);
-    protected SerialField<CharLimitedInteger> injuryDateDay = new SerialField<CharLimitedInteger>("InjuryDateDay", 96, 97);
-    protected SerialField<String> injuryTime = new SerialField<String>("InjuryTime", 98, 101);
-    protected SerialField<CharLimitedInteger> survivalTime = new SerialField<CharLimitedInteger>("SurvivalTime", 102, 104);
-    protected SerialField<AgeUnits> survivalTimeUnit = new SerialField<AgeUnits>("SurvivalTimeUnit", 105, 105);
-    protected SerialField<InjuryLocation> injuryLocation = new SerialField<InjuryLocation>("InjuryLocation", 106, 107);
-    protected SerialField<OneOrZero> injuredAtWork = new SerialField<OneOrZero>("InjuredAtWork", 108, 108);
-    protected SerialField<OneOrZero> injuredAtVictimHome = new SerialField<OneOrZero>("InjuredAtVictimHome", 109, 109);
-    protected SerialField<OneOrZero> eMSPresent = new SerialField<OneOrZero>("EMSPresent", 110, 110);
-    protected SerialField<OneOrZero> victimInCustody = new SerialField<OneOrZero>("VictimInCustody", 111, 111);
-    protected SerialField<OneOrZero> alcoholUseSuspected = new SerialField<OneOrZero>("AlcoholUseSuspected", 112, 112);
-    protected SerialField<FIPSCodes> injuryState = new SerialField<FIPSCodes>("InjuryState", 113, 114);
-    protected SerialField<CharLimitedInteger> injuryCounty = new SerialField<CharLimitedInteger>("InjuryCounty", 115, 117);
-    protected SerialField<CharLimitedInteger> injuryCity = new SerialField<CharLimitedInteger>("InjuryCity", 118, 122);
-    protected SerialField<CharLimitedInteger> injuryZip = new SerialField<CharLimitedInteger>("InjuryZip", 123, 127);
-    protected SerialField<String> censusTract = new SerialField<String>("CensusTract", 128, 134);
-    protected SerialField<CharLimitedInteger> censusBlock = new SerialField<CharLimitedInteger>("CensusBlock", 135, 135);
-    protected SerialField<OneOrZero> sexVictim = new SerialField<OneOrZero>("SexVictim", 136, 136);
-    protected SerialField<OneOrZero> sexualOrientation = new SerialField<OneOrZero>("SexualOrientation", 137, 137);
-    protected SerialField<OneOrZero> transgender = new SerialField<OneOrZero>("Transgender", 138, 138);
-    protected SerialField<CharLimitedInteger> age = new SerialField<CharLimitedInteger>("Age", 139, 141);
-    protected SerialField<AgeUnits> ageUnit = new SerialField<AgeUnits>("AgeUnit", 142, 142);
-    protected SerialField<OneOrZero> ethnicityVictim = new SerialField<OneOrZero>("EthnicityVictim", 143, 143);
-    protected SerialField<OneOrZero> raceWhiteVictim = new SerialField<OneOrZero>("RaceWhiteVictim", 144, 144);
-    protected SerialField<OneOrZero> raceBlackVictim = new SerialField<OneOrZero>("RaceBlackVictim", 145, 145);
-    protected SerialField<OneOrZero> raceAmericanIndianVictim = new SerialField<OneOrZero>("RaceAmericanIndianVictim", 146, 146);
-    protected SerialField<OneOrZero> raceAsianVictim = new SerialField<OneOrZero>("RaceAsianVictim", 147, 147);
-    protected SerialField<OneOrZero> racePacificIslanderVictim = new SerialField<OneOrZero>("RacePacificIslanderVictim", 148, 148);
-    protected SerialField<OneOrZero> raceOtherVictim = new SerialField<OneOrZero>("RaceOtherVictim", 149, 149);
-    protected SerialField<OneOrZero> raceUnspecifiedVictim = new SerialField<OneOrZero>("RaceUnspecifiedVictim", 150, 150);
-    protected SerialField<CharLimitedInteger> heightFeet = new SerialField<CharLimitedInteger>("HeightFeet", 151, 151);
-    protected SerialField<CharLimitedInteger> heightInches = new SerialField<CharLimitedInteger>("HeightInches", 152, 153);
-    protected SerialField<CharLimitedInteger> weight = new SerialField<CharLimitedInteger>("Weight", 154, 156);
-    protected SerialField<CharLimitedInteger> pregnant = new SerialField<CharLimitedInteger>("Pregnant", 157, 157);
-    protected SerialField<MaritalStatus> maritalStatus = new SerialField<MaritalStatus>("MaritalStatus", 158, 158);
-    protected SerialField<MilitaryBackground> military = new SerialField<MilitaryBackground>("Military", 159, 159);
-    protected SerialField<OneOrZero> homeless = new SerialField<OneOrZero>("Homeless", 160, 160);
-    protected SerialField<OneOrZero> recentRelease = new SerialField<OneOrZero>("RecentRelease", 161, 161);
-    protected SerialField<EducationLevel> educationLevel = new SerialField<EducationLevel>("EducationLevel", 162, 162);
-    protected SerialField<CharLimitedInteger> educationYears = new SerialField<CharLimitedInteger>("EducationYears", 163, 164);
-    protected SerialField<CharLimitedInteger> industry = new SerialField<CharLimitedInteger>("Industry", 165, 168);
-    protected SerialField<String> industryText = new SerialField<String>("IndustryText", 169, 218);
-    protected SerialField<String> occupationText = new SerialField<String>("OccupationText", 219, 268);
-    protected SerialField<CharLimitedInteger> usualOccupation = new SerialField<CharLimitedInteger>("UsualOccupation", 269, 272);
-    protected SerialField<String> occupationCurrentText = new SerialField<String>("OccupationCurrentText", 273, 322);
-    protected SerialField<CharLimitedInteger> birthPlace = new SerialField<CharLimitedInteger>("BirthPlace", 323, 324);
-    protected SerialField<String> birthCountryOther = new SerialField<String>("BirthCountryOther", 325, 354);
-    protected SerialField<FIPSCountryCodes> country = new SerialField<FIPSCountryCodes>("Country", 355, 356);
-    protected SerialField<FIPSCodes> residenceState = new SerialField<FIPSCodes>("ResidenceState", 357, 358);
-    protected SerialField<CharLimitedInteger> residenceCounty = new SerialField<CharLimitedInteger>("ResidenceCounty", 359, 361);
-    protected SerialField<CharLimitedInteger> residenceCity = new SerialField<CharLimitedInteger>("ResidenceCity", 362, 366);
-    protected SerialField<CharLimitedInteger> residenceZip = new SerialField<CharLimitedInteger>("ResidenceZip", 367, 371);
-    protected SerialField<String> residenceCensusTract = new SerialField<String>("ResidenceCensusTract", 372, 378);
-    protected SerialField<CharLimitedInteger> residenceCensusBlock = new SerialField<CharLimitedInteger>("ResidenceCensusBlock", 379, 379);
-    protected SerialField<CharLimitedInteger> toxicologyNotAvailable = new SerialField<CharLimitedInteger>("ToxicologyNotAvailable", 380, 380);
-    protected SerialField<CharLimitedInteger> specimensDateYear = new SerialField<CharLimitedInteger>("SpecimensDateYear", 381, 384);
-    protected SerialField<CharLimitedInteger> specimensDateMonth = new SerialField<CharLimitedInteger>("SpecimensDateMonth", 385, 386);
-    protected SerialField<CharLimitedInteger> specimensDateDay = new SerialField<CharLimitedInteger>("SpecimensDateDay", 387, 388);
-    protected SerialField<CharLimitedInteger> specimensTime = new SerialField<CharLimitedInteger>("SpecimensTime", 389, 392);
-    protected SerialField<OneOrZero> alcoholTested = new SerialField<OneOrZero>("AlcoholTested", 393, 393);
-    protected SerialField<OneOrZero> alcoholResult = new SerialField<OneOrZero>("AlcoholResult", 394, 394);
-    protected SerialField<CharLimitedInteger> alcoholLevel = new SerialField<CharLimitedInteger>("AlcoholLevel", 395, 397);
-    protected SerialField<OneOrZero> amphetamineTested = new SerialField<OneOrZero>("AmphetamineTested", 398, 398);
-    protected SerialField<OneOrZero> amphetamineResult = new SerialField<OneOrZero>("AmphetamineResult", 399, 399);
-    protected SerialField<OneOrZero> anticonvulsantsTested = new SerialField<OneOrZero>("AnticonvulsantsTested", 400, 400);
-    protected SerialField<OneOrZero> anticonvulsantsResult = new SerialField<OneOrZero>("AnticonvulsantsResult", 401, 401);
-    protected SerialField<OneOrZero> antidepressantTested = new SerialField<OneOrZero>("AntiDepressantTested", 402, 402);
-    protected SerialField<OneOrZero> antidepressantResult = new SerialField<OneOrZero>("AntiDepressantResult", 403, 403);
-    protected SerialField<OneOrZero> antipsychoticTested = new SerialField<OneOrZero>("AntiPsychoticTested", 404, 404);
-    protected SerialField<OneOrZero> antipsychoticResult = new SerialField<OneOrZero>("AntiPsychoticResult", 405, 405);
-    protected SerialField<OneOrZero> barbituratesTested = new SerialField<OneOrZero>("BarbituratesTested", 406, 406);
-    protected SerialField<OneOrZero> barbituratesResult = new SerialField<OneOrZero>("BarbituratesResult", 407, 407);
-    protected SerialField<OneOrZero> benzodiazepinesTested = new SerialField<OneOrZero>("BenzodiazepinesTested", 408, 408);
-    protected SerialField<OneOrZero> benzodiazepinesResult = new SerialField<OneOrZero>("BenzodiazepinesResult", 409, 409);
-    protected SerialField<OneOrZero> carbonMonoxideTested = new SerialField<OneOrZero>("CarbonMonoxideTested", 410, 410);
-    protected SerialField<OneOrZero> carbonMonoxideResult = new SerialField<OneOrZero>("CarbonMonoxideResult", 411, 411);
-    protected SerialField<OneOrZero> carbonMonoxideSource = new SerialField<OneOrZero>("CarbonMonoxideSource", 412, 412);
-    protected SerialField<OneOrZero> cocaineTested = new SerialField<OneOrZero>("CocaineTested", 413, 413);
-    protected SerialField<OneOrZero> cocaineResult = new SerialField<OneOrZero>("CocaineResult", 414, 414);
-    protected SerialField<OneOrZero> marijuanaTested = new SerialField<OneOrZero>("MarijuanaTested", 415, 415);
-    protected SerialField<OneOrZero> marijuanaResult = new SerialField<OneOrZero>("MarijuanaResult", 416, 416);
-    protected SerialField<OneOrZero> muscleRelaxorTested = new SerialField<OneOrZero>("MuscleRelaxorTested", 417, 417);
-    protected SerialField<OneOrZero> muscleRelaxorResult = new SerialField<OneOrZero>("MuscleRelaxorResult", 418, 418);
-    protected SerialField<OneOrZero> opiateTested = new SerialField<OneOrZero>("OpiateTested", 419, 419);
-    protected SerialField<OneOrZero> opiateResult = new SerialField<OneOrZero>("OpiateResult", 420, 420);
-    protected SerialField<CharLimitedInteger> numberWounds = new SerialField<CharLimitedInteger>("NumberWounds", 421, 422);
-    protected SerialField<CharLimitedInteger> numberBullets = new SerialField<CharLimitedInteger>("NumberBullets", 423, 424);
-    protected SerialField<OneOrZero> woundToHead = new SerialField<OneOrZero>("WoundToHead", 425, 425);
-    protected SerialField<OneOrZero> woundToFace = new SerialField<OneOrZero>("WoundToFace", 426, 426);
-    protected SerialField<OneOrZero> woundToNeck = new SerialField<OneOrZero>("WoundToNeck", 427, 427);
-    protected SerialField<OneOrZero> woundToUpperExtremity = new SerialField<OneOrZero>("WoundToUpperExtremity", 428, 428);
-    protected SerialField<OneOrZero> woundToSpine = new SerialField<OneOrZero>("WoundToSpine", 429, 429);
-    protected SerialField<OneOrZero> woundToThorax = new SerialField<OneOrZero>("WoundToThorax", 430, 430);
-    protected SerialField<OneOrZero> woundToAbdomen = new SerialField<OneOrZero>("WoundToAbdomen", 431, 431);
-    protected SerialField<OneOrZero> woundToLowerExtremity = new SerialField<OneOrZero>("WoundToLowerExtremity", 432, 432);
-    protected SerialField<OneOrZero> circumstancesKnownCME = new SerialField<OneOrZero>("CircumstancesKnownCME", 433, 433);
-    protected SerialField<OneOrZero> abusedAsChildCME = new SerialField<OneOrZero>("AbusedAsChildCME", 434, 434);
-    protected SerialField<OneOrZero> alcoholProblemCME = new SerialField<OneOrZero>("AlcoholProblemCME", 435, 435);
-    protected SerialField<OneOrZero> argumentCME = new SerialField<OneOrZero>("ArgumentCME", 436, 436);
-    protected SerialField<OneOrZero> argumentOtherCME = new SerialField<OneOrZero>("ArgumentOtherCME", 437, 437);
-    protected SerialField<OneOrZero> argumentTimingCME = new SerialField<OneOrZero>("ArgumentTimingCME", 438, 438);
-    protected SerialField<OneOrZero> brawlCME = new SerialField<OneOrZero>("BrawlCME", 439, 439);
-    protected SerialField<OneOrZero> bulletRicochetCME = new SerialField<OneOrZero>("BulletRicochetCME", 440, 440);
-    protected SerialField<OneOrZero> bystanderCME = new SerialField<OneOrZero>("BystanderCME", 441, 441);
-    protected SerialField<OneOrZero> celebratoryFiringCME = new SerialField<OneOrZero>("CelebratoryFiringCME", 442, 442);
-    protected SerialField<OneOrZero> circumstancesOtherCME = new SerialField<OneOrZero>("CircumstancesOtherCME", 443, 443);
-    protected SerialField<String> circumstancesOtherTextCME = new SerialField<String>("CircumstancesOtherTextCME", 444, 698);
-    protected SerialField<OneOrZero> crisisProstitutionCME = new SerialField<OneOrZero>("CrisisProstitutionCME", 699, 699);
-    protected SerialField<OneOrZero> crisisAlcoholProblemCME = new SerialField<OneOrZero>("CrisisAlcoholProblemCME", 700, 700);
-    protected SerialField<OneOrZero> crisisCivilLegalCME = new SerialField<OneOrZero>("CrisisCivilLegalCME", 701, 701);
-    protected SerialField<OneOrZero> crisisCriminalCME = new SerialField<OneOrZero>("CrisisCriminalCME", 702, 702);
-    protected SerialField<OneOrZero> crisisDisasterExposureCME = new SerialField<OneOrZero>("CrisisDisasterExposureCME", 703, 703);
-    protected SerialField<OneOrZero> crisisEvictionCME = new SerialField<OneOrZero>("CrisisEvictionCME", 704, 704);
-    protected SerialField<OneOrZero> crisisFamilyStressorCME = new SerialField<OneOrZero>("CrisisFamilyStressorCME", 705, 705);
-    protected SerialField<OneOrZero> crisisFinancialCME = new SerialField<OneOrZero>("CrisisFinancialCME", 706, 706);
-    protected SerialField<OneOrZero> crisisIntimatePartnerProblemCME = new SerialField<OneOrZero>("CrisisIntimatePartnerProblemCME", 707, 707);
-    protected SerialField<OneOrZero> crisisJealousyCME = new SerialField<OneOrZero>("CrisisJealousyCME", 708, 708);
-    protected SerialField<OneOrZero> crisisJobCME = new SerialField<OneOrZero>("CrisisJobCME", 709, 709);
-    protected SerialField<OneOrZero> crisisMentalHealthCME = new SerialField<OneOrZero>("CrisisMentalHealthCME", 710, 710);
-    protected SerialField<OneOrZero> crisisOtherAddictionCME = new SerialField<OneOrZero>("CrisisOtherAddictionCME", 711, 711);
-    protected SerialField<OneOrZero> crisisPhysicalHealthCME = new SerialField<OneOrZero>("CrisisPhysicalHealthCME", 712, 712);
-    protected SerialField<OneOrZero> crisisRelatedDeathFriendOrFamilyOtherCME = new SerialField<OneOrZero>("CrisisRelatedDeathFriendOrFamilyOtherCME", 713, 713);
-    protected SerialField<OneOrZero> crisisRelatedSuicideFriendOrFamilyCME = new SerialField<OneOrZero>("CrisisRelatedSuicideFriendOrFamilyCME", 714, 714);
-    protected SerialField<OneOrZero> crisisRelationshipProblemOtherCME = new SerialField<OneOrZero>("CrisisRelationshipProblemOtherCME", 715, 715);
-    protected SerialField<OneOrZero> crisisSchoolCME = new SerialField<OneOrZero>("CrisisSchoolCME", 716, 716);
-    protected SerialField<OneOrZero> crisisStalkingCME = new SerialField<OneOrZero>("CrisisStalkingCME", 717, 717);
-    protected SerialField<OneOrZero> crisisSubstanceAbuseCME = new SerialField<OneOrZero>("CrisisSubstanceAbuseCME", 718, 718);
-    protected SerialField<OneOrZero> deathAbuseCME = new SerialField<OneOrZero>("DeathAbuseCME", 719, 719);
-    protected SerialField<OneOrZero> deathFriendOrFamilyOtherCME = new SerialField<OneOrZero>("DeathFriendOrFamilyOtherCME", 720, 720);
-    protected SerialField<OneOrZero> depressedMoodCME = new SerialField<OneOrZero>("DepressedMoodCME", 721, 721);
-    protected SerialField<OneOrZero> disasterExposureCME = new SerialField<OneOrZero>("DisasterExposureCME", 722, 722);
-    protected SerialField<OneOrZero> disclosedIntentToWhomCME = new SerialField<OneOrZero>("DisclosedIntentToWhomCME", 723, 723);
-    protected SerialField<OneOrZero> driveByShootingCME = new SerialField<OneOrZero>("DriveByShootingCME", 724, 724);
-    protected SerialField<OneOrZero> drugInvolvementCME = new SerialField<OneOrZero>("DrugInvolvementCME", 725, 725);
-    protected SerialField<OneOrZero> evictionOrLossOfHomeCME = new SerialField<OneOrZero>("EvictionOrLossOfHomeCME", 726, 726);
-    protected SerialField<OneOrZero> fightBetweenTwoPeopleCME = new SerialField<OneOrZero>("FightBetweenTwoPeopleCME", 727, 727);
-    protected SerialField<OneOrZero> financialProblemCME = new SerialField<OneOrZero>("FinancialProblemCME", 728, 728);
-    protected SerialField<OneOrZero> unused1 = new SerialField<OneOrZero>("UNUSED1", 729, 729);
-    protected SerialField<OneOrZero> gangRelatedCME = new SerialField<OneOrZero>("GangRelatedCME", 730, 730);
-    protected SerialField<OneOrZero> gunCleaningCME = new SerialField<OneOrZero>("GunCleaningCME", 731, 731);
-    protected SerialField<OneOrZero> gunDefectMalfunctionCME = new SerialField<OneOrZero>("GunDefectMalfunctionCME", 732, 732);
-    protected SerialField<OneOrZero> gunDroppedCME = new SerialField<OneOrZero>("GunDroppedCME", 733, 733);
-    protected SerialField<OneOrZero> gunFiredHolsteringCME = new SerialField<OneOrZero>("GunFiredHolsteringCME", 734, 734);
-    protected SerialField<OneOrZero> gunFiredLoadingUnloadingCME = new SerialField<OneOrZero>("GunFiredLoadingUnloadingCME", 735, 735);
-    protected SerialField<OneOrZero> gunFiredOperatingSafetyLockCME = new SerialField<OneOrZero>("GunFiredOperatingSafetyLockCME", 736, 736);
-    protected SerialField<OneOrZero> gunPlayingCME = new SerialField<OneOrZero>("GunPlayingCME", 737, 737);
-    protected SerialField<OneOrZero> gunShowingCME = new SerialField<OneOrZero>("GunShowingCME", 738, 738);
-    protected SerialField<OneOrZero> gunThoughtSafetyEngagedCME = new SerialField<OneOrZero>("GunThoughtSafetyEngagedCME", 739, 739);
-    protected SerialField<OneOrZero> gunThoughtToyCME = new SerialField<OneOrZero>("GunThoughtToyCME", 740, 740);
-    protected SerialField<OneOrZero> gunThoughtUnloadedMagazineDisengagedCME = new SerialField<OneOrZero>("GunThoughtUnloadedMagazineDisengagedCME", 741, 741);
-    protected SerialField<OneOrZero> gunThoughtUnloadedOtherCME = new SerialField<OneOrZero>("GunThoughtUnloadedOtherCME", 742, 742);
-    protected SerialField<OneOrZero> gunUnintentionallyPulledTriggerCME = new SerialField<OneOrZero>("GunUnintentionallyPulledTriggerCME", 743, 743);
-    protected SerialField<OneOrZero> hateCrimeCME = new SerialField<OneOrZero>("HateCrimeCME", 744, 744);
-    protected SerialField<OneOrZero> historyMentalIllnessTreatmentCME = new SerialField<OneOrZero>("HistoryMentalIllnessTreatmentCME", 745, 745);
-    protected SerialField<OneOrZero> huntingCME = new SerialField<OneOrZero>("HuntingCME", 746, 746);
-    protected SerialField<OneOrZero> interpersonalViolencePerpetratorCME = new SerialField<OneOrZero>("InterpersonalViolencePerpetratorCME", 747, 747);
-    protected SerialField<OneOrZero> interpersonalViolenceVictimCME = new SerialField<OneOrZero>("InterpersonalViolenceVictimCME", 748, 748);
-    protected SerialField<OneOrZero> intervenerAssistingVictimCME = new SerialField<OneOrZero>("IntervenerAssistingVictimCME", 749, 749);
-    protected SerialField<OneOrZero> intimatePartnerProblemCME = new SerialField<OneOrZero>("IntimatePartnerProblemCME", 750, 750);
-    protected SerialField<OneOrZero> intimatePartnerViolenceCME = new SerialField<OneOrZero>("IntimatePartnerViolenceCME", 751, 751);
-    protected SerialField<OneOrZero> jealouslyCME = new SerialField<OneOrZero>("JealouslyCME", 752, 752);
-    protected SerialField<OneOrZero> jobProblemCME = new SerialField<OneOrZero>("JobProblemCME", 753, 753);
-    protected SerialField<OneOrZero> justifiableSelfDefenseCME = new SerialField<OneOrZero>("JustifiableSelfDefenseCME", 754, 754);
-    protected SerialField<OneOrZero> legalProblemOtherCME = new SerialField<OneOrZero>("LegalProblemOtherCME", 755, 755);
-    protected SerialField<OneOrZero> mentalHealthDiagnosis1CME = new SerialField<OneOrZero>("MentalHealthDiagnosis1CME", 756, 757);
-    protected SerialField<OneOrZero> mentalHealthDiagnosis2CME = new SerialField<OneOrZero>("MentalHealthDiagnosis2CME", 758, 759);
-    protected SerialField<String> mentalHealthDiagnosisOtherCME = new SerialField<String>("MentalHealthDiagnosisOtherCME", 760, 809);
-    protected SerialField<OneOrZero> mentalHealthProblemCME = new SerialField<OneOrZero>("MentalHealthProblemCME", 810, 810);
-    protected SerialField<OneOrZero> mentalIllnessTreatmentCurrentCME = new SerialField<OneOrZero>("MentalIllnessTreatmentCurrentCME", 811, 811);
-    protected SerialField<OneOrZero> mercyKillingCME = new SerialField<OneOrZero>("MercyKillingCME", 812, 812);
-    protected SerialField<OneOrZero> natureOtherCrime1CME = new SerialField<OneOrZero>("NatureOtherCrime1CME", 813, 814);
-    protected SerialField<OneOrZero> natureOtherCrime2CME = new SerialField<OneOrZero>("NatureOtherCrime2CME", 815, 816);
-    protected SerialField<OneOrZero> otherAddictionCME = new SerialField<OneOrZero>("OtherAddictionCME", 817, 817);
-    protected SerialField<OneOrZero> otherContextInjuryCME = new SerialField<OneOrZero>("OtherContextInjuryCME", 818, 818);
-    protected SerialField<OneOrZero> otherCrimeInProgressCME = new SerialField<OneOrZero>("OtherCrimeInProgressCME", 819, 819);
-    protected SerialField<OneOrZero> otherMechanismInjuryCME = new SerialField<OneOrZero>("Other Mechanism Injury CME", 820, 820);
-    protected SerialField<OneOrZero> precipitatedByOtherCrimeCME = new SerialField<OneOrZero>("Precipitated by Other Crime CME", 821, 821);
-    protected SerialField<OneOrZero> physicalHealthProblemCME = new SerialField<OneOrZero>("Physical Health Problem CME", 822, 822);
-    protected SerialField<OneOrZero> prostitutionCME = new SerialField<OneOrZero>("Prostitution CME", 823, 823);
-    protected SerialField<OneOrZero> randomViolenceCME = new SerialField<OneOrZero>("Random Violence CME", 824, 824);
-    protected SerialField<OneOrZero> recentCriminalLegalProblemCME = new SerialField<OneOrZero>("Recent Criminal Legal Problem CME", 825, 825);
-    protected SerialField<OneOrZero> recentSuicideFriendFamilyCME = new SerialField<OneOrZero>("Recent Suicide Friend Family CME", 826, 826);
-    protected SerialField<OneOrZero> relationshipProblemOtherCME = new SerialField<OneOrZero>("Relationship Problem Other CME", 827, 827);
-    protected SerialField<OneOrZero> schoolProblemCME = new SerialField<OneOrZero>("School Problem CME", 828, 828);
-    protected SerialField<OneOrZero> selfDefenseCME = new SerialField<OneOrZero>("Self Defense CME", 829, 829);
-    protected SerialField<OneOrZero> stalkingCME = new SerialField<OneOrZero>("Stalking CME", 830, 830);
-    protected SerialField<OneOrZero> substanceAbuseOtherCME = new SerialField<OneOrZero>("Substance Abuse Other CME", 831, 831);
-    protected SerialField<OneOrZero> suicideAttemptHistoryCME = new SerialField<OneOrZero>("Suicide Attempt History CME", 832, 832);
-    protected SerialField<OneOrZero> suicideIntentDisclosedCME = new SerialField<OneOrZero>("Suicide Intent Disclosed CME", 833, 833);
-    protected SerialField<OneOrZero> suicideNoteCME = new SerialField<OneOrZero>("Suicide Note CME", 834, 834);
-    protected SerialField<OneOrZero> suicideThoughtHistoryCME = new SerialField<OneOrZero>("Suicide Thought History CME", 835, 835);
-    protected SerialField<OneOrZero> targetShootingCME = new SerialField<OneOrZero>("Target Shooting CME", 836, 836);
-    protected SerialField<OneOrZero> terroristAttackCME = new SerialField<OneOrZero>("Terrorist Attack CME", 837, 837);
-    protected SerialField<OneOrZero> traumaticAnniversaryCME = new SerialField<OneOrZero>("Traumatic Anniversary CME", 838, 838);
-    protected SerialField<OneOrZero> victimPoliceOfficerOnDutyCME = new SerialField<OneOrZero>("Victim Police Officer On Duty CME", 839, 839);
-    protected SerialField<OneOrZero> victimUsedWeaponCME = new SerialField<OneOrZero>("Victim Used Weapon CME", 840, 840);
-    protected SerialField<OneOrZero> walkByAssaultCME = new SerialField<OneOrZero>("Walk By Assault CME", 841, 841);
-    protected SerialField<OneOrZero> circumstancesOtherLE = new SerialField<OneOrZero>("Circumstances Other LE", 842, 842);
-    protected SerialField<OneOrZero> abusedAsChildLE = new SerialField<OneOrZero>("Abused As Child LE", 843, 843);
-    protected SerialField<OneOrZero> alcoholProblemLE = new SerialField<OneOrZero>("Alcohol Problem LE", 844, 844);
-    protected SerialField<OneOrZero> argumentLE = new SerialField<OneOrZero>("Argument LE", 845, 845);
-    protected SerialField<OneOrZero> argumentOtherLE = new SerialField<OneOrZero>("Argument Other LE", 846, 846);
-    protected SerialField<OneOrZero> argumentTimingLE = new SerialField<OneOrZero>("Argument Timing LE", 847, 847);
-    protected SerialField<OneOrZero> brawlLE = new SerialField<OneOrZero>("Brawl LE", 848, 848);
-    protected SerialField<OneOrZero> bulletRicochetLE = new SerialField<OneOrZero>("Bullet Ricochet LE", 849, 849);
-    protected SerialField<OneOrZero> bystanderLE = new SerialField<OneOrZero>("Bystander LE", 850, 850);
-    protected SerialField<OneOrZero> celebratoryFiringLE = new SerialField<OneOrZero>("Celebratory Firing LE", 851, 851);
-    protected SerialField<OneOrZero> isCircumstancesKnown = new SerialField<OneOrZero>("Is Circumstances Known", 852, 852);
-    protected SerialField<String> circumstancesOtherTextLE = new SerialField<String>("Circumstances Other Text LE", 853, 1107);
-    protected SerialField<OneOrZero> cririsProstitutionLE = new SerialField<OneOrZero>("Crisis Prostitution LE", 1108, 1108);
-    protected SerialField<OneOrZero> crisisAlcoholProblemLE = new SerialField<OneOrZero>("Crisis Alcohol Problem LE", 1109, 1109);
-    protected SerialField<OneOrZero> crisisCivilLegalLE = new SerialField<OneOrZero>("Crisis Civil Legal LE", 1110, 1110);
-    protected SerialField<OneOrZero> crisisCriminalLE = new SerialField<OneOrZero>("Crisis Criminal LE", 1111, 1111);
-    protected SerialField<OneOrZero> crisisDisasterExposureLE = new SerialField<OneOrZero>("Crisis Disaster Exposure LE", 1112, 1112);
-    protected SerialField<OneOrZero> crisisEvictionLE = new SerialField<OneOrZero>("Crisis Eviction LE", 1113, 1113);
-    protected SerialField<OneOrZero> crisisFamilyStressorLE = new SerialField<OneOrZero>("Crisis Family Stressor LE", 1114, 1114);
-    protected SerialField<OneOrZero> crisisFinancialLE = new SerialField<OneOrZero>("Crisis Financial LE", 1115, 1115);
-    protected SerialField<OneOrZero> crisisIntimatePartnerProblemLE = new SerialField<OneOrZero>("Crisis Intimate Partner Problem LE", 1116, 1116);
-    protected SerialField<OneOrZero> crisisJealousyLE = new SerialField<OneOrZero>("Crisis Jealousy LE", 1117, 1117);
-    protected SerialField<OneOrZero> crisisJobLE = new SerialField<OneOrZero>("Crisis Job LE", 1118, 1118);
-    protected SerialField<OneOrZero> crisisMentalHealthLE = new SerialField<OneOrZero>("Crisis Mental Health LE", 1119, 1119);
-    protected SerialField<OneOrZero> crisisOtherAddictionLE = new SerialField<OneOrZero>("Crisis Other Addiction LE", 1120, 1120);
-    protected SerialField<OneOrZero> crisisPhysicalHealthLE = new SerialField<OneOrZero>("Crisis Physical Health LE", 1121, 1121);
-    protected SerialField<OneOrZero> crisisRelatedDeathFriendOrFamilyOtherLE = new SerialField<OneOrZero>("Crisis Related Death Friend Or Family Other LE", 1122, 1122);
-    protected SerialField<OneOrZero> crisisRelatedSuicideFriendOrFamilyLE = new SerialField<OneOrZero>("Crisis Related Suicide Friend Or Family LE", 1123, 1123);
-    protected SerialField<OneOrZero> crisisRelationshipProblemOtherLE = new SerialField<OneOrZero>("Crisis Relationship Problem Other LE", 1124, 1124);
-    protected SerialField<OneOrZero> crisisSchoolLE = new SerialField<OneOrZero>("Crisis School LE", 1125, 1125);
-    protected SerialField<OneOrZero> crisisStalkingLE = new SerialField<OneOrZero>("Crisis Stalking LE", 1126, 1126);
-    protected SerialField<OneOrZero> crisisSubstanceAbuseLE = new SerialField<OneOrZero>("Crisis Substance Abuse LE", 1127, 1127);
-    protected SerialField<OneOrZero> deathAbuseLE = new SerialField<OneOrZero>("Death Abuse LE", 1128, 1128);
-    protected SerialField<OneOrZero> deathFriendOrFamilyOtherLE = new SerialField<OneOrZero>("Death Friend Or Family Other LE", 1129, 1129);
-    protected SerialField<OneOrZero> depressedMoodLE = new SerialField<OneOrZero>("Depressed Mood LE", 1130, 1130);
-    protected SerialField<OneOrZero> disasterExposureLE = new SerialField<OneOrZero>("Disaster Exposure LE", 1131, 1131);
-    protected SerialField<OneOrZero> disclosedIntentToWhomLE = new SerialField<OneOrZero>("Disclosed Intent To Whom LE", 1132, 1132);
-    protected SerialField<OneOrZero> driveByShootingLE = new SerialField<OneOrZero>("Drive By Shooting LE", 1133, 1133);
-    protected SerialField<OneOrZero> drugInvolvementLE = new SerialField<OneOrZero>("Drug Involvement LE", 1134, 1134);
-    protected SerialField<OneOrZero> evictionOrLossOfHomeLE = new SerialField<OneOrZero>("Eviction Or Loss Of Home LE", 1135, 1135);
-    protected SerialField<OneOrZero> fightBetweenTwoPeopleLE = new SerialField<OneOrZero>("Fight Between Two People LE", 1136, 1136);
-    protected SerialField<OneOrZero> financialProblemLE = new SerialField<OneOrZero>("Financial Problem LE", 1137, 1137);
-    protected SerialField<OneOrZero> unused2 = new SerialField<OneOrZero>("Unused2", 1138, 1138);
-    protected SerialField<OneOrZero> gangRelatedLE = new SerialField<OneOrZero>("Gang Related LE", 1139, 1139);
-    protected SerialField<OneOrZero> gunCleaningLE = new SerialField<OneOrZero>("Gun Cleaning LE", 1140, 1140);
-    protected SerialField<OneOrZero> gunDefectMalfunctionLE = new SerialField<OneOrZero>("Gun Defect Malfunction LE", 1141, 1141);
-    protected SerialField<OneOrZero> gunDroppedLE = new SerialField<OneOrZero>("Gun Dropped LE", 1142, 1142);
-    protected SerialField<OneOrZero> gunFiredHolsteringLE = new SerialField<OneOrZero>("Gun Fired Holstering LE", 1143, 1143);
-    protected SerialField<OneOrZero> gunFiredLoadingUnloadingLE = new SerialField<OneOrZero>("Gun Fired Loading Unloading LE", 1144, 1144);
-    protected SerialField<OneOrZero> gunFiredOperatingSafetyLockLE = new SerialField<OneOrZero>("Gun Fired Operating Safety Lock LE", 1145, 1145);
-    protected SerialField<OneOrZero> gunPlayingLE = new SerialField<OneOrZero>("Gun Playing LE", 1146, 1146);
-    protected SerialField<OneOrZero> gunShowingLE = new SerialField<OneOrZero>("Gun Showing LE", 1147, 1147);
-    protected SerialField<OneOrZero> gunThoughtSafetyEngagedLE = new SerialField<OneOrZero>("Gun Thought Safety Engaged LE", 1148, 1148);
-    protected SerialField<OneOrZero> gunThoughtToyLE = new SerialField<OneOrZero>("Gun Thought Toy LE", 1149, 1149);
-    protected SerialField<OneOrZero> gunThoughtUnloadedMagazineDisengagedLE = new SerialField<OneOrZero>("Gun Thought Unloaded Magazine Disengaged LE", 1150, 1150);
-    protected SerialField<OneOrZero> gunThoughtUnloadedOtherLE = new SerialField<OneOrZero>("Gun Thought Unloaded Other LE", 1151, 1151);
-    protected SerialField<OneOrZero> gunUnintentionallyPulledTriggerLE = new SerialField<OneOrZero>("Gun Unintentionally Pulled Trigger LE", 1152, 1152);
-    protected SerialField<OneOrZero> hateCrimeLE = new SerialField<OneOrZero>("Hate Crime LE", 1153, 1153);
-    protected SerialField<OneOrZero> historyMentalIllnessTreatmentLE = new SerialField<OneOrZero>("History Mental Illness Treatment LE", 1154, 1154);
-    protected SerialField<OneOrZero> huntingLE = new SerialField<OneOrZero>("Hunting LE", 1155, 1155);
-    protected SerialField<OneOrZero> interpersonalViolencePerpetratorLE = new SerialField<OneOrZero>("Interpersonal Violence Perpetrator LE", 1156, 1156);
-    protected SerialField<OneOrZero> interpersonalViolenceVictimLE = new SerialField<OneOrZero>("Interpersonal Violence Victim LE", 1157, 1157);
-    protected SerialField<OneOrZero> intervenerAssistingVictimLE = new SerialField<OneOrZero>("Intervener Assisting Victim LE", 1158, 1158);
-    protected SerialField<OneOrZero> intimatePartnerProblemLE = new SerialField<OneOrZero>("Intimate Partner Problem LE", 1159, 1159);
-    protected SerialField<OneOrZero> intimatePartnerViolenceLE = new SerialField<OneOrZero>("Intimate Partner Violence LE", 1160, 1160);
-    protected SerialField<OneOrZero> jealouslyLE = new SerialField<OneOrZero>("Jealously LE", 1161, 1161);
-    protected SerialField<OneOrZero> jobProblemLE = new SerialField<OneOrZero>("Job Problem LE", 1162, 1162);
-    protected SerialField<OneOrZero> justifiableSelfDefenseLE = new SerialField<OneOrZero>("Justifiable Self Defense LE", 1163, 1163);
-    protected SerialField<OneOrZero> legalProblemOtherLE = new SerialField<OneOrZero>("Legal Problem Other LE", 1164, 1164);
-    protected SerialField<OneOrZero> mentalHealthDiagnosis1LE = new SerialField<OneOrZero>("Mental Health Diagnosis 1 LE", 1165, 1166);
-    protected SerialField<OneOrZero> mentalHealthDiagnosis2LE = new SerialField<OneOrZero>("Mental Health Diagnosis 2 LE", 1167, 1168);
-    protected SerialField<String> mentalHealthDiagnosisOtherLE = new SerialField<String>("Mental Health Diagnosis Other LE", 1169, 1218);
-    protected SerialField<OneOrZero> mentalHealthProblemLE = new SerialField<OneOrZero>("Mental Health Problem LE", 1219, 1219);
-    protected SerialField<OneOrZero> mentalIllnessTreatmentCurrentLE = new SerialField<OneOrZero>("Mental Illness Treatment Current LE", 1220, 1220);
-    protected SerialField<OneOrZero> mercyKillingLE = new SerialField<OneOrZero>("Mercy Killing LE", 1221, 1221);
-    protected SerialField<OneOrZero> natureOtherCrime1LE = new SerialField<OneOrZero>("Nature Other Crime 1 LE", 1222, 1223);
-    protected SerialField<OneOrZero> natureOtherCrime2LE = new SerialField<OneOrZero>("Nature Other Crime 2 LE", 1224, 1225);
-    protected SerialField<OneOrZero> otherAddictionLE = new SerialField<OneOrZero>("Other Addiction LE", 1226, 1226);
-    protected SerialField<OneOrZero> otherContextInjuryLE = new SerialField<OneOrZero>("Other Context Injury LE", 1227, 1227);
-    protected SerialField<OneOrZero> otherCrimeInProgressLE = new SerialField<OneOrZero>("Other Crime In Progress LE", 1228, 1228);
-    protected SerialField<OneOrZero> otherMechanismInjuryLE = new SerialField<OneOrZero>("Other Mechanism Injury LE", 1229, 1229);
-    protected SerialField<OneOrZero> precipitatedByOtherCrimeLE = new SerialField<OneOrZero>("Precipitated by Other Crime LE", 1230, 1230);
-    protected SerialField<OneOrZero> physicalHealthProblemLE = new SerialField<OneOrZero>("Physical Health Problem LE", 1231, 1231);
-    protected SerialField<OneOrZero> prostitutionLE = new SerialField<OneOrZero>("Prostitution LE", 1232, 1232);
-    protected SerialField<OneOrZero> randomViolenceLE = new SerialField<OneOrZero>("Random Violence LE", 1233, 1233);
-    protected SerialField<OneOrZero> recentCriminalLegalProblemLE = new SerialField<OneOrZero>("Recent Criminal Legal Problem LE", 1234, 1234);
-    protected SerialField<OneOrZero> recentSuicideFriendFamilyLE = new SerialField<OneOrZero>("Recent Suicide Friend Family LE", 1235, 1235);
-    protected SerialField<OneOrZero> relationshipProblemOtherLE = new SerialField<OneOrZero>("Relationship Problem Other LE", 1236, 1236);
-    protected SerialField<OneOrZero> schoolProblemLE = new SerialField<OneOrZero>("School Problem LE", 1237, 1237);
-    protected SerialField<OneOrZero> selfDefenseLE = new SerialField<OneOrZero>("Self Defense LE", 1238, 1238);
-    protected SerialField<OneOrZero> stalkingLE = new SerialField<OneOrZero>("Stalking LE", 1239, 1239);
-    protected SerialField<OneOrZero> substanceAbuseOtherLE = new SerialField<OneOrZero>("Substance Abuse Other LE", 1240, 1240);
-    protected SerialField<OneOrZero> suicideAttemptHistoryLE = new SerialField<OneOrZero>("Suicide Attempt History LE", 1241, 1241);
-    protected SerialField<OneOrZero> suicideIntentDisclosedLE = new SerialField<OneOrZero>("Suicide Intent Disclosed LE", 1242, 1242);
-    protected SerialField<OneOrZero> suicideNoteLE = new SerialField<OneOrZero>("Suicide Note LE", 1243, 1243);
-    protected SerialField<OneOrZero> suicideThoughtHistoryLE = new SerialField<OneOrZero>("Suicide Thought History LE", 1244, 1244);
-    protected SerialField<OneOrZero> targetShootingLE = new SerialField<OneOrZero>("Target Shooting LE", 1245, 1245);
-    protected SerialField<OneOrZero> terroristAttackLE = new SerialField<OneOrZero>("Terrorist Attack LE", 1246, 1246);
-    protected SerialField<OneOrZero> TraumaticAnniversaryLE = new SerialField<OneOrZero>("Traumatic Anniversary LE", 1247, 1247);
-    protected SerialField<OneOrZero> VictimPoliceOfficeOnDutyLE = new SerialField<OneOrZero>("Victim Police Officer On Duty LE", 1248, 1248);
-    protected SerialField<OneOrZero> VictimUsedWeaponLE = new SerialField<OneOrZero>("Victim Used Weapon LE", 1249, 1249);
-    protected SerialField<OneOrZero> WalkByAssaultLE = new SerialField<OneOrZero>("Walk-up Assault LE", 1250, 1250);
-    protected SerialField<String> WeaponType = new SerialField<String>("Weapon Type", 1251, 1252);
-    protected SerialField<String> FirearmType = new SerialField<String>("Firearm Type", 1253, 1254);
-    protected SerialField<CharLimitedInteger> FirearmCaliber = new SerialField<CharLimitedInteger>("Firearm Caliber", 1255, 1258);
-    protected SerialField<CharLimitedInteger> FirearmGauge = new SerialField<CharLimitedInteger>("Firearm Gauge", 1259, 1261);
-    protected SerialField<CharLimitedInteger> FirearmMake = new SerialField<CharLimitedInteger>("Firearm Make", 1262, 1265);
-    protected SerialField<CharLimitedInteger> FirearmModel = new SerialField<CharLimitedInteger>("Firearm Model", 1266, 1269);
-    protected SerialField<OneOrZero> GunLoaded = new SerialField<OneOrZero>("Gun Stored Loaded", 1270, 1270);
-    protected SerialField<String> GunOwner = new SerialField<String>("Gun Owner", 1271, 1272);
-    protected SerialField<CharLimitedInteger> GunStoredLocked = new SerialField<CharLimitedInteger>("Gun Stored Locked", 1273, 1273);
-    protected SerialField<OneOrZero> FirearmStolen = new SerialField<OneOrZero>("Firearm Stolen", 1274, 1274);
-    protected SerialField<String> SuspectSex = new SerialField<String>("Sex", 1275, 1275);
-    protected SerialField<String> VictimSuspectRelationshipPrimary = new SerialField<String>("Victim to Suspect Relationship 1", 1276, 1277);
-    protected SerialField<String> VictimSuspectRelationshipSecondary = new SerialField<String>("Victim to Suspect Relationship 2", 1278, 1279);
-    protected SerialField<OneOrZero> HasAbuseHistory = new SerialField<OneOrZero>("History of Abuse of Victim by This Suspect", 1280, 1280);
-    protected SerialField<OneOrZero> IsCareTaker = new SerialField<OneOrZero>("This Suspect Was a Caregiver for the Victim", 1281, 1281);
-    protected SerialField<OneOrZero> HasAttemptedSuicide = new SerialField<OneOrZero>("Suspect Attempted Suicide After Incident", 1282, 1282);
-    protected SerialField<OneOrZero> IsSuspectAlsoVictim = new SerialField<OneOrZero>("This Suspect is Also a Victim in the Incident", 1283, 1283);
-    protected SerialField<OneOrZero> IsSuspectMentallyIll = new SerialField<OneOrZero>("Suspect Mentally Ill", 1284, 1284);
-    protected SerialField<OneOrZero> HasSuspectDevelopmentDisability = new SerialField<OneOrZero>("Suspect Had Developmental Disability", 1285, 1285);
-    protected SerialField<OneOrZero> IsSuspectAlcoholUseSuspected = new SerialField<OneOrZero>("Suspected Alcohol Use by Suspect", 1286, 1286);
-    protected SerialField<OneOrZero> IsSuspectSubstanceUseSuspected = new SerialField<OneOrZero>("Suspected Substance Use by Suspect", 1287, 1287);
-    protected SerialField<OneOrZero> IsSuspectContactPolice = new SerialField<OneOrZero>("Suspect Had Been in Contact with Law Enforcement", 1288, 1288);
-    protected SerialField<OneOrZero> SuspectRecentRelease = new SerialField<OneOrZero>("Suspect Was Recently Released from an Institution", 1289, 1290);
-    protected SerialField<OneOrZero> IsSuspectCaucasian = new SerialField<OneOrZero>("White", 1291, 1291);
-    protected SerialField<OneOrZero> IsSuspectAfricanAmerican = new SerialField<OneOrZero>("Black or African American", 1292, 1292);
-    protected SerialField<OneOrZero> IsSuspectAsian = new SerialField<OneOrZero>("Asian", 1293, 1293);
-    protected SerialField<OneOrZero> IsSuspectPacificIslander = new SerialField<OneOrZero>("Native Hawaiian or Other Pacific Islander", 1294, 1294);
-    protected SerialField<OneOrZero> IsSuspectAmericanIndian = new SerialField<OneOrZero>("American Indian or Alaska Native", 1295, 1295);
-    protected SerialField<OneOrZero> IsSuspectRaceUnspecified = new SerialField<OneOrZero>("American Indian or Alaska Native", 1296, 1296);
-    protected SerialField<String> SuspectEthnicity = new SerialField<String>("Race", 1297, 1297);
-    protected SerialField<OneOrZero> IsTreatmentNonAdherenceCME = new SerialField<OneOrZero>("Non-adherence to Mental Health/Substance Abuse Treatment", 1298, 1298);
-    protected SerialField<OneOrZero> IsTraumaticBrainInjuryHistoryCME = new SerialField<OneOrZero>("History of Traumatic Brain Injury (TBI)", 1299, 1299);
-    protected SerialField<OneOrZero> IsFamilyStressorsCME = new SerialField<OneOrZero>("Family Relationship Problem", 1300, 1300);
-    protected SerialField<OneOrZero> IsCrisisFamilyStressorCME = new SerialField<OneOrZero>("Family Relationship Problem Was Crisis", 1301, 1301);
-    protected SerialField<OneOrZero> IsCaregiverBurdenCME = new SerialField<OneOrZero>("Caregiver Burden", 1302, 1302);
-    protected SerialField<OneOrZero> IsFamilyStressorCME = new SerialField<OneOrZero>("Family Stressors", 1303, 1303);
-    protected SerialField<OneOrZero> IsHouseholdKnownCME = new SerialField<OneOrZero>("Household Known to Local Authorities", 1304, 1304);
-    protected SerialField<OneOrZero> IsPriorCPSReportCME = new SerialField<OneOrZero>("Prior Child Protective Services (CPS) Report on a Child Victim's Household", 1305, 1305);
-    protected SerialField<OneOrZero> IsHouseholdSubstanceAbuseCME = new SerialField<OneOrZero>("Substance Abuse in Child Victim's Household", 1306, 1306);
-    protected SerialField<OneOrZero> IsLivingTransitionCME = new SerialField<OneOrZero>("Loss of Independent Living", 1307, 1307);
-    protected SerialField<OneOrZero> IsCorporalPunishmentCME = new SerialField<OneOrZero>("Caregiver Use of Corporal Punishment Contributed to Child Death", 1308, 1308);
-    protected SerialField<OneOrZero> IsHistorySelfHarmCME = new SerialField<OneOrZero>("History of Non-suicidal Self-Injury/Self-Harm", 1309, 1309);
-    protected SerialField<OneOrZero> IsTreatmentNonAdherenceLE = new SerialField<OneOrZero>("Non-adherence to Mental Health/Substance Abuse Treatment", 1310, 1310);
-    protected SerialField<OneOrZero> IsTraumaticBrainInjuryHistoryLE = new SerialField<OneOrZero>("History of Traumatic Brain Injury (TBI)", 1311, 1311);
-    protected SerialField<OneOrZero> IsFamilyStressorsLE = new SerialField<OneOrZero>("Family Relationship Problem", 1312, 1312);
-    protected SerialField<OneOrZero> IsCrisisFamilyStressorLE = new SerialField<OneOrZero>("Family Relationship Problem Was Crisis", 1313, 1313);
-    protected SerialField<OneOrZero> IsCaregiverBurdenLE = new SerialField<OneOrZero>("Caregiver Burden", 1314, 1314);
-    protected SerialField<OneOrZero> IsFamilyStressorLE = new SerialField<OneOrZero>("Family Stressors", 1315, 1315);
-    protected SerialField<OneOrZero> IsHouseholdKnownLE = new SerialField<OneOrZero>("Household Known to Local Authorities", 1316, 1316);
-    protected SerialField<OneOrZero> IsPriorCPSReportLE = new SerialField<OneOrZero>("Prior Child Protective Services (CPS) Report on a Child Victim's Household", 1317, 1317);
-    protected SerialField<OneOrZero> IsHouseholdSubstanceAbuseLE = new SerialField<OneOrZero>("Substance Abuse in Child Victim's Household", 1318, 1318);
-    protected SerialField<OneOrZero> IsLivingTransitionLE = new SerialField<OneOrZero>("Loss of Independent Living", 1319, 1319);
-    protected SerialField<OneOrZero> IsCorporalPunishmentLE = new SerialField<OneOrZero>("Caregiver Use of Corporal Punishment Contributed to Child Death", 1320, 1320);
-    protected SerialField<OneOrZero> IsHistorySelfHarmLE = new SerialField<OneOrZero>("History of Non-suicidal Self-Injury/Self-Harm", 1321, 1321);
-    protected SerialField<CharLimitedInteger> TypeOfPoisoning = new SerialField<CharLimitedInteger>("Type of Drug Overdose/Poisoning", 1322, 1322);
-    protected SerialField<MilitaryTime> LastSeenAliveTime = new SerialField<MilitaryTime>("Time Last Known Alive and Well Before Overdose (Military Time format e.g., 0000-2359, 9999)", 1323, 1326);
-    protected SerialField<MilitaryTime> FoundUnresponsiveTime = new SerialField<MilitaryTime>("Time First Found Unresponsive (Military Time format e.g., 0000-2359, 9999)", 1327, 1330);
-    protected SerialField<CharLimitedInteger> LastSeenAliveMonth = new SerialField<CharLimitedInteger>("Date Last Known Alive and Well Before Overdose (Month)", 1331, 1332);
-    protected SerialField<CharLimitedInteger> LastSeenAliveDay = new SerialField<CharLimitedInteger>("Date Last Known Alive and Well Before Overdose (Day)", 1333, 1334);
-    protected SerialField<CharLimitedInteger> LastSeenAliveYear = new SerialField<CharLimitedInteger>("Date Last Known Alive and Well Before Overdose (Year)", 1335, 1338);
-    protected SerialField<CharLimitedInteger> FoundUnresponsiveMonth = new SerialField<CharLimitedInteger>("Date Found Unresponsive (Month)", 1339, 1340);
-    protected SerialField<CharLimitedInteger> FoundUnresponsiveDay = new SerialField<CharLimitedInteger>("Date Found Unresponsive (Day)", 1341, 1342);
-    protected SerialField<CharLimitedInteger> FoundUnresponsiveYear = new SerialField<CharLimitedInteger>("Date Found Unresponsive (Year)", 1343, 1346);
-    protected SerialField<OneOrZero> PreviousOverdose = new SerialField<OneOrZero>("Previous Drug Overdose", 1347, 1347);
-    protected SerialField<OneOrZero> Overdose0to2DaysPrior = new SerialField<OneOrZero>("Overdose Occurred 0-2 Days Prior", 1348, 1348);
-    protected SerialField<OneOrZero> Overdose3to7DaysPrior = new SerialField<OneOrZero>("Overdose Occurred 3-7 Days Prior", 1349, 1349);
-    protected SerialField<OneOrZero> RecentOpioidUse = new SerialField<OneOrZero>("Recent Return to Use of Opioids", 1350, 1350);
-    protected SerialField<OneOrZero> RecentEmergencyDept = new SerialField<OneOrZero>("Recent Emergency Department or Urgent Care Visit", 1351, 1351);
-    protected SerialField<OneOrZero> HistDrugNoEvidence = new SerialField<OneOrZero>("No Evidence of Current or Past Drug Use/Misuse", 1352, 1352);
-    protected SerialField<OneOrZero> HistHeroin = new SerialField<OneOrZero>("Heroin", 1353, 1353);
-    protected SerialField<OneOrZero> HistRxOpioid = new SerialField<OneOrZero>("Prescription Opioids", 1354, 1354);
-    protected SerialField<OneOrZero> HistAnyOpioid = new SerialField<OneOrZero>("Unspecified Opioids", 1355, 1355);
-    protected SerialField<OneOrZero> HistFentanyl = new SerialField<OneOrZero>("Fentanyl", 1356, 1356);
-    protected SerialField<OneOrZero> HistCocaine = new SerialField<OneOrZero>("Cocaine", 1357, 1357);
-    protected SerialField<OneOrZero> HistMeth = new SerialField<OneOrZero>("Methamphetamine", 1358, 1358);
-    protected SerialField<OneOrZero> HistBenzo = new SerialField<OneOrZero>("Benzodiazepines", 1359, 1359);
-    protected SerialField<OneOrZero> HistCannabis = new SerialField<OneOrZero>("Cannabis (Marijuana)", 1360, 1360);
-    protected SerialField<OneOrZero> HistUnspecified = new SerialField<OneOrZero>("Drug Use/Misuse, Substance Unspecified", 1361, 1361);
-    protected SerialField<OneOrZero> HistOther = new SerialField<OneOrZero>("Other Substance - Specify", 1362, 1362);
-    protected SerialField<String> HistOtherDesc = new SerialField<String>("Other Substance - Specify Textbox", 1363, 1490);
-    protected SerialField<OneOrZero> TreatmentForSubstanceAbuse = new SerialField<OneOrZero>("Treatment for Substance Use Disorder", 1491, 1491);
-    protected SerialField<OneOrZero> SubstanceTreatmentRehab = new SerialField<OneOrZero>("Inpatient/Outpatient Rehabilitation", 1492, 1492);
-    protected SerialField<OneOrZero> SubstanceTreatmentMATcog = new SerialField<OneOrZero>("Medications for Opioid Use Disorder (with Cognitive/Behavioral Therapy)", 1493, 1493);
-    protected SerialField<OneOrZero> SubstanceTreatmentMATNoCog = new SerialField<OneOrZero>("Medications for Opioid Use Disorder (without Cognitive/Behavioral Therapy)", 1494, 1494);
-    protected SerialField<OneOrZero> SubstanceTreatmentMAT = new SerialField<OneOrZero>("Medications for Opioid Use Disorder (Cognitive/Behavioral Therapy Unknown)", 1495, 1495);
-    protected SerialField<OneOrZero> SubstanceTreatmentCogTherapy = new SerialField<OneOrZero>("Cognitive/Behavioral Therapy", 1496, 1496);
-    protected SerialField<OneOrZero> SubstanceTreatmentNA = new SerialField<OneOrZero>("Narcotics Anonymous", 1497, 1497);
-    protected SerialField<OneOrZero> SubstanceTreatmentOther = new SerialField<OneOrZero>("Other - Specify", 1498, 1498);
-    protected SerialField<String> SubstanceTreatmentOtherSpecify = new SerialField<String>("Other - Specify Textbox", 1499, 1626);
-    protected SerialField<OneOrZero> InvolveCriminalJustice = new SerialField<OneOrZero>("Involved with Criminal Justice System (Perpetrator)", 1627, 1627);
-    protected SerialField<OneOrZero> HasIndicationsDrugPara = new SerialField<OneOrZero>("Any Evidence of Drug Use", 1628, 1628);
-    protected SerialField<OneOrZero> HasIndicationsNone = new SerialField<OneOrZero>("No Evidence of Drug Use", 1629, 1629);
-    protected SerialField<OneOrZero> HasIndicationsNonSpecific = new SerialField<OneOrZero>("Non-specific Drug Use Evidence", 1630, 1630);
-    protected SerialField<OneOrZero> HasRapidOverdoseEvidence = new SerialField<OneOrZero>("Evidence of Rapid Overdose", 1631, 1631);
-    protected SerialField<OneOrZero> IsTourniquetAroundArm = new SerialField<OneOrZero>("Tourniquet Still in Place", 1632, 1632);
-    protected SerialField<OneOrZero> BodyPosition = new SerialField<OneOrZero>("Body Position Consistent with Rapid Overdose", 1633, 1633);
-    protected SerialField<OneOrZero> NeedleLocation = new SerialField<OneOrZero>("Needle Location", 1634, 1634);
-    protected SerialField<OneOrZero> RapidOverdoseWitnessReport = new SerialField<OneOrZero>("Witness Report Rapid Overdose", 1635, 1635);
-    protected SerialField<OneOrZero> HasRapidOverdoseOther = new SerialField<OneOrZero>("Other - Explain", 1636, 1636);
-    protected SerialField<String> RapidOverdoseOtherDescription = new SerialField<String>("Other - Explain Textbox", 1637, 1764);
-    protected SerialField<OneOrZero> HasRouteUnknown = new SerialField<OneOrZero>("No Information on Route of Administration", 1765, 1765);
-    protected SerialField<OneOrZero> HasRouteInjection = new SerialField<OneOrZero>("Evidence of Injection (Check All That Apply)", 1766, 1766);
-    protected SerialField<OneOrZero> HasIndicationsTracks = new SerialField<OneOrZero>("Track Marks on Decedent", 1767, 1767);
-    protected SerialField<OneOrZero> HasEvidenceOfInjectionTourniquet = new SerialField<OneOrZero>("Tourniquet", 1768, 1768);
-    protected SerialField<OneOrZero> HasEvidenceOfInjectionCooker = new SerialField<OneOrZero>("Cookers", 1769, 1769);
-    protected SerialField<OneOrZero> HasEvidenceOfinjectionNeedle = new SerialField<OneOrZero>("Needles/Syringe", 1770, 1770);
-    protected SerialField<OneOrZero> HasEvidenceOfInjectionFilter = new SerialField<OneOrZero>("Filters", 1771, 1771);
-    protected SerialField<OneOrZero> HasEvidenceOfInjectionWitnessReport = new SerialField<OneOrZero>("Witness Report", 1772, 1772);
-    protected SerialField<CharLimitedInteger> HasEvidenceOfInjectionOther = new SerialField<CharLimitedInteger>("Other Injection Evidence - Specify", 1773, 1773);
-    protected SerialField<String> HasEvidenceOfInjectionOtherDescription = new SerialField<String>("Other Injection Evidence - Specify Textbox", 1774, 1901);
-    protected SerialField<OneOrZero> HasRouteSnorting = new SerialField<OneOrZero>("Evidence of Snorting/Sniffing", 1902, 1902);
-    protected SerialField<OneOrZero> SnortingStraw = new SerialField<OneOrZero>("Straws", 1903, 1903);
-    protected SerialField<OneOrZero> SnortingRolled = new SerialField<OneOrZero>("Rolled Paper or Dollar Bills", 1904, 1904);
-    protected SerialField<OneOrZero> SnortingRazor = new SerialField<OneOrZero>("Razor Blades", 1905, 1905);
-    protected SerialField<OneOrZero> SnortingPowderMirror = new SerialField<OneOrZero>("Powder on Table/Mirror", 1906, 1906);
-    protected SerialField<OneOrZero> SnortingPowderNose = new SerialField<OneOrZero>("Powder on Decedent's Nose", 1907, 1907);
-    protected SerialField<OneOrZero> SnortingWitness = new SerialField<OneOrZero>("Witness Report", 1908, 1908);
-    protected SerialField<OneOrZero> SnortingOther = new SerialField<OneOrZero>("Other Snorting Evidence - Specify", 1909, 1909);
-    protected SerialField<String> SnortingOtherDesc = new SerialField<String>("Other Snorting Evidence - Specify Textbox", 1910, 2037);
-    protected SerialField<OneOrZero> HasRouteSmoking = new SerialField<OneOrZero>("Evidence of Smoking/Inhalation", 2038, 2038);
-    protected SerialField<OneOrZero> SmokingPipe = new SerialField<OneOrZero>("Pipes", 2039, 2039);
-    protected SerialField<OneOrZero> smokingTinfoil = new SerialField<OneOrZero>("Smoking Tinfoil", 2040, 2040);
-    protected SerialField<OneOrZero> smokingVape = new SerialField<OneOrZero>("Smoking Vape", 2041, 2041);
-    protected SerialField<OneOrZero> smokingBongBowl = new SerialField<OneOrZero>("Smoking Bong Bowl", 2042, 2042);
-    protected SerialField<OneOrZero> smokingWitness = new SerialField<OneOrZero>("Smoking Witness Report", 2043, 2043);
-    protected SerialField<OneOrZero> smokingOther = new SerialField<OneOrZero>("Smoking Other Evidence", 2044, 2044);
-    protected SerialField<String> smokingOtherDesc = new SerialField<String>("Smoking Other Evidence Description", 2045, 2172);
-    protected SerialField<OneOrZero> hasRouteTransdermal = new SerialField<OneOrZero>("Has Route Transdermal", 2173, 2173);
-    protected SerialField<OneOrZero> hasRouteIngestion = new SerialField<OneOrZero>("Has Route Ingestion", 2174, 2174);
-    protected SerialField<OneOrZero> hasRouteSuppository = new SerialField<OneOrZero>("Has Route Suppository", 2175, 2175);
-    protected SerialField<OneOrZero> hasRouteSublingual = new SerialField<OneOrZero>("Has Route Sublingual", 2176, 2176);
-    protected SerialField<OneOrZero> hasRouteBuccal = new SerialField<OneOrZero>("Has Route Buccal", 2177, 2177);
-    protected SerialField<OneOrZero> nonSpecificRx = new SerialField<OneOrZero>("Evidence of Unspecified Drug Type", 2178, 2178);
-    protected SerialField<OneOrZero> hasEvidenceOfPrescriptionDrug = new SerialField<OneOrZero>("Has Evidence of Prescription Drugs", 2179, 2179);
-    protected SerialField<OneOrZero> isPrescribedToVictim = new SerialField<OneOrZero>("Prescribed to Decedent", 2180, 2180);
-    protected SerialField<OneOrZero> isUnknownWhoPrescribed = new SerialField<OneOrZero>("Unknown Who Prescribed For", 2181, 2181);
-    protected SerialField<OneOrZero> hasIndicationsRxDrugs = new SerialField<OneOrZero>("Not Prescribed to Decedent", 2182, 2182);
-    protected SerialField<String> prescriptionOtherDescription = new SerialField<String>("Other Form - Specify", 2192, 2192);
-    protected SerialField<OneOrZero> hasIndicationsDrugatScene = new SerialField<OneOrZero>("Has Indications of Illicit Drugs", 2320, 2320);
-    protected SerialField<OneOrZero> haveEvidenceIllicitPowder = new SerialField<OneOrZero>("Powder", 2321, 2321);
-    protected SerialField<OneOrZero> hasEvidenceIllicitTar = new SerialField<OneOrZero>("Tar", 2322, 2322);
-    protected SerialField<OneOrZero> hasEvidenceOfIllicitWitnessReport = new SerialField<OneOrZero>("Witness Report", 2323, 2323);
-    protected SerialField<OneOrZero> hasEvidenceCrystal = new SerialField<OneOrZero>("Crystal", 2324, 2324);
-    protected SerialField<String> otherFormDescription = new SerialField<String>("Other Illicit Drug Description", 2328, 2455);
-    protected SerialField<CharLimitedInteger> bystandersPresent = new SerialField<CharLimitedInteger>("Bystander Present", 2456, 2456);
-    protected SerialField<String> bystanderOtherSpecify = new SerialField<String>("Other - Specify", 2465, 2465);
-    protected SerialField<OneOrZero> witnessedDrugUse = new SerialField<OneOrZero>("Drug Use Witnessed", 2593, 2593);
-    protected SerialField<OneOrZero> bystanderCPR = new SerialField<OneOrZero>("CPR", 2594, 2594);
-    protected SerialField<OneOrZero> bystanderBreathing = new SerialField<OneOrZero>("Rescue breathing", 2595, 2595);
-    protected SerialField<OneOrZero> bystanderSternal = new SerialField<OneOrZero>("Sternal rub", 2596, 2596);
-    protected SerialField<OneOrZero> bystanderStimulation = new SerialField<OneOrZero>("Stimulation", 2597, 2597);
-    protected SerialField<OneOrZero> bystanderIntrvOther = new SerialField<OneOrZero>("Other - specify", 2598, 2598);
-    protected SerialField<String> bystanderIntrvOtherSpecify = new SerialField<String>("Other - specify textbox", 2599, 2726);
-    protected SerialField<OneOrZero> wasNaloxoneAdministered = new SerialField<OneOrZero>("Naloxone administered", 2727, 2727);
-    protected SerialField<OneOrZero> isNaloxoneNotAdmin = new SerialField<OneOrZero>("Naloxone not administered", 2728, 2728);
-    protected SerialField<OneOrZero> isNaloxoneUnknown = new SerialField<OneOrZero>("Unknown whether naloxone administered", 2729, 2729);
-    protected SerialField<OneOrZero> naloxoneTotalResponder = new SerialField<OneOrZero>("Total # of naloxone dosages administered by first responders/health care", 2730, 2731);
-    protected SerialField<OneOrZero> naloxoneTotalBystander = new SerialField<OneOrZero>("Total # of naloxone dosages administered by layperson(s)", 2732, 2733);
-    protected SerialField<OneOrZero> isNaloxoneAdminUnknown = new SerialField<OneOrZero>("Unknown", 2734, 2734);
-    protected SerialField<OneOrZero> isNaloxoneAdminLaw = new SerialField<OneOrZero>("Law enforcement", 2735, 2735);
-    protected SerialField<OneOrZero> isNaloxoneAdminEms = new SerialField<OneOrZero>("EMS/fire", 2736, 2736);
-    protected SerialField<OneOrZero> isNaloxoneAdminHospital = new SerialField<OneOrZero>("Hospital staff/health care staff", 2737, 2737);
-    protected SerialField<OneOrZero> isNaloxoneAdminOther = new SerialField<OneOrZero>("Other-specify", 2738, 2738);
-    protected SerialField<OneOrZero> isNaloxoneAdminBystander = new SerialField<OneOrZero>("Layperson", 2739, 2739);
-    protected SerialField<OneOrZero> isNaloxoneWhoPerson = new SerialField<OneOrZero>("Person using drugs", 2740, 2740);
-    protected SerialField<OneOrZero> isNaloxoneWhoPartner = new SerialField<OneOrZero>("Intimate partner", 2741, 2741);
-    protected SerialField<OneOrZero> isNaloxoneWhoFriend = new SerialField<OneOrZero>("Friend", 2742, 2742);
-    protected SerialField<OneOrZero> isNaloxoneWhoOtherFamily = new SerialField<OneOrZero>("Family member other than intimate partner", 2743, 2743);
-    protected SerialField<OneOrZero> isNaloxoneWhoRoomate = new SerialField<OneOrZero>("Roommate", 2744, 2744);
-    protected SerialField<OneOrZero> isNaloxoneWhoStranger = new SerialField<OneOrZero>("Stranger", 2745, 2745);
-    protected SerialField<OneOrZero> isNaloxoneWhoOther = new SerialField<OneOrZero>("Other-specify", 2746, 2746);
-    protected SerialField<String> isNaloxoneWhoOtherDescription = new SerialField<String>("Other-specify textbox", 2747, 2874);
-    protected SerialField<OneOrZero> hadPulse = new SerialField<OneOrZero>("Presence of pulse on first-responder arrival", 2875, 2875);
-    protected SerialField<OneOrZero> intrvCPR = new SerialField<OneOrZero>("CPR", 2876, 2876);
-    protected SerialField<OneOrZero> intrvBreathing = new SerialField<OneOrZero>("Rescue breathing", 2877, 2877);
-    protected SerialField<OneOrZero> intrvEpinephrine = new SerialField<OneOrZero>("Epinephrine administration", 2878, 2878);
-    protected SerialField<OneOrZero> intrvTransport = new SerialField<OneOrZero>("Transport to ED", 2879, 2879);
-    protected SerialField<OneOrZero> intrvOxygen = new SerialField<OneOrZero>("Provided oxygen", 2880, 2880);
-    protected SerialField<OneOrZero> intrvOther = new SerialField<OneOrZero>("Other - specify", 2881, 2881);
-    protected SerialField<String> intrvOtherSpecify = new SerialField<String>("Other - specify textbox", 2882, 3009);
-    protected SerialField<OneOrZero> bystanderNotRecognize = new SerialField<OneOrZero>("Did not recognize any abnormalities", 3010, 3010);
-    protected SerialField<OneOrZero> bystanderUsing = new SerialField<OneOrZero>("Bystander using substances or drinking alcohol and impaired", 3011, 3011);
-    protected SerialField<OneOrZero> bystanderPublic = new SerialField<OneOrZero>("Public space and strangers didn’t intervene", 3012, 3012);
-    protected SerialField<OneOrZero> bystanderNoOverdose = new SerialField<OneOrZero>("Reported abnormalities but did not recognize as overdose", 3013, 3013);
-    protected SerialField<OneOrZero> bystanderSeperated = new SerialField<OneOrZero>("Spatially separated (e.g., different room)", 3014, 3014);
-    protected SerialField<OneOrZero> bystanderUnaware = new SerialField<OneOrZero>("Unaware that decedent was using substances", 3015, 3015);
-    protected SerialField<OneOrZero> bystanderReasonOther = new SerialField<OneOrZero>("Other - specify", 3016, 3016);
-    protected SerialField<String> bystanderReasonOtherSpecify = new SerialField<String>("Other - specify textbox", 3017, 3144);
-    protected SerialField<OneOrZero> treatedforPain = new SerialField<OneOrZero>("Treated for pain at time of injury", 3145, 3145);
-    protected SerialField<OneOrZero> medHistCopd = new SerialField<OneOrZero>("COPD", 3146, 3146);
-    protected SerialField<OneOrZero> medHistAsthma = new SerialField<OneOrZero>("Asthma", 3147, 3147);
-    protected SerialField<OneOrZero> medHistApnea = new SerialField<OneOrZero>("Sleep apnea", 3148, 3148);
-    protected SerialField<OneOrZero> medHistHeart = new SerialField<OneOrZero>("Heart disease", 3149, 3149);
-    protected SerialField<OneOrZero> medHistObesity = new SerialField<OneOrZero>("Obesity", 3150, 3150);
-    protected SerialField<OneOrZero> medHistInjury = new SerialField<OneOrZero>("History of major injury", 3151, 3151);
-    protected SerialField<OneOrZero> medHistMigraine = new SerialField<OneOrZero>("Migraine", 3152, 3152);
-    protected SerialField<OneOrZero> medHistBackpain = new SerialField<OneOrZero>("Back pain", 3153, 3153);
-    protected SerialField<OneOrZero> medicalHistHepc = new SerialField<OneOrZero>("Hepatitis C", 3154, 3154);
-    protected SerialField<OneOrZero> medicalHistHIV = new SerialField<OneOrZero>("HIV/AIDS", 3155, 3155);
-    protected SerialField<OneOrZero> medHistOtherpain = new SerialField<OneOrZero>("Other pain", 3156, 3156);
-    protected SerialField<OneOrZero> medHistOtherbreathing = new SerialField<OneOrZero>("Other breathing problem", 3157, 3157);
-    protected SerialField<OneOrZero> prescriptionMorphine = new SerialField<OneOrZero>("Use of Pharmaceutical Morphine", 3158, 3158);
-    protected SerialField<String> prescriptionMorphineNarrative = new SerialField<String>("Prescription Morphine Narrative", 3159, 3414);
-    protected SerialField<OneOrZero> buprenorphineRx = new SerialField<OneOrZero>("Buprenorphine prescribed", 3415, 3415);
-    protected SerialField<OneOrZero> buprenorphineRxForPain = new SerialField<OneOrZero>("Buprenorphine for pain", 3416, 3416);
-    protected SerialField<OneOrZero> buprenorphineRxForMat = new SerialField<OneOrZero>("Buprenorphine for MAT", 3417, 3417);
-    protected SerialField<OneOrZero> buprenorphineRxForUnk = new SerialField<OneOrZero>("Buprenorphine for unknown reason", 3418, 3418);
-    protected SerialField<OneOrZero> methadoneRx = new SerialField<OneOrZero>("Methadone prescribed", 3419, 3419);
-    protected SerialField<OneOrZero> methadoneRxForPain = new SerialField<OneOrZero>("Methadone for pain", 3420, 3420);
-    protected SerialField<OneOrZero> methadoneRxForMat = new SerialField<OneOrZero>("Methadone for MAT", 3421, 3421);
-    protected SerialField<OneOrZero> methadoneRxUnk = new SerialField<OneOrZero>("Methadone for unknown reason", 3422, 3422);
-    protected SerialField<OneOrZero> naltrexoneRx = new SerialField<OneOrZero>("Naltrexone prescribed", 3423, 3423);
-    protected SerialField<OneOrZero> fentanylRx = new SerialField<OneOrZero>("Fentanyl prescribed", 3424, 3424);
-    protected SerialField<CharLimitedInteger> numScripsPast30Days = new SerialField<CharLimitedInteger>("Number of opioid prescriptions (past 30 days)", 3425, 3426);
-    protected SerialField<CharLimitedInteger> numPharmaciesPast30Days = new SerialField<CharLimitedInteger>("Number of dispensing pharmacies (past 180 days)", 3427, 3428);
-    protected SerialField<CharLimitedInteger> numDoctorsPrescribing30Days = new SerialField<CharLimitedInteger>("Number of prescribing doctors (past 180 days)", 3429, 3430);
-    protected SerialField<OneOrZero> isAsianIndian = new SerialField<OneOrZero>("Asian Indian", 3431, 3431);
-    protected SerialField<OneOrZero> isAsianChinese = new SerialField<OneOrZero>("Asian Chinese", 3432, 3432);
-    protected SerialField<OneOrZero> isAsianFilipino = new SerialField<OneOrZero>("Asian Filipino", 3433, 3433);
-    protected SerialField<OneOrZero> isAsianJapanese = new SerialField<OneOrZero>("Asian Japanese", 3434, 3434);
-    protected SerialField<OneOrZero> isAsianKorean = new SerialField<OneOrZero>("Asian Korean", 3435, 3435);
-    protected SerialField<OneOrZero> isAsianVietnamese = new SerialField<OneOrZero>("Asian Vietnamese", 3436, 3436);
-    protected SerialField<OneOrZero> isAsianOther = new SerialField<OneOrZero>("Asian Other", 3437, 3437);
-    protected SerialField<String> isAsianOtherText = new SerialField<String>("Asian Other Specify", 3438, 3557);
-    protected SerialField<OneOrZero> isPacificIslanderHawaii = new SerialField<OneOrZero>("Pacific Islander - Native Hawaiian", 3558, 3558);
-    protected SerialField<OneOrZero> isPacificIslanderGuam = new SerialField<OneOrZero>("Pacific Islander - Guamanian or Chamorro", 3559, 3559);
-    protected SerialField<OneOrZero> isPacificIslanderSamoa = new SerialField<OneOrZero>("Pacific Islander - Samoan", 3560, 3560);
-    protected SerialField<OneOrZero> isPacificIslanderOther = new SerialField<OneOrZero>("Pacific Islander - Other", 3561, 3561);
-    protected SerialField<OneOrZero> isPacificIslanderOtherText = new SerialField<OneOrZero>("Pacific Islander Other Specify", 3562, 3681);
-    protected SerialField<OneOrZero> americanIndianTribe = new SerialField<OneOrZero>("American Indian Tribe", 3682, 3801);
-    protected SerialField<String> americanIndianTribeOther = new SerialField<String>("American Indian Other Race Specify", 3802, 3921);
+    protected SerialField<YesOrBlank> forceNewRecord = new SerialField<YesOrBlank>("ForceNewRecord", 1, 1, YesOrBlank.class);
+    protected SerialField<YesOrBlank> overwriteConflicts = new SerialField<YesOrBlank>("OverwriteConflicts", 2, 2, YesOrBlank.class);
+    protected SerialField<CharLimitedInteger> incidentYear = new SerialField<CharLimitedInteger>("IncidentYear", 3, 6, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> incidentNumber = new SerialField<CharLimitedInteger>("IncidentNumber", 7, 16, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> victimNumber = new SerialField<CharLimitedInteger>("VictimNumber", 17, 20, CharLimitedInteger.class);
+    protected SerialField<String> lastFourDCNumber = new SerialField<String>("LastFourDCNumber", 21, 24, String.class);
+    protected SerialField<String> lastFourCMENumber = new SerialField<String>("LastFourCMENumber", 25, 28, String.class);
+    protected SerialField<String> initialOfLastName = new SerialField<String>("InitialOfLastName", 29, 29, String.class);
+    protected SerialField<CharLimitedInteger> birthDayOfMonth = new SerialField<CharLimitedInteger>("BirthDayofMonth", 30, 31, CharLimitedInteger.class);
+    protected SerialField<DeathManner> deathMannerAbstractor = new SerialField<DeathManner>("DeathMannerAbstractor", 32, 33, DeathManner.class);
+    protected SerialField<DeathManner> deathMannerDC = new SerialField<DeathManner>("DeathMannerDC", 34, 34, DeathManner.class);
+    protected SerialField<DeathManner> deathMannerCME = new SerialField<DeathManner>("DeathMannerCME", 35, 35, DeathManner.class);
+    protected SerialField<DeathManner> deathMannerLE = new SerialField<DeathManner>("DeathMannerLE", 36, 36, DeathManner.class);
+    protected SerialField<CharLimitedInteger> deathDateYear = new SerialField<CharLimitedInteger>("DeathDateYear", 37, 40, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> deathDateMonth = new SerialField<CharLimitedInteger>("DeathDateMonth", 41, 42, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> deathDateDay = new SerialField<CharLimitedInteger>("DeathDateDay", 43, 44, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> deathState = new SerialField<CharLimitedInteger>("DeathState", 45, 46, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> deathCounty = new SerialField<CharLimitedInteger>("DeathCounty", 47, 49, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> deathPronouncedDateYear = new SerialField<CharLimitedInteger>("DeathPronouncedDateYear", 50, 53, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> deathPronouncedDateMonth = new SerialField<CharLimitedInteger>("DeathPronouncedDateMonth", 54, 55, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> deathPronouncedDateDay = new SerialField<CharLimitedInteger>("DeathPronouncedDateDay", 56, 57, CharLimitedInteger.class);
+    protected SerialField<DeathPlace> deathPlace = new SerialField<DeathPlace>("DeathPlace", 58, 58, DeathPlace.class);
+    protected SerialField<String> deathPlaceText = new SerialField<String>("DeathPlaceText", 59, 88, String.class);
+    protected SerialField<AutopsyPerformed> autopsyPerformed = new SerialField<AutopsyPerformed>("AutopsyPerformed", 89, 89, AutopsyPerformed.class);
+    protected SerialField<CharLimitedInteger> injuryDateYear = new SerialField<CharLimitedInteger>("InjuryDateYear", 90, 93, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> injuryDateMonth = new SerialField<CharLimitedInteger>("InjuryDateMonth", 94, 95, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> injuryDateDay = new SerialField<CharLimitedInteger>("InjuryDateDay", 96, 97, CharLimitedInteger.class);
+    protected SerialField<String> injuryTime = new SerialField<String>("InjuryTime", 98, 101, String.class);
+    protected SerialField<CharLimitedInteger> survivalTime = new SerialField<CharLimitedInteger>("SurvivalTime", 102, 104, CharLimitedInteger.class);
+    protected SerialField<AgeUnits> survivalTimeUnit = new SerialField<AgeUnits>("SurvivalTimeUnit", 105, 105, AgeUnits.class);
+    protected SerialField<InjuryLocation> injuryLocation = new SerialField<InjuryLocation>("InjuryLocation", 106, 107, InjuryLocation.class);
+    protected SerialField<OneOrZero> injuredAtWork = new SerialField<OneOrZero>("InjuredAtWork", 108, 108, OneOrZero.class);
+    protected SerialField<OneOrZero> injuredAtVictimHome = new SerialField<OneOrZero>("InjuredAtVictimHome", 109, 109, OneOrZero.class);
+    protected SerialField<OneOrZero> eMSPresent = new SerialField<OneOrZero>("EMSPresent", 110, 110, OneOrZero.class);
+    protected SerialField<OneOrZero> victimInCustody = new SerialField<OneOrZero>("VictimInCustody", 111, 111, OneOrZero.class);
+    protected SerialField<OneOrZero> alcoholUseSuspected = new SerialField<OneOrZero>("AlcoholUseSuspected", 112, 112, OneOrZero.class);
+    protected SerialField<FIPSCodes> injuryState = new SerialField<FIPSCodes>("InjuryState", 113, 114, FIPSCodes.class);
+    protected SerialField<CharLimitedInteger> injuryCounty = new SerialField<CharLimitedInteger>("InjuryCounty", 115, 117, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> injuryCity = new SerialField<CharLimitedInteger>("InjuryCity", 118, 122, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> injuryZip = new SerialField<CharLimitedInteger>("InjuryZip", 123, 127, CharLimitedInteger.class);
+    protected SerialField<String> censusTract = new SerialField<String>("CensusTract", 128, 134, String.class);
+    protected SerialField<CharLimitedInteger> censusBlock = new SerialField<CharLimitedInteger>("CensusBlock", 135, 135, CharLimitedInteger.class);
+    protected SerialField<OneOrZero> sexVictim = new SerialField<OneOrZero>("SexVictim", 136, 136, OneOrZero.class);
+    protected SerialField<OneOrZero> sexualOrientation = new SerialField<OneOrZero>("SexualOrientation", 137, 137, OneOrZero.class);
+    protected SerialField<OneOrZero> transgender = new SerialField<OneOrZero>("Transgender", 138, 138, OneOrZero.class);
+    protected SerialField<CharLimitedInteger> age = new SerialField<CharLimitedInteger>("Age", 139, 141, CharLimitedInteger.class);
+    protected SerialField<AgeUnits> ageUnit = new SerialField<AgeUnits>("AgeUnit", 142, 142, AgeUnits.class);
+    protected SerialField<OneOrZero> ethnicityVictim = new SerialField<OneOrZero>("EthnicityVictim", 143, 143, OneOrZero.class);
+    protected SerialField<OneOrZero> raceWhiteVictim = new SerialField<OneOrZero>("RaceWhiteVictim", 144, 144, OneOrZero.class);
+    protected SerialField<OneOrZero> raceBlackVictim = new SerialField<OneOrZero>("RaceBlackVictim", 145, 145, OneOrZero.class);
+    protected SerialField<OneOrZero> raceAmericanIndianVictim = new SerialField<OneOrZero>("RaceAmericanIndianVictim", 146, 146, OneOrZero.class);
+    protected SerialField<OneOrZero> raceAsianVictim = new SerialField<OneOrZero>("RaceAsianVictim", 147, 147, OneOrZero.class);
+    protected SerialField<OneOrZero> racePacificIslanderVictim = new SerialField<OneOrZero>("RacePacificIslanderVictim", 148, 148, OneOrZero.class);
+    protected SerialField<OneOrZero> raceOtherVictim = new SerialField<OneOrZero>("RaceOtherVictim", 149, 149, OneOrZero.class);
+    protected SerialField<OneOrZero> raceUnspecifiedVictim = new SerialField<OneOrZero>("RaceUnspecifiedVictim", 150, 150, OneOrZero.class);
+    protected SerialField<CharLimitedInteger> heightFeet = new SerialField<CharLimitedInteger>("HeightFeet", 151, 151, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> heightInches = new SerialField<CharLimitedInteger>("HeightInches", 152, 153, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> weight = new SerialField<CharLimitedInteger>("Weight", 154, 156, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> pregnant = new SerialField<CharLimitedInteger>("Pregnant", 157, 157, CharLimitedInteger.class);
+    protected SerialField<MaritalStatus> maritalStatus = new SerialField<MaritalStatus>("MaritalStatus", 158, 158, MaritalStatus.class);
+    protected SerialField<MilitaryBackground> military = new SerialField<MilitaryBackground>("Military", 159, 159, MilitaryBackground.class);
+    protected SerialField<OneOrZero> homeless = new SerialField<OneOrZero>("Homeless", 160, 160, OneOrZero.class);
+    protected SerialField<OneOrZero> recentRelease = new SerialField<OneOrZero>("RecentRelease", 161, 161, OneOrZero.class);
+    protected SerialField<EducationLevel> educationLevel = new SerialField<EducationLevel>("EducationLevel", 162, 162, EducationLevel.class);
+    protected SerialField<CharLimitedInteger> educationYears = new SerialField<CharLimitedInteger>("EducationYears", 163, 164, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> industry = new SerialField<CharLimitedInteger>("Industry", 165, 168, CharLimitedInteger.class);
+    protected SerialField<String> industryText = new SerialField<String>("IndustryText", 169, 218, String.class);
+    protected SerialField<String> occupationText = new SerialField<String>("OccupationText", 219, 268, String.class);
+    protected SerialField<CharLimitedInteger> usualOccupation = new SerialField<CharLimitedInteger>("UsualOccupation", 269, 272, CharLimitedInteger.class);
+    protected SerialField<String> occupationCurrentText = new SerialField<String>("OccupationCurrentText", 273, 322, String.class);
+    protected SerialField<CharLimitedInteger> birthPlace = new SerialField<CharLimitedInteger>("BirthPlace", 323, 324, CharLimitedInteger.class);
+    protected SerialField<String> birthCountryOther = new SerialField<String>("BirthCountryOther", 325, 354, String.class);
+    protected SerialField<FIPSCountryCodes> country = new SerialField<FIPSCountryCodes>("Country", 355, 356, FIPSCountryCodes.class);
+    protected SerialField<FIPSCodes> residenceState = new SerialField<FIPSCodes>("ResidenceState", 357, 358, FIPSCodes.class);
+    protected SerialField<CharLimitedInteger> residenceCounty = new SerialField<CharLimitedInteger>("ResidenceCounty", 359, 361, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> residenceCity = new SerialField<CharLimitedInteger>("ResidenceCity", 362, 366, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> residenceZip = new SerialField<CharLimitedInteger>("ResidenceZip", 367, 371, CharLimitedInteger.class);
+    protected SerialField<String> residenceCensusTract = new SerialField<String>("ResidenceCensusTract", 372, 378, String.class);
+    protected SerialField<CharLimitedInteger> residenceCensusBlock = new SerialField<CharLimitedInteger>("ResidenceCensusBlock", 379, 379, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> toxicologyNotAvailable = new SerialField<CharLimitedInteger>("ToxicologyNotAvailable", 380, 380, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> specimensDateYear = new SerialField<CharLimitedInteger>("SpecimensDateYear", 381, 384, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> specimensDateMonth = new SerialField<CharLimitedInteger>("SpecimensDateMonth", 385, 386, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> specimensDateDay = new SerialField<CharLimitedInteger>("SpecimensDateDay", 387, 388, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> specimensTime = new SerialField<CharLimitedInteger>("SpecimensTime", 389, 392, CharLimitedInteger.class);
+    protected SerialField<OneOrZero> alcoholTested = new SerialField<OneOrZero>("AlcoholTested", 393, 393, OneOrZero.class);
+    protected SerialField<OneOrZero> alcoholResult = new SerialField<OneOrZero>("AlcoholResult", 394, 394, OneOrZero.class);
+    protected SerialField<CharLimitedInteger> alcoholLevel = new SerialField<CharLimitedInteger>("AlcoholLevel", 395, 397, CharLimitedInteger.class);
+    protected SerialField<OneOrZero> amphetamineTested = new SerialField<OneOrZero>("AmphetamineTested", 398, 398, OneOrZero.class);
+    protected SerialField<OneOrZero> amphetamineResult = new SerialField<OneOrZero>("AmphetamineResult", 399, 399, OneOrZero.class);
+    protected SerialField<OneOrZero> anticonvulsantsTested = new SerialField<OneOrZero>("AnticonvulsantsTested", 400, 400, OneOrZero.class);
+    protected SerialField<OneOrZero> anticonvulsantsResult = new SerialField<OneOrZero>("AnticonvulsantsResult", 401, 401, OneOrZero.class);
+    protected SerialField<OneOrZero> antidepressantTested = new SerialField<OneOrZero>("AntiDepressantTested", 402, 402, OneOrZero.class);
+    protected SerialField<OneOrZero> antidepressantResult = new SerialField<OneOrZero>("AntiDepressantResult", 403, 403, OneOrZero.class);
+    protected SerialField<OneOrZero> antipsychoticTested = new SerialField<OneOrZero>("AntiPsychoticTested", 404, 404, OneOrZero.class);
+    protected SerialField<OneOrZero> antipsychoticResult = new SerialField<OneOrZero>("AntiPsychoticResult", 405, 405, OneOrZero.class);
+    protected SerialField<OneOrZero> barbituratesTested = new SerialField<OneOrZero>("BarbituratesTested", 406, 406, OneOrZero.class);
+    protected SerialField<OneOrZero> barbituratesResult = new SerialField<OneOrZero>("BarbituratesResult", 407, 407, OneOrZero.class);
+    protected SerialField<OneOrZero> benzodiazepinesTested = new SerialField<OneOrZero>("BenzodiazepinesTested", 408, 408, OneOrZero.class);
+    protected SerialField<OneOrZero> benzodiazepinesResult = new SerialField<OneOrZero>("BenzodiazepinesResult", 409, 409, OneOrZero.class);
+    protected SerialField<OneOrZero> carbonMonoxideTested = new SerialField<OneOrZero>("CarbonMonoxideTested", 410, 410, OneOrZero.class);
+    protected SerialField<OneOrZero> carbonMonoxideResult = new SerialField<OneOrZero>("CarbonMonoxideResult", 411, 411, OneOrZero.class);
+    protected SerialField<OneOrZero> carbonMonoxideSource = new SerialField<OneOrZero>("CarbonMonoxideSource", 412, 412, OneOrZero.class);
+    protected SerialField<OneOrZero> cocaineTested = new SerialField<OneOrZero>("CocaineTested", 413, 413, OneOrZero.class);
+    protected SerialField<OneOrZero> cocaineResult = new SerialField<OneOrZero>("CocaineResult", 414, 414, OneOrZero.class);
+    protected SerialField<OneOrZero> marijuanaTested = new SerialField<OneOrZero>("MarijuanaTested", 415, 415, OneOrZero.class);
+    protected SerialField<OneOrZero> marijuanaResult = new SerialField<OneOrZero>("MarijuanaResult", 416, 416, OneOrZero.class);
+    protected SerialField<OneOrZero> muscleRelaxorTested = new SerialField<OneOrZero>("MuscleRelaxorTested", 417, 417, OneOrZero.class);
+    protected SerialField<OneOrZero> muscleRelaxorResult = new SerialField<OneOrZero>("MuscleRelaxorResult", 418, 418, OneOrZero.class);
+    protected SerialField<OneOrZero> opiateTested = new SerialField<OneOrZero>("OpiateTested", 419, 419, OneOrZero.class);
+    protected SerialField<OneOrZero> opiateResult = new SerialField<OneOrZero>("OpiateResult", 420, 420, OneOrZero.class);
+    protected SerialField<CharLimitedInteger> numberWounds = new SerialField<CharLimitedInteger>("NumberWounds", 421, 422, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> numberBullets = new SerialField<CharLimitedInteger>("NumberBullets", 423, 424, CharLimitedInteger.class);
+    protected SerialField<OneOrZero> woundToHead = new SerialField<OneOrZero>("WoundToHead", 425, 425, OneOrZero.class);
+    protected SerialField<OneOrZero> woundToFace = new SerialField<OneOrZero>("WoundToFace", 426, 426, OneOrZero.class);
+    protected SerialField<OneOrZero> woundToNeck = new SerialField<OneOrZero>("WoundToNeck", 427, 427, OneOrZero.class);
+    protected SerialField<OneOrZero> woundToUpperExtremity = new SerialField<OneOrZero>("WoundToUpperExtremity", 428, 428, OneOrZero.class);
+    protected SerialField<OneOrZero> woundToSpine = new SerialField<OneOrZero>("WoundToSpine", 429, 429, OneOrZero.class);
+    protected SerialField<OneOrZero> woundToThorax = new SerialField<OneOrZero>("WoundToThorax", 430, 430, OneOrZero.class);
+    protected SerialField<OneOrZero> woundToAbdomen = new SerialField<OneOrZero>("WoundToAbdomen", 431, 431, OneOrZero.class);
+    protected SerialField<OneOrZero> woundToLowerExtremity = new SerialField<OneOrZero>("WoundToLowerExtremity", 432, 432, OneOrZero.class);
+    protected SerialField<OneOrZero> circumstancesKnownCME = new SerialField<OneOrZero>("CircumstancesKnownCME", 433, 433, OneOrZero.class);
+    protected SerialField<OneOrZero> abusedAsChildCME = new SerialField<OneOrZero>("AbusedAsChildCME", 434, 434, OneOrZero.class);
+    protected SerialField<OneOrZero> alcoholProblemCME = new SerialField<OneOrZero>("AlcoholProblemCME", 435, 435, OneOrZero.class);
+    protected SerialField<OneOrZero> argumentCME = new SerialField<OneOrZero>("ArgumentCME", 436, 436, OneOrZero.class);
+    protected SerialField<OneOrZero> argumentOtherCME = new SerialField<OneOrZero>("ArgumentOtherCME", 437, 437, OneOrZero.class);
+    protected SerialField<OneOrZero> argumentTimingCME = new SerialField<OneOrZero>("ArgumentTimingCME", 438, 438, OneOrZero.class);
+    protected SerialField<OneOrZero> brawlCME = new SerialField<OneOrZero>("BrawlCME", 439, 439, OneOrZero.class);
+    protected SerialField<OneOrZero> bulletRicochetCME = new SerialField<OneOrZero>("BulletRicochetCME", 440, 440, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderCME = new SerialField<OneOrZero>("BystanderCME", 441, 441, OneOrZero.class);
+    protected SerialField<OneOrZero> celebratoryFiringCME = new SerialField<OneOrZero>("CelebratoryFiringCME", 442, 442, OneOrZero.class);
+    protected SerialField<OneOrZero> circumstancesOtherCME = new SerialField<OneOrZero>("CircumstancesOtherCME", 443, 443, OneOrZero.class);
+    protected SerialField<String> circumstancesOtherTextCME = new SerialField<String>("CircumstancesOtherTextCME", 444, 698, String.class);
+    protected SerialField<OneOrZero> crisisProstitutionCME = new SerialField<OneOrZero>("CrisisProstitutionCME", 699, 699, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisAlcoholProblemCME = new SerialField<OneOrZero>("CrisisAlcoholProblemCME", 700, 700, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisCivilLegalCME = new SerialField<OneOrZero>("CrisisCivilLegalCME", 701, 701, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisCriminalCME = new SerialField<OneOrZero>("CrisisCriminalCME", 702, 702, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisDisasterExposureCME = new SerialField<OneOrZero>("CrisisDisasterExposureCME", 703, 703, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisEvictionCME = new SerialField<OneOrZero>("CrisisEvictionCME", 704, 704, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisFamilyStressorCME = new SerialField<OneOrZero>("CrisisFamilyStressorCME", 705, 705, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisFinancialCME = new SerialField<OneOrZero>("CrisisFinancialCME", 706, 706, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisIntimatePartnerProblemCME = new SerialField<OneOrZero>("CrisisIntimatePartnerProblemCME", 707, 707, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisJealousyCME = new SerialField<OneOrZero>("CrisisJealousyCME", 708, 708, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisJobCME = new SerialField<OneOrZero>("CrisisJobCME", 709, 709, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisMentalHealthCME = new SerialField<OneOrZero>("CrisisMentalHealthCME", 710, 710, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisOtherAddictionCME = new SerialField<OneOrZero>("CrisisOtherAddictionCME", 711, 711, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisPhysicalHealthCME = new SerialField<OneOrZero>("CrisisPhysicalHealthCME", 712, 712, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisRelatedDeathFriendOrFamilyOtherCME = new SerialField<OneOrZero>("CrisisRelatedDeathFriendOrFamilyOtherCME", 713, 713, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisRelatedSuicideFriendOrFamilyCME = new SerialField<OneOrZero>("CrisisRelatedSuicideFriendOrFamilyCME", 714, 714, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisRelationshipProblemOtherCME = new SerialField<OneOrZero>("CrisisRelationshipProblemOtherCME", 715, 715, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisSchoolCME = new SerialField<OneOrZero>("CrisisSchoolCME", 716, 716, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisStalkingCME = new SerialField<OneOrZero>("CrisisStalkingCME", 717, 717, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisSubstanceAbuseCME = new SerialField<OneOrZero>("CrisisSubstanceAbuseCME", 718, 718, OneOrZero.class);
+    protected SerialField<OneOrZero> deathAbuseCME = new SerialField<OneOrZero>("DeathAbuseCME", 719, 719, OneOrZero.class);
+    protected SerialField<OneOrZero> deathFriendOrFamilyOtherCME = new SerialField<OneOrZero>("DeathFriendOrFamilyOtherCME", 720, 720, OneOrZero.class);
+    protected SerialField<OneOrZero> depressedMoodCME = new SerialField<OneOrZero>("DepressedMoodCME", 721, 721, OneOrZero.class);
+    protected SerialField<OneOrZero> disasterExposureCME = new SerialField<OneOrZero>("DisasterExposureCME", 722, 722, OneOrZero.class);
+    protected SerialField<OneOrZero> disclosedIntentToWhomCME = new SerialField<OneOrZero>("DisclosedIntentToWhomCME", 723, 723, OneOrZero.class);
+    protected SerialField<OneOrZero> driveByShootingCME = new SerialField<OneOrZero>("DriveByShootingCME", 724, 724, OneOrZero.class);
+    protected SerialField<OneOrZero> drugInvolvementCME = new SerialField<OneOrZero>("DrugInvolvementCME", 725, 725, OneOrZero.class);
+    protected SerialField<OneOrZero> evictionOrLossOfHomeCME = new SerialField<OneOrZero>("EvictionOrLossOfHomeCME", 726, 726, OneOrZero.class);
+    protected SerialField<OneOrZero> fightBetweenTwoPeopleCME = new SerialField<OneOrZero>("FightBetweenTwoPeopleCME", 727, 727, OneOrZero.class);
+    protected SerialField<OneOrZero> financialProblemCME = new SerialField<OneOrZero>("FinancialProblemCME", 728, 728, OneOrZero.class);
+    protected SerialField<OneOrZero> unused1 = new SerialField<OneOrZero>("UNUSED1", 729, 729, OneOrZero.class);
+    protected SerialField<OneOrZero> gangRelatedCME = new SerialField<OneOrZero>("GangRelatedCME", 730, 730, OneOrZero.class);
+    protected SerialField<OneOrZero> gunCleaningCME = new SerialField<OneOrZero>("GunCleaningCME", 731, 731, OneOrZero.class);
+    protected SerialField<OneOrZero> gunDefectMalfunctionCME = new SerialField<OneOrZero>("GunDefectMalfunctionCME", 732, 732, OneOrZero.class);
+    protected SerialField<OneOrZero> gunDroppedCME = new SerialField<OneOrZero>("GunDroppedCME", 733, 733, OneOrZero.class);
+    protected SerialField<OneOrZero> gunFiredHolsteringCME = new SerialField<OneOrZero>("GunFiredHolsteringCME", 734, 734, OneOrZero.class);
+    protected SerialField<OneOrZero> gunFiredLoadingUnloadingCME = new SerialField<OneOrZero>("GunFiredLoadingUnloadingCME", 735, 735, OneOrZero.class);
+    protected SerialField<OneOrZero> gunFiredOperatingSafetyLockCME = new SerialField<OneOrZero>("GunFiredOperatingSafetyLockCME", 736, 736, OneOrZero.class);
+    protected SerialField<OneOrZero> gunPlayingCME = new SerialField<OneOrZero>("GunPlayingCME", 737, 737, OneOrZero.class);
+    protected SerialField<OneOrZero> gunShowingCME = new SerialField<OneOrZero>("GunShowingCME", 738, 738, OneOrZero.class);
+    protected SerialField<OneOrZero> gunThoughtSafetyEngagedCME = new SerialField<OneOrZero>("GunThoughtSafetyEngagedCME", 739, 739, OneOrZero.class);
+    protected SerialField<OneOrZero> gunThoughtToyCME = new SerialField<OneOrZero>("GunThoughtToyCME", 740, 740, OneOrZero.class);
+    protected SerialField<OneOrZero> gunThoughtUnloadedMagazineDisengagedCME = new SerialField<OneOrZero>("GunThoughtUnloadedMagazineDisengagedCME", 741, 741, OneOrZero.class);
+    protected SerialField<OneOrZero> gunThoughtUnloadedOtherCME = new SerialField<OneOrZero>("GunThoughtUnloadedOtherCME", 742, 742, OneOrZero.class);
+    protected SerialField<OneOrZero> gunUnintentionallyPulledTriggerCME = new SerialField<OneOrZero>("GunUnintentionallyPulledTriggerCME", 743, 743, OneOrZero.class);
+    protected SerialField<OneOrZero> hateCrimeCME = new SerialField<OneOrZero>("HateCrimeCME", 744, 744, OneOrZero.class);
+    protected SerialField<OneOrZero> hisoryMentalIllnessTreatmentCME = new SerialField<OneOrZero>("hisoryMentalIllnessTreatmentCME", 745, 745, OneOrZero.class);
+    protected SerialField<OneOrZero> huntingCME = new SerialField<OneOrZero>("HuntingCME", 746, 746, OneOrZero.class);
+    protected SerialField<OneOrZero> interpersonalViolencePerpetratorCME = new SerialField<OneOrZero>("InterpersonalViolencePerpetratorCME", 747, 747, OneOrZero.class);
+    protected SerialField<OneOrZero> interpersonalViolenceVictimCME = new SerialField<OneOrZero>("InterpersonalViolenceVictimCME", 748, 748, OneOrZero.class);
+    protected SerialField<OneOrZero> intervenerAssistingVictimCME = new SerialField<OneOrZero>("IntervenerAssistingVictimCME", 749, 749, OneOrZero.class);
+    protected SerialField<OneOrZero> intimatePartnerProblemCME = new SerialField<OneOrZero>("IntimatePartnerProblemCME", 750, 750, OneOrZero.class);
+    protected SerialField<OneOrZero> intimatePartnerViolenceCME = new SerialField<OneOrZero>("IntimatePartnerViolenceCME", 751, 751, OneOrZero.class);
+    protected SerialField<OneOrZero> jealouslyCME = new SerialField<OneOrZero>("JealouslyCME", 752, 752, OneOrZero.class);
+    protected SerialField<OneOrZero> jobProblemCME = new SerialField<OneOrZero>("JobProblemCME", 753, 753, OneOrZero.class);
+    protected SerialField<OneOrZero> justifiableSelfDefenseCME = new SerialField<OneOrZero>("JustifiableSelfDefenseCME", 754, 754, OneOrZero.class);
+    protected SerialField<OneOrZero> legalProblemOtherCME = new SerialField<OneOrZero>("LegalProblemOtherCME", 755, 755, OneOrZero.class);
+    protected SerialField<OneOrZero> mentalHealthDiagnosis1CME = new SerialField<OneOrZero>("MentalHealthDiagnosis1CME", 756, 757, OneOrZero.class);
+    protected SerialField<OneOrZero> mentalHealthDiagnosis2CME = new SerialField<OneOrZero>("MentalHealthDiagnosis2CME", 758, 759, OneOrZero.class);
+    protected SerialField<String> mentalHealthDiagnosisOtherCME = new SerialField<String>("MentalHealthDiagnosisOtherCME", 760, 809, String.class);
+    protected SerialField<OneOrZero> mentalHealthProblemCME = new SerialField<OneOrZero>("MentalHealthProblemCME", 810, 810, OneOrZero.class);
+    protected SerialField<OneOrZero> mentalIllnessTreatmentCurrentCME = new SerialField<OneOrZero>("MentalIllnessTreatmentCurrentCME", 811, 811, OneOrZero.class);
+    protected SerialField<OneOrZero> mercyKillingCME = new SerialField<OneOrZero>("MercyKillingCME", 812, 812, OneOrZero.class);
+    protected SerialField<OneOrZero> natureOtherCrime1CME = new SerialField<OneOrZero>("NatureOtherCrime1CME", 813, 814, OneOrZero.class);
+    protected SerialField<OneOrZero> natureOtherCrime2CME = new SerialField<OneOrZero>("NatureOtherCrime2CME", 815, 816, OneOrZero.class);
+    protected SerialField<OneOrZero> otherAddictionCME = new SerialField<OneOrZero>("OtherAddictionCME", 817, 817, OneOrZero.class);
+    protected SerialField<OneOrZero> otherContextInjuryCME = new SerialField<OneOrZero>("OtherContextInjuryCME", 818, 818, OneOrZero.class);
+    protected SerialField<OneOrZero> otherCrimeInProgressCME = new SerialField<OneOrZero>("OtherCrimeInProgressCME", 819, 819, OneOrZero.class);
+    protected SerialField<OneOrZero> otherMechanismInjuryCME = new SerialField<OneOrZero>("Other Mechanism Injury CME", 820, 820, OneOrZero.class);
+    protected SerialField<OneOrZero> precipitatedByOtherCrimeCME = new SerialField<OneOrZero>("Precipitated by Other Crime CME", 821, 821, OneOrZero.class);
+    protected SerialField<OneOrZero> physicalHealthProblemCME = new SerialField<OneOrZero>("Physical Health Problem CME", 822, 822, OneOrZero.class);
+    protected SerialField<OneOrZero> prostitutionCME = new SerialField<OneOrZero>("Prostitution CME", 823, 823, OneOrZero.class);
+    protected SerialField<OneOrZero> randomViolenceCME = new SerialField<OneOrZero>("Random Violence CME", 824, 824, OneOrZero.class);
+    protected SerialField<OneOrZero> recentCriminalLegalProblemCME = new SerialField<OneOrZero>("Recent Criminal Legal Problem CME", 825, 825, OneOrZero.class);
+    protected SerialField<OneOrZero> recentSuicideFriendFamilyCME = new SerialField<OneOrZero>("Recent Suicide Friend Family CME", 826, 826, OneOrZero.class);
+    protected SerialField<OneOrZero> relationshipProblemOtherCME = new SerialField<OneOrZero>("Relationship Problem Other CME", 827, 827, OneOrZero.class);
+    protected SerialField<OneOrZero> schoolProblemCME = new SerialField<OneOrZero>("School Problem CME", 828, 828, OneOrZero.class);
+    protected SerialField<OneOrZero> selfDefenseCME = new SerialField<OneOrZero>("Self Defense CME", 829, 829, OneOrZero.class);
+    protected SerialField<OneOrZero> stalkingCME = new SerialField<OneOrZero>("Stalking CME", 830, 830, OneOrZero.class);
+    protected SerialField<OneOrZero> substanceAbuseOtherCME = new SerialField<OneOrZero>("Substance Abuse Other CME", 831, 831, OneOrZero.class);
+    protected SerialField<OneOrZero> suicideAttempthisoryCME = new SerialField<OneOrZero>("Suicide Attempt history CME", 832, 832, OneOrZero.class);
+    protected SerialField<OneOrZero> suicideIntentDisclosedCME = new SerialField<OneOrZero>("Suicide Intent Disclosed CME", 833, 833, OneOrZero.class);
+    protected SerialField<OneOrZero> suicideNoteCME = new SerialField<OneOrZero>("Suicide Note CME", 834, 834, OneOrZero.class);
+    protected SerialField<OneOrZero> suicideThoughthisoryCME = new SerialField<OneOrZero>("Suicide Thought history CME", 835, 835, OneOrZero.class);
+    protected SerialField<OneOrZero> targetShootingCME = new SerialField<OneOrZero>("Target Shooting CME", 836, 836, OneOrZero.class);
+    protected SerialField<OneOrZero> terroristAttackCME = new SerialField<OneOrZero>("Terrorist Attack CME", 837, 837, OneOrZero.class);
+    protected SerialField<OneOrZero> traumaticAnniversaryCME = new SerialField<OneOrZero>("Traumatic Anniversary CME", 838, 838, OneOrZero.class);
+    protected SerialField<OneOrZero> victimPoliceOfficerOnDutyCME = new SerialField<OneOrZero>("Victim Police Officer On Duty CME", 839, 839, OneOrZero.class);
+    protected SerialField<OneOrZero> victimUsedWeaponCME = new SerialField<OneOrZero>("Victim Used Weapon CME", 840, 840, OneOrZero.class);
+    protected SerialField<OneOrZero> walkByAssaultCME = new SerialField<OneOrZero>("Walk By Assault CME", 841, 841, OneOrZero.class);
+    protected SerialField<OneOrZero> circumstancesOtherLE = new SerialField<OneOrZero>("Circumstances Other LE", 842, 842, OneOrZero.class);
+    protected SerialField<OneOrZero> abusedAsChildLE = new SerialField<OneOrZero>("Abused As Child LE", 843, 843, OneOrZero.class);
+    protected SerialField<OneOrZero> alcoholProblemLE = new SerialField<OneOrZero>("Alcohol Problem LE", 844, 844, OneOrZero.class);
+    protected SerialField<OneOrZero> argumentLE = new SerialField<OneOrZero>("Argument LE", 845, 845, OneOrZero.class);
+    protected SerialField<OneOrZero> argumentOtherLE = new SerialField<OneOrZero>("Argument Other LE", 846, 846, OneOrZero.class);
+    protected SerialField<OneOrZero> argumentTimingLE = new SerialField<OneOrZero>("Argument Timing LE", 847, 847, OneOrZero.class);
+    protected SerialField<OneOrZero> brawlLE = new SerialField<OneOrZero>("Brawl LE", 848, 848, OneOrZero.class);
+    protected SerialField<OneOrZero> bulletRicochetLE = new SerialField<OneOrZero>("Bullet Ricochet LE", 849, 849, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderLE = new SerialField<OneOrZero>("Bystander LE", 850, 850, OneOrZero.class);
+    protected SerialField<OneOrZero> celebratoryFiringLE = new SerialField<OneOrZero>("Celebratory Firing LE", 851, 851, OneOrZero.class);
+    protected SerialField<OneOrZero> isCircumstancesKnown = new SerialField<OneOrZero>("Is Circumstances Known", 852, 852, OneOrZero.class);
+    protected SerialField<String> circumstancesOtherTextLE = new SerialField<String>("Circumstances Other Text LE", 853, 1107, String.class);
+    protected SerialField<OneOrZero> cririsProstitutionLE = new SerialField<OneOrZero>("Crisis Prostitution LE", 1108, 1108, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisAlcoholProblemLE = new SerialField<OneOrZero>("Crisis Alcohol Problem LE", 1109, 1109, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisCivilLegalLE = new SerialField<OneOrZero>("Crisis Civil Legal LE", 1110, 1110, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisCriminalLE = new SerialField<OneOrZero>("Crisis Criminal LE", 1111, 1111, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisDisasterExposureLE = new SerialField<OneOrZero>("Crisis Disaster Exposure LE", 1112, 1112, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisEvictionLE = new SerialField<OneOrZero>("Crisis Eviction LE", 1113, 1113, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisFamilyStressorLE = new SerialField<OneOrZero>("Crisis Family Stressor LE", 1114, 1114, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisFinancialLE = new SerialField<OneOrZero>("Crisis Financial LE", 1115, 1115, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisIntimatePartnerProblemLE = new SerialField<OneOrZero>("Crisis Intimate Partner Problem LE", 1116, 1116, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisJealousyLE = new SerialField<OneOrZero>("Crisis Jealousy LE", 1117, 1117, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisJobLE = new SerialField<OneOrZero>("Crisis Job LE", 1118, 1118, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisMentalHealthLE = new SerialField<OneOrZero>("Crisis Mental Health LE", 1119, 1119, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisOtherAddictionLE = new SerialField<OneOrZero>("Crisis Other Addiction LE", 1120, 1120, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisPhysicalHealthLE = new SerialField<OneOrZero>("Crisis Physical Health LE", 1121, 1121, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisRelatedDeathFriendOrFamilyOtherLE = new SerialField<OneOrZero>("Crisis Related Death Friend Or Family Other LE", 1122, 1122, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisRelatedSuicideFriendOrFamilyLE = new SerialField<OneOrZero>("Crisis Related Suicide Friend Or Family LE", 1123, 1123, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisRelationshipProblemOtherLE = new SerialField<OneOrZero>("Crisis Relationship Problem Other LE", 1124, 1124, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisSchoolLE = new SerialField<OneOrZero>("Crisis School LE", 1125, 1125, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisStalkingLE = new SerialField<OneOrZero>("Crisis Stalking LE", 1126, 1126, OneOrZero.class);
+    protected SerialField<OneOrZero> crisisSubstanceAbuseLE = new SerialField<OneOrZero>("Crisis Substance Abuse LE", 1127, 1127, OneOrZero.class);
+    protected SerialField<OneOrZero> deathAbuseLE = new SerialField<OneOrZero>("Death Abuse LE", 1128, 1128, OneOrZero.class);
+    protected SerialField<OneOrZero> deathFriendOrFamilyOtherLE = new SerialField<OneOrZero>("Death Friend Or Family Other LE", 1129, 1129, OneOrZero.class);
+    protected SerialField<OneOrZero> depressedMoodLE = new SerialField<OneOrZero>("Depressed Mood LE", 1130, 1130, OneOrZero.class);
+    protected SerialField<OneOrZero> disasterExposureLE = new SerialField<OneOrZero>("Disaster Exposure LE", 1131, 1131, OneOrZero.class);
+    protected SerialField<OneOrZero> disclosedIntentToWhomLE = new SerialField<OneOrZero>("Disclosed Intent To Whom LE", 1132, 1132, OneOrZero.class);
+    protected SerialField<OneOrZero> driveByShootingLE = new SerialField<OneOrZero>("Drive By Shooting LE", 1133, 1133, OneOrZero.class);
+    protected SerialField<OneOrZero> drugInvolvementLE = new SerialField<OneOrZero>("Drug Involvement LE", 1134, 1134, OneOrZero.class);
+    protected SerialField<OneOrZero> evictionOrLossOfHomeLE = new SerialField<OneOrZero>("Eviction Or Loss Of Home LE", 1135, 1135, OneOrZero.class);
+    protected SerialField<OneOrZero> fightBetweenTwoPeopleLE = new SerialField<OneOrZero>("Fight Between Two People LE", 1136, 1136, OneOrZero.class);
+    protected SerialField<OneOrZero> financialProblemLE = new SerialField<OneOrZero>("Financial Problem LE", 1137, 1137, OneOrZero.class);
+    protected SerialField<OneOrZero> unused2 = new SerialField<OneOrZero>("Unused2", 1138, 1138, OneOrZero.class);
+    protected SerialField<OneOrZero> gangRelatedLE = new SerialField<OneOrZero>("Gang Related LE", 1139, 1139, OneOrZero.class);
+    protected SerialField<OneOrZero> gunCleaningLE = new SerialField<OneOrZero>("Gun Cleaning LE", 1140, 1140, OneOrZero.class);
+    protected SerialField<OneOrZero> gunDefectMalfunctionLE = new SerialField<OneOrZero>("Gun Defect Malfunction LE", 1141, 1141, OneOrZero.class);
+    protected SerialField<OneOrZero> gunDroppedLE = new SerialField<OneOrZero>("Gun Dropped LE", 1142, 1142, OneOrZero.class);
+    protected SerialField<OneOrZero> gunFiredHolsteringLE = new SerialField<OneOrZero>("Gun Fired Holstering LE", 1143, 1143, OneOrZero.class);
+    protected SerialField<OneOrZero> gunFiredLoadingUnloadingLE = new SerialField<OneOrZero>("Gun Fired Loading Unloading LE", 1144, 1144, OneOrZero.class);
+    protected SerialField<OneOrZero> gunFiredOperatingSafetyLockLE = new SerialField<OneOrZero>("Gun Fired Operating Safety Lock LE", 1145, 1145, OneOrZero.class);
+    protected SerialField<OneOrZero> gunPlayingLE = new SerialField<OneOrZero>("Gun Playing LE", 1146, 1146, OneOrZero.class);
+    protected SerialField<OneOrZero> gunShowingLE = new SerialField<OneOrZero>("Gun Showing LE", 1147, 1147, OneOrZero.class);
+    protected SerialField<OneOrZero> gunThoughtSafetyEngagedLE = new SerialField<OneOrZero>("Gun Thought Safety Engaged LE", 1148, 1148, OneOrZero.class);
+    protected SerialField<OneOrZero> gunThoughtToyLE = new SerialField<OneOrZero>("Gun Thought Toy LE", 1149, 1149, OneOrZero.class);
+    protected SerialField<OneOrZero> gunThoughtUnloadedMagazineDisengagedLE = new SerialField<OneOrZero>("Gun Thought Unloaded Magazine Disengaged LE", 1150, 1150, OneOrZero.class);
+    protected SerialField<OneOrZero> gunThoughtUnloadedOtherLE = new SerialField<OneOrZero>("Gun Thought Unloaded Other LE", 1151, 1151, OneOrZero.class);
+    protected SerialField<OneOrZero> gunUnintentionallyPulledTriggerLE = new SerialField<OneOrZero>("Gun Unintentionally Pulled Trigger LE", 1152, 1152, OneOrZero.class);
+    protected SerialField<OneOrZero> hateCrimeLE = new SerialField<OneOrZero>("Hate Crime LE", 1153, 1153, OneOrZero.class);
+    protected SerialField<OneOrZero> hisoryMentalIllnessTreatmentLE = new SerialField<OneOrZero>("history Mental Illness Treatment LE", 1154, 1154, OneOrZero.class);
+    protected SerialField<OneOrZero> huntingLE = new SerialField<OneOrZero>("Hunting LE", 1155, 1155, OneOrZero.class);
+    protected SerialField<OneOrZero> interpersonalViolencePerpetratorLE = new SerialField<OneOrZero>("Interpersonal Violence Perpetrator LE", 1156, 1156, OneOrZero.class);
+    protected SerialField<OneOrZero> interpersonalViolenceVictimLE = new SerialField<OneOrZero>("Interpersonal Violence Victim LE", 1157, 1157, OneOrZero.class);
+    protected SerialField<OneOrZero> intervenerAssistingVictimLE = new SerialField<OneOrZero>("Intervener Assisting Victim LE", 1158, 1158, OneOrZero.class);
+    protected SerialField<OneOrZero> intimatePartnerProblemLE = new SerialField<OneOrZero>("Intimate Partner Problem LE", 1159, 1159, OneOrZero.class);
+    protected SerialField<OneOrZero> intimatePartnerViolenceLE = new SerialField<OneOrZero>("Intimate Partner Violence LE", 1160, 1160, OneOrZero.class);
+    protected SerialField<OneOrZero> jealouslyLE = new SerialField<OneOrZero>("Jealously LE", 1161, 1161, OneOrZero.class);
+    protected SerialField<OneOrZero> jobProblemLE = new SerialField<OneOrZero>("Job Problem LE", 1162, 1162, OneOrZero.class);
+    protected SerialField<OneOrZero> justifiableSelfDefenseLE = new SerialField<OneOrZero>("Justifiable Self Defense LE", 1163, 1163, OneOrZero.class);
+    protected SerialField<OneOrZero> legalProblemOtherLE = new SerialField<OneOrZero>("Legal Problem Other LE", 1164, 1164, OneOrZero.class);
+    protected SerialField<OneOrZero> mentalHealthDiagnosis1LE = new SerialField<OneOrZero>("Mental Health Diagnosis 1 LE", 1165, 1166, OneOrZero.class);
+    protected SerialField<OneOrZero> mentalHealthDiagnosis2LE = new SerialField<OneOrZero>("Mental Health Diagnosis 2 LE", 1167, 1168, OneOrZero.class);
+    protected SerialField<String> mentalHealthDiagnosisOtherLE = new SerialField<String>("Mental Health Diagnosis Other LE", 1169, 1218, String.class);
+    protected SerialField<OneOrZero> mentalHealthProblemLE = new SerialField<OneOrZero>("Mental Health Problem LE", 1219, 1219, OneOrZero.class);
+    protected SerialField<OneOrZero> mentalIllnessTreatmentCurrentLE = new SerialField<OneOrZero>("Mental Illness Treatment Current LE", 1220, 1220, OneOrZero.class);
+    protected SerialField<OneOrZero> mercyKillingLE = new SerialField<OneOrZero>("Mercy Killing LE", 1221, 1221, OneOrZero.class);
+    protected SerialField<OneOrZero> natureOtherCrime1LE = new SerialField<OneOrZero>("Nature Other Crime 1 LE", 1222, 1223, OneOrZero.class);
+    protected SerialField<OneOrZero> natureOtherCrime2LE = new SerialField<OneOrZero>("Nature Other Crime 2 LE", 1224, 1225, OneOrZero.class);
+    protected SerialField<OneOrZero> otherAddictionLE = new SerialField<OneOrZero>("Other Addiction LE", 1226, 1226, OneOrZero.class);
+    protected SerialField<OneOrZero> otherContextInjuryLE = new SerialField<OneOrZero>("Other Context Injury LE", 1227, 1227, OneOrZero.class);
+    protected SerialField<OneOrZero> otherCrimeInProgressLE = new SerialField<OneOrZero>("Other Crime In Progress LE", 1228, 1228, OneOrZero.class);
+    protected SerialField<OneOrZero> otherMechanismInjuryLE = new SerialField<OneOrZero>("Other Mechanism Injury LE", 1229, 1229, OneOrZero.class);
+    protected SerialField<OneOrZero> precipitatedByOtherCrimeLE = new SerialField<OneOrZero>("Precipitated by Other Crime LE", 1230, 1230, OneOrZero.class);
+    protected SerialField<OneOrZero> physicalHealthProblemLE = new SerialField<OneOrZero>("Physical Health Problem LE", 1231, 1231, OneOrZero.class);
+    protected SerialField<OneOrZero> prostitutionLE = new SerialField<OneOrZero>("Prostitution LE", 1232, 1232, OneOrZero.class);
+    protected SerialField<OneOrZero> randomViolenceLE = new SerialField<OneOrZero>("Random Violence LE", 1233, 1233, OneOrZero.class);
+    protected SerialField<OneOrZero> recentCriminalLegalProblemLE = new SerialField<OneOrZero>("Recent Criminal Legal Problem LE", 1234, 1234, OneOrZero.class);
+    protected SerialField<OneOrZero> recentSuicideFriendFamilyLE = new SerialField<OneOrZero>("Recent Suicide Friend Family LE", 1235, 1235, OneOrZero.class);
+    protected SerialField<OneOrZero> relationshipProblemOtherLE = new SerialField<OneOrZero>("Relationship Problem Other LE", 1236, 1236, OneOrZero.class);
+    protected SerialField<OneOrZero> schoolProblemLE = new SerialField<OneOrZero>("School Problem LE", 1237, 1237, OneOrZero.class);
+    protected SerialField<OneOrZero> selfDefenseLE = new SerialField<OneOrZero>("Self Defense LE", 1238, 1238, OneOrZero.class);
+    protected SerialField<OneOrZero> stalkingLE = new SerialField<OneOrZero>("Stalking LE", 1239, 1239, OneOrZero.class);
+    protected SerialField<OneOrZero> substanceAbuseOtherLE = new SerialField<OneOrZero>("Substance Abuse Other LE", 1240, 1240, OneOrZero.class);
+    protected SerialField<OneOrZero> suicideAttempthisoryLE = new SerialField<OneOrZero>("Suicide Attempt history LE", 1241, 1241, OneOrZero.class);
+    protected SerialField<OneOrZero> suicideIntentDisclosedLE = new SerialField<OneOrZero>("Suicide Intent Disclosed LE", 1242, 1242, OneOrZero.class);
+    protected SerialField<OneOrZero> suicideNoteLE = new SerialField<OneOrZero>("Suicide Note LE", 1243, 1243, OneOrZero.class);
+    protected SerialField<OneOrZero> suicideThoughthisoryLE = new SerialField<OneOrZero>("Suicide Thought history LE", 1244, 1244, OneOrZero.class);
+    protected SerialField<OneOrZero> targetShootingLE = new SerialField<OneOrZero>("Target Shooting LE", 1245, 1245, OneOrZero.class);
+    protected SerialField<OneOrZero> terroristAttackLE = new SerialField<OneOrZero>("Terrorist Attack LE", 1246, 1246, OneOrZero.class);
+    protected SerialField<OneOrZero> traumaticAnniversaryLE = new SerialField<OneOrZero>("Traumatic Anniversary LE", 1247, 1247, OneOrZero.class);
+    protected SerialField<OneOrZero> victimPoliceOfficeOnDutyLE = new SerialField<OneOrZero>("Victim Police Officer On Duty LE", 1248, 1248, OneOrZero.class);
+    protected SerialField<OneOrZero> victimUsedWeaponLE = new SerialField<OneOrZero>("Victim Used Weapon LE", 1249, 1249, OneOrZero.class);
+    protected SerialField<OneOrZero> walkByAssaultLE = new SerialField<OneOrZero>("Walk-up Assault LE", 1250, 1250, OneOrZero.class);
+    protected SerialField<String> weaponType = new SerialField<String>("Weapon Type", 1251, 1252, String.class);
+    protected SerialField<String> firearmType = new SerialField<String>("Firearm Type", 1253, 1254, String.class);
+    protected SerialField<CharLimitedInteger> firearmCaliber = new SerialField<CharLimitedInteger>("Firearm Caliber", 1255, 1258, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> firearmGauge = new SerialField<CharLimitedInteger>("Firearm Gauge", 1259, 1261, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> firearmMake = new SerialField<CharLimitedInteger>("Firearm Make", 1262, 1265, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> firearmModel = new SerialField<CharLimitedInteger>("Firearm Model", 1266, 1269, CharLimitedInteger.class);
+    protected SerialField<OneOrZero> gunLoaded = new SerialField<OneOrZero>("Gun Stored Loaded", 1270, 1270, OneOrZero.class);
+    protected SerialField<String> gunOwner = new SerialField<String>("Gun Owner", 1271, 1272, String.class);
+    protected SerialField<CharLimitedInteger> gunStoredLocked = new SerialField<CharLimitedInteger>("Gun Stored Locked", 1273, 1273, CharLimitedInteger.class);
+    protected SerialField<OneOrZero> firearmStolen = new SerialField<OneOrZero>("Firearm Stolen", 1274, 1274, OneOrZero.class);
+    protected SerialField<String> suspectSex = new SerialField<String>("Sex", 1275, 1275, String.class);
+    protected SerialField<String> victimSuspectRelationshipPrimary = new SerialField<String>("Victim to Suspect Relationship 1", 1276, 1277, String.class);
+    protected SerialField<String> victimSuspectRelationshipSecondary = new SerialField<String>("Victim to Suspect Relationship 2", 1278, 1279, String.class);
+    protected SerialField<OneOrZero> hasAbusehistory = new SerialField<OneOrZero>("history of Abuse of Victim by this.suspect", 1280, 1280, OneOrZero.class);
+    protected SerialField<OneOrZero> isCareTaker = new SerialField<OneOrZero>("this.suspect Was a Caregiver for the Victim", 1281, 1281, OneOrZero.class);
+    protected SerialField<OneOrZero> hasAttemptedSuicide = new SerialField<OneOrZero>("Suspect Attempted Suicide After Incident", 1282, 1282, OneOrZero.class);
+    protected SerialField<OneOrZero> isSuspectAlsoVictim = new SerialField<OneOrZero>("this.suspect is Also a Victim in the Incident", 1283, 1283, OneOrZero.class);
+    protected SerialField<OneOrZero> isSuspectMentallyIll = new SerialField<OneOrZero>("Suspect Mentally Ill", 1284, 1284, OneOrZero.class);
+    protected SerialField<OneOrZero> hasSuspectDevelopmentDisability = new SerialField<OneOrZero>("Suspect Had Developmental Disability", 1285, 1285, OneOrZero.class);
+    protected SerialField<OneOrZero> isSuspectAlcoholUseSuspected = new SerialField<OneOrZero>("Suspected Alcohol Use by Suspect", 1286, 1286, OneOrZero.class);
+    protected SerialField<OneOrZero> isSuspectSubstanceUseSuspected = new SerialField<OneOrZero>("Suspected Substance Use by Suspect", 1287, 1287, OneOrZero.class);
+    protected SerialField<OneOrZero> isSuspectContactPolice = new SerialField<OneOrZero>("Suspect Had Been in Contact with Law Enforcement", 1288, 1288, OneOrZero.class);
+    protected SerialField<OneOrZero> suspectRecentRelease = new SerialField<OneOrZero>("Suspect Was Recently Released from an Institution", 1289, 1290, OneOrZero.class);
+    protected SerialField<OneOrZero> isSuspectCaucasian = new SerialField<OneOrZero>("White", 1291, 1291, OneOrZero.class);
+    protected SerialField<OneOrZero> isSuspectAfricanAmerican = new SerialField<OneOrZero>("Black or African American", 1292, 1292, OneOrZero.class);
+    protected SerialField<OneOrZero> isSuspectAsian = new SerialField<OneOrZero>("Asian", 1293, 1293, OneOrZero.class);
+    protected SerialField<OneOrZero> isSuspectPacificIslander = new SerialField<OneOrZero>("Native Hawaiian or Other Pacific Islander", 1294, 1294, OneOrZero.class);
+    protected SerialField<OneOrZero> isSuspectAmericanIndian = new SerialField<OneOrZero>("American Indian or Alaska Native", 1295, 1295, OneOrZero.class);
+    protected SerialField<OneOrZero> isSuspectRaceUnspecified = new SerialField<OneOrZero>("American Indian or Alaska Native", 1296, 1296, OneOrZero.class);
+    protected SerialField<String> suspectEthnicity = new SerialField<String>("Race", 1297, 1297, String.class);
+    protected SerialField<OneOrZero> isTreatmentNonAdherenceCME = new SerialField<OneOrZero>("Non-adherence to Mental Health/Substance Abuse Treatment", 1298, 1298, OneOrZero.class);
+    protected SerialField<OneOrZero> isTraumaticBrainInjuryhistoryCME = new SerialField<OneOrZero>("history of Traumatic Brain Injury (TBI)", 1299, 1299, OneOrZero.class);
+    protected SerialField<OneOrZero> isFamilyStressorsCME = new SerialField<OneOrZero>("Family Relationship Problem", 1300, 1300, OneOrZero.class);
+    protected SerialField<OneOrZero> isCrisisFamilyStressorCME = new SerialField<OneOrZero>("Family Relationship Problem Was Crisis", 1301, 1301, OneOrZero.class);
+    protected SerialField<OneOrZero> isCaregiverBurdenCME = new SerialField<OneOrZero>("Caregiver Burden", 1302, 1302, OneOrZero.class);
+    protected SerialField<OneOrZero> isFamilyStressorCME = new SerialField<OneOrZero>("Family Stressors", 1303, 1303, OneOrZero.class);
+    protected SerialField<OneOrZero> isHouseholdKnownCME = new SerialField<OneOrZero>("Household Known to Local Authorities", 1304, 1304, OneOrZero.class);
+    protected SerialField<OneOrZero> isPriorCPSReportCME = new SerialField<OneOrZero>("Prior Child Protective Services (CPS) Report on a Child Victim's Household", 1305, 1305, OneOrZero.class);
+    protected SerialField<OneOrZero> isHouseholdSubstanceAbuseCME = new SerialField<OneOrZero>("Substance Abuse in Child Victim's Household", 1306, 1306, OneOrZero.class);
+    protected SerialField<OneOrZero> isLivingTransitionCME = new SerialField<OneOrZero>("Loss of Independent Living", 1307, 1307, OneOrZero.class);
+    protected SerialField<OneOrZero> isCorporalPunishmentCME = new SerialField<OneOrZero>("Caregiver Use of Corporal Punishment Contributed to Child Death", 1308, 1308, OneOrZero.class);
+    protected SerialField<OneOrZero> ishistorySelfHarmCME = new SerialField<OneOrZero>("history of Non-suicidal Self-Injury/Self-Harm", 1309, 1309, OneOrZero.class);
+    protected SerialField<OneOrZero> isTreatmentNonAdherenceLE = new SerialField<OneOrZero>("Non-adherence to Mental Health/Substance Abuse Treatment", 1310, 1310, OneOrZero.class);
+    protected SerialField<OneOrZero> isTraumaticBrainInjuryhistoryLE = new SerialField<OneOrZero>("history of Traumatic Brain Injury (TBI)", 1311, 1311, OneOrZero.class);
+    protected SerialField<OneOrZero> isFamilyStressorsLE = new SerialField<OneOrZero>("Family Relationship Problem", 1312, 1312, OneOrZero.class);
+    protected SerialField<OneOrZero> isCrisisFamilyStressorLE = new SerialField<OneOrZero>("Family Relationship Problem Was Crisis", 1313, 1313, OneOrZero.class);
+    protected SerialField<OneOrZero> isCaregiverBurdenLE = new SerialField<OneOrZero>("Caregiver Burden", 1314, 1314, OneOrZero.class);
+    protected SerialField<OneOrZero> isFamilyStressorLE = new SerialField<OneOrZero>("Family Stressors", 1315, 1315, OneOrZero.class);
+    protected SerialField<OneOrZero> isHouseholdKnownLE = new SerialField<OneOrZero>("Household Known to Local Authorities", 1316, 1316, OneOrZero.class);
+    protected SerialField<OneOrZero> isPriorCPSReportLE = new SerialField<OneOrZero>("Prior Child Protective Services (CPS) Report on a Child Victim's Household", 1317, 1317, OneOrZero.class);
+    protected SerialField<OneOrZero> isHouseholdSubstanceAbuseLE = new SerialField<OneOrZero>("Substance Abuse in Child Victim's Household", 1318, 1318, OneOrZero.class);
+    protected SerialField<OneOrZero> isLivingTransitionLE = new SerialField<OneOrZero>("Loss of Independent Living", 1319, 1319, OneOrZero.class);
+    protected SerialField<OneOrZero> isCorporalPunishmentLE = new SerialField<OneOrZero>("Caregiver Use of Corporal Punishment Contributed to Child Death", 1320, 1320, OneOrZero.class);
+    protected SerialField<OneOrZero> ishistorySelfHarmLE = new SerialField<OneOrZero>("history of Non-suicidal Self-Injury/Self-Harm", 1321, 1321, OneOrZero.class);
+    protected SerialField<CharLimitedInteger> typeOfPoisoning = new SerialField<CharLimitedInteger>("Type of Drug Overdose/Poisoning", 1322, 1322, CharLimitedInteger.class);
+    protected SerialField<MilitaryTime> lastSeenAliveTime = new SerialField<MilitaryTime>("Time Last Known Alive and Well Before Overdose (Military Time format e.g., 0000-2359, 9999)", 1323, 1326, MilitaryTime.class);
+    protected SerialField<MilitaryTime> foundUnresponsiveTime = new SerialField<MilitaryTime>("Time First Found Unresponsive (Military Time format e.g., 0000-2359, 9999)", 1327, 1330, MilitaryTime.class);
+    protected SerialField<CharLimitedInteger> lastSeenAliveMonth = new SerialField<CharLimitedInteger>("Date Last Known Alive and Well Before Overdose (Month)", 1331, 1332, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> lastSeenAliveDay = new SerialField<CharLimitedInteger>("Date Last Known Alive and Well Before Overdose (Day)", 1333, 1334, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> lastSeenAliveYear = new SerialField<CharLimitedInteger>("Date Last Known Alive and Well Before Overdose (Year)", 1335, 1338, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> foundUnresponsiveMonth = new SerialField<CharLimitedInteger>("Date Found Unresponsive (Month)", 1339, 1340, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> foundUnresponsiveDay = new SerialField<CharLimitedInteger>("Date Found Unresponsive (Day)", 1341, 1342, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> foundUnresponsiveYear = new SerialField<CharLimitedInteger>("Date Found Unresponsive (Year)", 1343, 1346, CharLimitedInteger.class);
+    protected SerialField<OneOrZero> previousOverdose = new SerialField<OneOrZero>("Previous Drug Overdose", 1347, 1347, OneOrZero.class);
+    protected SerialField<OneOrZero> overdose0to2DaysPrior = new SerialField<OneOrZero>("Overdose Occurred 0-2 Days Prior", 1348, 1348, OneOrZero.class);
+    protected SerialField<OneOrZero> overdose3to7DaysPrior = new SerialField<OneOrZero>("Overdose Occurred 3-7 Days Prior", 1349, 1349, OneOrZero.class);
+    protected SerialField<OneOrZero> recentOpioidUse = new SerialField<OneOrZero>("Recent Return to Use of Opioids", 1350, 1350, OneOrZero.class);
+    protected SerialField<OneOrZero> recentEmergencyDept = new SerialField<OneOrZero>("Recent Emergency Department or Urgent Care Visit", 1351, 1351, OneOrZero.class);
+    protected SerialField<OneOrZero> histDrugNoEvidence = new SerialField<OneOrZero>("No Evidence of Current or Past Drug Use/Misuse", 1352, 1352, OneOrZero.class);
+    protected SerialField<OneOrZero> histHeroin = new SerialField<OneOrZero>("Heroin", 1353, 1353, OneOrZero.class);
+    protected SerialField<OneOrZero> histRxOpioid = new SerialField<OneOrZero>("Prescription Opioids", 1354, 1354, OneOrZero.class);
+    protected SerialField<OneOrZero> histAnyOpioid = new SerialField<OneOrZero>("Unspecified Opioids", 1355, 1355, OneOrZero.class);
+    protected SerialField<OneOrZero> histFentanyl = new SerialField<OneOrZero>("Fentanyl", 1356, 1356, OneOrZero.class);
+    protected SerialField<OneOrZero> histCocaine = new SerialField<OneOrZero>("Cocaine", 1357, 1357, OneOrZero.class);
+    protected SerialField<OneOrZero> histMeth = new SerialField<OneOrZero>("Methamphetamine", 1358, 1358, OneOrZero.class);
+    protected SerialField<OneOrZero> histBenzo = new SerialField<OneOrZero>("Benzodiazepines", 1359, 1359, OneOrZero.class);
+    protected SerialField<OneOrZero> histCannabis = new SerialField<OneOrZero>("Cannabis (Marijuana)", 1360, 1360, OneOrZero.class);
+    protected SerialField<OneOrZero> histUnspecified = new SerialField<OneOrZero>("Drug Use/Misuse, Substance Unspecified", 1361, 1361, OneOrZero.class);
+    protected SerialField<OneOrZero> histOther = new SerialField<OneOrZero>("Other Substance - Specify", 1362, 1362, OneOrZero.class);
+    protected SerialField<String> histOtherDesc = new SerialField<String>("Other Substance - Specify Textbox", 1363, 1490, String.class);
+    protected SerialField<OneOrZero> treatmentForSubstanceAbuse = new SerialField<OneOrZero>("Treatment for Substance Use Disorder", 1491, 1491, OneOrZero.class);
+    protected SerialField<OneOrZero> substanceTreatmentRehab = new SerialField<OneOrZero>("Inpatient/Outpatient Rehabilitation", 1492, 1492, OneOrZero.class);
+    protected SerialField<OneOrZero> substanceTreatmentMATcog = new SerialField<OneOrZero>("Medications for Opioid Use Disorder (with Cognitive/Behavioral Therapy)", 1493, 1493, OneOrZero.class);
+    protected SerialField<OneOrZero> substanceTreatmentMATNoCog = new SerialField<OneOrZero>("Medications for Opioid Use Disorder (without Cognitive/Behavioral Therapy)", 1494, 1494, OneOrZero.class);
+    protected SerialField<OneOrZero> substanceTreatmentMAT = new SerialField<OneOrZero>("Medications for Opioid Use Disorder (Cognitive/Behavioral Therapy Unknown)", 1495, 1495, OneOrZero.class);
+    protected SerialField<OneOrZero> substanceTreatmentCogTherapy = new SerialField<OneOrZero>("Cognitive/Behavioral Therapy", 1496, 1496, OneOrZero.class);
+    protected SerialField<OneOrZero> substanceTreatmentNA = new SerialField<OneOrZero>("Narcotics Anonymous", 1497, 1497, OneOrZero.class);
+    protected SerialField<OneOrZero> substanceTreatmentOther = new SerialField<OneOrZero>("Other - Specify", 1498, 1498, OneOrZero.class);
+    protected SerialField<String> substanceTreatmentOtherSpecify = new SerialField<String>("Other - Specify Textbox", 1499, 1626, String.class);
+    protected SerialField<OneOrZero> involveCriminalJustice = new SerialField<OneOrZero>("Involved with Criminal Justice System (Perpetrator)", 1627, 1627, OneOrZero.class);
+    protected SerialField<OneOrZero> hasIndicationsDrugPara = new SerialField<OneOrZero>("Any Evidence of Drug Use", 1628, 1628, OneOrZero.class);
+    protected SerialField<OneOrZero> hasIndicationsNone = new SerialField<OneOrZero>("No Evidence of Drug Use", 1629, 1629, OneOrZero.class);
+    protected SerialField<OneOrZero> hasIndicationsNonSpecific = new SerialField<OneOrZero>("Non-specific Drug Use Evidence", 1630, 1630, OneOrZero.class);
+    protected SerialField<OneOrZero> hasRapidOverdoseEvidence = new SerialField<OneOrZero>("Evidence of Rapid Overdose", 1631, 1631, OneOrZero.class);
+    protected SerialField<OneOrZero> isTourniquetAroundArm = new SerialField<OneOrZero>("Tourniquet Still in Place", 1632, 1632, OneOrZero.class);
+    protected SerialField<OneOrZero> bodyPosition = new SerialField<OneOrZero>("Body Position Consistent with Rapid Overdose", 1633, 1633, OneOrZero.class);
+    protected SerialField<OneOrZero> needleLocation = new SerialField<OneOrZero>("Needle Location", 1634, 1634, OneOrZero.class);
+    protected SerialField<OneOrZero> rapidOverdoseWitnessReport = new SerialField<OneOrZero>("Witness Report Rapid Overdose", 1635, 1635, OneOrZero.class);
+    protected SerialField<OneOrZero> hasRapidOverdoseOther = new SerialField<OneOrZero>("Other - Explain", 1636, 1636, OneOrZero.class);
+    protected SerialField<String> rapidOverdoseOtherDescription = new SerialField<String>("Other - Explain Textbox", 1637, 1764, String.class);
+    protected SerialField<OneOrZero> hasRouteUnknown = new SerialField<OneOrZero>("No Information on Route of Administration", 1765, 1765, OneOrZero.class);
+    protected SerialField<OneOrZero> hasRouteInjection = new SerialField<OneOrZero>("Evidence of Injection (Check All That Apply)", 1766, 1766, OneOrZero.class);
+    protected SerialField<OneOrZero> hasIndicationsTracks = new SerialField<OneOrZero>("Track Marks on Decedent", 1767, 1767, OneOrZero.class);
+    protected SerialField<OneOrZero> hasEvidenceOfInjectionTourniquet = new SerialField<OneOrZero>("Tourniquet", 1768, 1768, OneOrZero.class);
+    protected SerialField<OneOrZero> hasEvidenceOfInjectionCooker = new SerialField<OneOrZero>("Cookers", 1769, 1769, OneOrZero.class);
+    protected SerialField<OneOrZero> hasEvidenceOfinjectionNeedle = new SerialField<OneOrZero>("Needles/Syringe", 1770, 1770, OneOrZero.class);
+    protected SerialField<OneOrZero> hasEvidenceOfInjectionFilter = new SerialField<OneOrZero>("Filters", 1771, 1771, OneOrZero.class);
+    protected SerialField<OneOrZero> hasEvidenceOfInjectionWitnessReport = new SerialField<OneOrZero>("Witness Report", 1772, 1772, OneOrZero.class);
+    protected SerialField<CharLimitedInteger> hasEvidenceOfInjectionOther = new SerialField<CharLimitedInteger>("Other Injection Evidence - Specify", 1773, 1773, CharLimitedInteger.class);
+    protected SerialField<String> hasEvidenceOfInjectionOtherDescription = new SerialField<String>("Other Injection Evidence - Specify Textbox", 1774, 1901, String.class);
+    protected SerialField<OneOrZero> hasRouteSnorting = new SerialField<OneOrZero>("Evidence of Snorting/Sniffing", 1902, 1902, OneOrZero.class);
+    protected SerialField<OneOrZero> snortingStraw = new SerialField<OneOrZero>("Straws", 1903, 1903, OneOrZero.class);
+    protected SerialField<OneOrZero> snortingRolled = new SerialField<OneOrZero>("Rolled Paper or Dollar Bills", 1904, 1904, OneOrZero.class);
+    protected SerialField<OneOrZero> snortingRazor = new SerialField<OneOrZero>("Razor Blades", 1905, 1905, OneOrZero.class);
+    protected SerialField<OneOrZero> snortingPowderMirror = new SerialField<OneOrZero>("Powder on Table/Mirror", 1906, 1906, OneOrZero.class);
+    protected SerialField<OneOrZero> snortingPowderNose = new SerialField<OneOrZero>("Powder on Decedent's Nose", 1907, 1907, OneOrZero.class);
+    protected SerialField<OneOrZero> snortingWitness = new SerialField<OneOrZero>("Witness Report", 1908, 1908, OneOrZero.class);
+    protected SerialField<OneOrZero> snortingOther = new SerialField<OneOrZero>("Other Snorting Evidence - Specify", 1909, 1909, OneOrZero.class);
+    protected SerialField<String> snortingOtherDesc = new SerialField<String>("Other Snorting Evidence - Specify Textbox", 1910, 2037, String.class);
+    protected SerialField<OneOrZero> hasRouteSmoking = new SerialField<OneOrZero>("Evidence of Smoking/Inhalation", 2038, 2038, OneOrZero.class);
+    protected SerialField<OneOrZero> smokingPipe = new SerialField<OneOrZero>("Pipes", 2039, 2039, OneOrZero.class);
+    protected SerialField<OneOrZero> smokingTinfoil = new SerialField<OneOrZero>("Smoking Tinfoil", 2040, 2040, OneOrZero.class);
+    protected SerialField<OneOrZero> smokingVape = new SerialField<OneOrZero>("Smoking Vape", 2041, 2041, OneOrZero.class);
+    protected SerialField<OneOrZero> smokingBongBowl = new SerialField<OneOrZero>("Smoking Bong Bowl", 2042, 2042, OneOrZero.class);
+    protected SerialField<OneOrZero> smokingWitness = new SerialField<OneOrZero>("Smoking Witness Report", 2043, 2043, OneOrZero.class);
+    protected SerialField<OneOrZero> smokingOther = new SerialField<OneOrZero>("Smoking Other Evidence", 2044, 2044, OneOrZero.class);
+    protected SerialField<String> smokingOtherDesc = new SerialField<String>("Smoking Other Evidence Description", 2045, 2172, String.class);
+    protected SerialField<OneOrZero> hasRouteTransdermal = new SerialField<OneOrZero>("Has Route Transdermal", 2173, 2173, OneOrZero.class);
+    protected SerialField<OneOrZero> hasRouteIngestion = new SerialField<OneOrZero>("Has Route Ingestion", 2174, 2174, OneOrZero.class);
+    protected SerialField<OneOrZero> hasRouteSuppository = new SerialField<OneOrZero>("Has Route Suppository", 2175, 2175, OneOrZero.class);
+    protected SerialField<OneOrZero> hasRouteSublingual = new SerialField<OneOrZero>("Has Route Sublingual", 2176, 2176, OneOrZero.class);
+    protected SerialField<OneOrZero> hasRouteBuccal = new SerialField<OneOrZero>("Has Route Buccal", 2177, 2177, OneOrZero.class);
+    protected SerialField<OneOrZero> nonSpecificRx = new SerialField<OneOrZero>("Evidence of Unspecified Drug Type", 2178, 2178, OneOrZero.class);
+    protected SerialField<OneOrZero> hasEvidenceOfPrescriptionDrug = new SerialField<OneOrZero>("Has Evidence of Prescription Drugs", 2179, 2179, OneOrZero.class);
+    protected SerialField<OneOrZero> isPrescribedToVictim = new SerialField<OneOrZero>("Prescribed to Decedent", 2180, 2180, OneOrZero.class);
+    protected SerialField<OneOrZero> isUnknownWhoPrescribed = new SerialField<OneOrZero>("Unknown Who Prescribed For", 2181, 2181, OneOrZero.class);
+    protected SerialField<OneOrZero> hasIndicationsRxDrugs = new SerialField<OneOrZero>("Not Prescribed to Decedent", 2182, 2182, OneOrZero.class);
+    protected SerialField<String> prescriptionOtherDescription = new SerialField<String>("Other Form - Specify", 2192, 2192, String.class);
+    protected SerialField<OneOrZero> hasIndicationsDrugatScene = new SerialField<OneOrZero>("Has Indications of Illicit Drugs", 2320, 2320, OneOrZero.class);
+    protected SerialField<OneOrZero> haveEvidenceIllicitPowder = new SerialField<OneOrZero>("Powder", 2321, 2321, OneOrZero.class);
+    protected SerialField<OneOrZero> hasEvidenceIllicitTar = new SerialField<OneOrZero>("Tar", 2322, 2322, OneOrZero.class);
+    protected SerialField<OneOrZero> hasEvidenceOfIllicitWitnessReport = new SerialField<OneOrZero>("Witness Report", 2323, 2323, OneOrZero.class);
+    protected SerialField<OneOrZero> hasEvidenceCrystal = new SerialField<OneOrZero>("Crystal", 2324, 2324, OneOrZero.class);
+    protected SerialField<String> otherFormDescription = new SerialField<String>("Other Illicit Drug Description", 2328, 2455, String.class);
+    protected SerialField<CharLimitedInteger> bystandersPresent = new SerialField<CharLimitedInteger>("Bystander Present", 2456, 2456, CharLimitedInteger.class);
+    protected SerialField<String> bystanderOtherSpecify = new SerialField<String>("Other - Specify", 2465, 2465, String.class);
+    protected SerialField<OneOrZero> witnessedDrugUse = new SerialField<OneOrZero>("Drug Use Witnessed", 2593, 2593, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderCPR = new SerialField<OneOrZero>("CPR", 2594, 2594, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderBreathing = new SerialField<OneOrZero>("Rescue breathing", 2595, 2595, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderSternal = new SerialField<OneOrZero>("Sternal rub", 2596, 2596, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderStimulation = new SerialField<OneOrZero>("Stimulation", 2597, 2597, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderIntrvOther = new SerialField<OneOrZero>("Other - specify", 2598, 2598, OneOrZero.class);
+    protected SerialField<String> bystanderIntrvOtherSpecify = new SerialField<String>("Other - specify textbox", 2599, 2726, String.class);
+    protected SerialField<OneOrZero> wasNaloxoneAdministered = new SerialField<OneOrZero>("Naloxone administered", 2727, 2727, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneNotAdmin = new SerialField<OneOrZero>("Naloxone not administered", 2728, 2728, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneUnknown = new SerialField<OneOrZero>("Unknown whether naloxone administered", 2729, 2729, OneOrZero.class);
+    protected SerialField<OneOrZero> naloxoneTotalResponder = new SerialField<OneOrZero>("Total # of naloxone dosages administered by first responders/health care", 2730, 2731, OneOrZero.class);
+    protected SerialField<OneOrZero> naloxoneTotalBystander = new SerialField<OneOrZero>("Total # of naloxone dosages administered by layperson(s)", 2732, 2733, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneAdminUnknown = new SerialField<OneOrZero>("Unknown", 2734, 2734, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneAdminLaw = new SerialField<OneOrZero>("Law enforcement", 2735, 2735, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneAdminEms = new SerialField<OneOrZero>("EMS/fire", 2736, 2736, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneAdminHospital = new SerialField<OneOrZero>("Hospital staff/health care staff", 2737, 2737, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneAdminOther = new SerialField<OneOrZero>("Other-specify", 2738, 2738, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneAdminBystander = new SerialField<OneOrZero>("Layperson", 2739, 2739, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneWhoPerson = new SerialField<OneOrZero>("Person using drugs", 2740, 2740, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneWhoPartner = new SerialField<OneOrZero>("Intimate partner", 2741, 2741, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneWhoFriend = new SerialField<OneOrZero>("Friend", 2742, 2742, OneOrZero.class);
+
+    protected SerialField<OneOrZero> isNaloxoneWhoOtherFamily = new SerialField<OneOrZero>("Family member other than intimate partner", 2743, 2743, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneWhoRoomate = new SerialField<OneOrZero>("Roommate", 2744, 2744, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneWhoStranger = new SerialField<OneOrZero>("Stranger", 2745, 2745, OneOrZero.class);
+    protected SerialField<OneOrZero> isNaloxoneWhoOther = new SerialField<OneOrZero>("Other-specify", 2746, 2746, OneOrZero.class);
+    protected SerialField<String> isNaloxoneWhoOtherDescription = new SerialField<String>("Other-specify textbox", 2747, 2874, String.class);
+    protected SerialField<OneOrZero> hadPulse = new SerialField<OneOrZero>("Presence of pulse on first-responder arrival", 2875, 2875, OneOrZero.class);
+    protected SerialField<OneOrZero> intrvCPR = new SerialField<OneOrZero>("CPR", 2876, 2876, OneOrZero.class);
+    protected SerialField<OneOrZero> intrvBreathing = new SerialField<OneOrZero>("Rescue breathing", 2877, 2877, OneOrZero.class);
+    protected SerialField<OneOrZero> intrvEpinephrine = new SerialField<OneOrZero>("Epinephrine administration", 2878, 2878, OneOrZero.class);
+    protected SerialField<OneOrZero> intrvTransport = new SerialField<OneOrZero>("Transport to ED", 2879, 2879, OneOrZero.class);
+    protected SerialField<OneOrZero> intrvOxygen = new SerialField<OneOrZero>("Provided oxygen", 2880, 2880, OneOrZero.class);
+    protected SerialField<OneOrZero> intrvOther = new SerialField<OneOrZero>("Other - specify", 2881, 2881, OneOrZero.class);
+    protected SerialField<String> intrvOtherSpecify = new SerialField<String>("Other - specify textbox", 2882, 3009, String.class);
+    protected SerialField<OneOrZero> bystanderNotRecognize = new SerialField<OneOrZero>("Did not recognize any abnormalities", 3010, 3010, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderUsing = new SerialField<OneOrZero>("Bystander using substances or drinking alcohol and impaired", 3011, 3011, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderPublic = new SerialField<OneOrZero>("Public space and strangers didn’t intervene", 3012, 3012, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderNoOverdose = new SerialField<OneOrZero>("Reported abnormalities but did not recognize as overdose", 3013, 3013, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderSeperated = new SerialField<OneOrZero>("Spatially separated (e.g., different room)", 3014, 3014, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderUnaware = new SerialField<OneOrZero>("Unaware that decedent was using substances", 3015, 3015, OneOrZero.class);
+    protected SerialField<OneOrZero> bystanderReasonOther = new SerialField<OneOrZero>("Other - specify", 3016, 3016, OneOrZero.class);
+    protected SerialField<String> bystanderReasonOtherSpecify = new SerialField<String>("Other - specify textbox", 3017, 3144, String.class);
+    protected SerialField<OneOrZero> treatedforPain = new SerialField<OneOrZero>("Treated for pain at time of injury", 3145, 3145, OneOrZero.class);
+    protected SerialField<OneOrZero> medhistCopd = new SerialField<OneOrZero>("COPD", 3146, 3146, OneOrZero.class);
+    protected SerialField<OneOrZero> medhistAsthma = new SerialField<OneOrZero>("Asthma", 3147, 3147, OneOrZero.class);
+    protected SerialField<OneOrZero> medhistApnea = new SerialField<OneOrZero>("Sleep apnea", 3148, 3148, OneOrZero.class);
+    protected SerialField<OneOrZero> medhistHeart = new SerialField<OneOrZero>("Heart disease", 3149, 3149, OneOrZero.class);
+    protected SerialField<OneOrZero> medhistObesity = new SerialField<OneOrZero>("Obesity", 3150, 3150, OneOrZero.class);
+    protected SerialField<OneOrZero> medhistInjury = new SerialField<OneOrZero>("history of major injury", 3151, 3151, OneOrZero.class);
+    protected SerialField<OneOrZero> medhistMigraine = new SerialField<OneOrZero>("Migraine", 3152, 3152, OneOrZero.class);
+    protected SerialField<OneOrZero> medhistBackpain = new SerialField<OneOrZero>("Back pain", 3153, 3153, OneOrZero.class);
+    protected SerialField<OneOrZero> medicalhistHepc = new SerialField<OneOrZero>("Hepatitis C", 3154, 3154, OneOrZero.class);
+    protected SerialField<OneOrZero> medicalhistHIV = new SerialField<OneOrZero>("HIV/AIDS", 3155, 3155, OneOrZero.class);
+    protected SerialField<OneOrZero> medhistOtherpain = new SerialField<OneOrZero>("Other pain", 3156, 3156, OneOrZero.class);
+    protected SerialField<OneOrZero> medhistOtherbreathing = new SerialField<OneOrZero>("Other breathing problem", 3157, 3157, OneOrZero.class);
+    protected SerialField<OneOrZero> prescriptionMorphine = new SerialField<OneOrZero>("Use of Pharmaceutical Morphine", 3158, 3158, OneOrZero.class);
+    protected SerialField<String> prescriptionMorphineNarrative = new SerialField<String>("Prescription Morphine Narrative", 3159, 3414, String.class);
+    protected SerialField<OneOrZero> buprenorphineRx = new SerialField<OneOrZero>("Buprenorphine prescribed", 3415, 3415, OneOrZero.class);
+    protected SerialField<OneOrZero> buprenorphineRxForPain = new SerialField<OneOrZero>("Buprenorphine for pain", 3416, 3416, OneOrZero.class);
+    protected SerialField<OneOrZero> buprenorphineRxForMat = new SerialField<OneOrZero>("Buprenorphine for MAT", 3417, 3417, OneOrZero.class);
+    protected SerialField<OneOrZero> buprenorphineRxForUnk = new SerialField<OneOrZero>("Buprenorphine for unknown reason", 3418, 3418, OneOrZero.class);
+    protected SerialField<OneOrZero> methadoneRx = new SerialField<OneOrZero>("Methadone prescribed", 3419, 3419, OneOrZero.class);
+    protected SerialField<OneOrZero> methadoneRxForPain = new SerialField<OneOrZero>("Methadone for pain", 3420, 3420, OneOrZero.class);
+    protected SerialField<OneOrZero> methadoneRxForMat = new SerialField<OneOrZero>("Methadone for MAT", 3421, 3421, OneOrZero.class);
+    protected SerialField<OneOrZero> methadoneRxUnk = new SerialField<OneOrZero>("Methadone for unknown reason", 3422, 3422, OneOrZero.class);
+    protected SerialField<OneOrZero> naltrexoneRx = new SerialField<OneOrZero>("Naltrexone prescribed", 3423, 3423, OneOrZero.class);
+    protected SerialField<OneOrZero> fentanylRx = new SerialField<OneOrZero>("Fentanyl prescribed", 3424, 3424, OneOrZero.class);
+    protected SerialField<CharLimitedInteger> numScripsPast30Days = new SerialField<CharLimitedInteger>("Number of opioid prescriptions (past 30 days)", 3425, 3426, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> numPharmaciesPast30Days = new SerialField<CharLimitedInteger>("Number of dispensing pharmacies (past 180 days)", 3427, 3428, CharLimitedInteger.class);
+    protected SerialField<CharLimitedInteger> numDoctorsPrescribing30Days = new SerialField<CharLimitedInteger>("Number of prescribing doctors (past 180 days)", 3429, 3430, CharLimitedInteger.class);
+    protected SerialField<OneOrZero> isAsianIndian = new SerialField<OneOrZero>("Asian Indian", 3431, 3431, OneOrZero.class);
+    protected SerialField<OneOrZero> isAsianChinese = new SerialField<OneOrZero>("Asian Chinese", 3432, 3432, OneOrZero.class);
+    protected SerialField<OneOrZero> isAsianFilipino = new SerialField<OneOrZero>("Asian Filipino", 3433, 3433, OneOrZero.class);
+    protected SerialField<OneOrZero> isAsianJapanese = new SerialField<OneOrZero>("Asian Japanese", 3434, 3434, OneOrZero.class);
+    protected SerialField<OneOrZero> isAsianKorean = new SerialField<OneOrZero>("Asian Korean", 3435, 3435, OneOrZero.class);
+    protected SerialField<OneOrZero> isAsianVietnamese = new SerialField<OneOrZero>("Asian Vietnamese", 3436, 3436, OneOrZero.class);
+    protected SerialField<OneOrZero> isAsianOther = new SerialField<OneOrZero>("Asian Other", 3437, 3437, OneOrZero.class);
+    protected SerialField<String> isAsianOtherText = new SerialField<String>("Asian Other Specify", 3438, 3557, String.class);
+    protected SerialField<OneOrZero> isPacificIslanderHawaii = new SerialField<OneOrZero>("Pacific Islander - Native Hawaiian", 3558, 3558, OneOrZero.class);
+    protected SerialField<OneOrZero> isPacificIslanderGuam = new SerialField<OneOrZero>("Pacific Islander - Guamanian or Chamorro", 3559, 3559, OneOrZero.class);
+    protected SerialField<OneOrZero> isPacificIslanderSamoa = new SerialField<OneOrZero>("Pacific Islander - Samoan", 3560, 3560, OneOrZero.class);
+    protected SerialField<OneOrZero> isPacificIslanderOther = new SerialField<OneOrZero>("Pacific Islander - Other", 3561, 3561, OneOrZero.class);
+    protected SerialField<OneOrZero> isPacificIslanderOtherText = new SerialField<OneOrZero>("Pacific Islander Other Specify", 3562, 3681, OneOrZero.class);
+    protected SerialField<OneOrZero> americanIndianTribe = new SerialField<OneOrZero>("American Indian Tribe", 3682, 3801, OneOrZero.class);
+    protected SerialField<String> americanIndianTribeOther = new SerialField<String>("American Indian Other Race Specify", 3802, 3921, String.class);
+
 
 
     public LECMEFormat() {
@@ -2000,12 +2000,12 @@ public class LECMEFormat extends BaseSerializedFormat{
         this.hateCrimeCME = hateCrimeCME;
     }
 
-    public SerialField<OneOrZero> getHistoryMentalIllnessTreatmentCME() {
-        return this.historyMentalIllnessTreatmentCME;
+    public SerialField<OneOrZero> gethisryMentalIllnessTreatmentCME() {
+        return this.hisoryMentalIllnessTreatmentCME;
     }
 
-    public void setHistoryMentalIllnessTreatmentCME(SerialField<OneOrZero> historyMentalIllnessTreatmentCME) {
-        this.historyMentalIllnessTreatmentCME = historyMentalIllnessTreatmentCME;
+    public void sethisryMentalIllnessTreatmentCME(SerialField<OneOrZero> hisoryMentalIllnessTreatmentCME) {
+        this.hisoryMentalIllnessTreatmentCME = hisoryMentalIllnessTreatmentCME;
     }
 
     public SerialField<OneOrZero> getHuntingCME() {
@@ -2272,12 +2272,12 @@ public class LECMEFormat extends BaseSerializedFormat{
         this.substanceAbuseOtherCME = substanceAbuseOtherCME;
     }
 
-    public SerialField<OneOrZero> getSuicideAttemptHistoryCME() {
-        return this.suicideAttemptHistoryCME;
+    public SerialField<OneOrZero> getsuicideAttempthisoryCME() {
+        return this.suicideAttempthisoryCME;
     }
 
-    public void setSuicideAttemptHistoryCME(SerialField<OneOrZero> suicideAttemptHistoryCME) {
-        this.suicideAttemptHistoryCME = suicideAttemptHistoryCME;
+    public void setsuicideAttempthisoryCME(SerialField<OneOrZero> suicideAttempthisoryCME) {
+        this.suicideAttempthisoryCME = suicideAttempthisoryCME;
     }
 
     public SerialField<OneOrZero> getSuicideIntentDisclosedCME() {
@@ -2296,12 +2296,12 @@ public class LECMEFormat extends BaseSerializedFormat{
         this.suicideNoteCME = suicideNoteCME;
     }
 
-    public SerialField<OneOrZero> getSuicideThoughtHistoryCME() {
-        return this.suicideThoughtHistoryCME;
+    public SerialField<OneOrZero> getsuicideThoughthisoryCME() {
+        return this.suicideThoughthisoryCME;
     }
 
-    public void setSuicideThoughtHistoryCME(SerialField<OneOrZero> suicideThoughtHistoryCME) {
-        this.suicideThoughtHistoryCME = suicideThoughtHistoryCME;
+    public void setsuicideThoughthisoryCME(SerialField<OneOrZero> suicideThoughthisoryCME) {
+        this.suicideThoughthisoryCME = suicideThoughthisoryCME;
     }
 
     public SerialField<OneOrZero> getTargetShootingCME() {
@@ -2816,12 +2816,12 @@ public class LECMEFormat extends BaseSerializedFormat{
         this.hateCrimeLE = hateCrimeLE;
     }
 
-    public SerialField<OneOrZero> getHistoryMentalIllnessTreatmentLE() {
-        return this.historyMentalIllnessTreatmentLE;
+    public SerialField<OneOrZero> gethisryMentalIllnessTreatmentLE() {
+        return this.hisoryMentalIllnessTreatmentLE;
     }
 
-    public void setHistoryMentalIllnessTreatmentLE(SerialField<OneOrZero> historyMentalIllnessTreatmentLE) {
-        this.historyMentalIllnessTreatmentLE = historyMentalIllnessTreatmentLE;
+    public void sethisryMentalIllnessTreatmentLE(SerialField<OneOrZero> hisoryMentalIllnessTreatmentLE) {
+        this.hisoryMentalIllnessTreatmentLE = hisoryMentalIllnessTreatmentLE;
     }
 
     public SerialField<OneOrZero> getHuntingLE() {
@@ -3088,12 +3088,12 @@ public class LECMEFormat extends BaseSerializedFormat{
         this.substanceAbuseOtherLE = substanceAbuseOtherLE;
     }
 
-    public SerialField<OneOrZero> getSuicideAttemptHistoryLE() {
-        return this.suicideAttemptHistoryLE;
+    public SerialField<OneOrZero> getSuicideAttempthisoryLE() {
+        return this.suicideAttempthisoryLE;
     }
 
-    public void setSuicideAttemptHistoryLE(SerialField<OneOrZero> suicideAttemptHistoryLE) {
-        this.suicideAttemptHistoryLE = suicideAttemptHistoryLE;
+    public void setsuicideAttempthisoryLE(SerialField<OneOrZero> suicideAttempthisoryLE) {
+        this.suicideAttempthisoryLE = suicideAttempthisoryLE;
     }
 
     public SerialField<OneOrZero> getSuicideIntentDisclosedLE() {
@@ -3112,12 +3112,12 @@ public class LECMEFormat extends BaseSerializedFormat{
         this.suicideNoteLE = suicideNoteLE;
     }
 
-    public SerialField<OneOrZero> getSuicideThoughtHistoryLE() {
-        return this.suicideThoughtHistoryLE;
+    public SerialField<OneOrZero> getsuicideThoughthisoryLE() {
+        return this.suicideThoughthisoryLE;
     }
 
-    public void setSuicideThoughtHistoryLE(SerialField<OneOrZero> suicideThoughtHistoryLE) {
-        this.suicideThoughtHistoryLE = suicideThoughtHistoryLE;
+    public void setsuicideThoughthisoryLE(SerialField<OneOrZero> suicideThoughthisoryLE) {
+        this.suicideThoughthisoryLE = suicideThoughthisoryLE;
     }
 
     public SerialField<OneOrZero> getTargetShootingLE() {
@@ -3137,1003 +3137,1003 @@ public class LECMEFormat extends BaseSerializedFormat{
     }
 
     public SerialField<OneOrZero> getTraumaticAnniversaryLE() {
-        return this.TraumaticAnniversaryLE;
+        return this.traumaticAnniversaryLE;
     }
 
     public void setTraumaticAnniversaryLE(SerialField<OneOrZero> TraumaticAnniversaryLE) {
-        this.TraumaticAnniversaryLE = TraumaticAnniversaryLE;
+        this.traumaticAnniversaryLE = TraumaticAnniversaryLE;
     }
 
     public SerialField<OneOrZero> getVictimPoliceOfficeOnDutyLE() {
-        return this.VictimPoliceOfficeOnDutyLE;
+        return this.victimPoliceOfficeOnDutyLE;
     }
 
     public void setVictimPoliceOfficeOnDutyLE(SerialField<OneOrZero> VictimPoliceOfficeOnDutyLE) {
-        this.VictimPoliceOfficeOnDutyLE = VictimPoliceOfficeOnDutyLE;
+        this.victimPoliceOfficeOnDutyLE = VictimPoliceOfficeOnDutyLE;
     }
 
     public SerialField<OneOrZero> getVictimUsedWeaponLE() {
-        return this.VictimUsedWeaponLE;
+        return this.victimUsedWeaponLE;
     }
 
     public void setVictimUsedWeaponLE(SerialField<OneOrZero> VictimUsedWeaponLE) {
-        this.VictimUsedWeaponLE = VictimUsedWeaponLE;
+        this.victimUsedWeaponLE = VictimUsedWeaponLE;
     }
 
     public SerialField<OneOrZero> getWalkByAssaultLE() {
-        return this.WalkByAssaultLE;
+        return this.walkByAssaultLE;
     }
 
     public void setWalkByAssaultLE(SerialField<OneOrZero> WalkByAssaultLE) {
-        this.WalkByAssaultLE = WalkByAssaultLE;
+        this.walkByAssaultLE = WalkByAssaultLE;
     }
 
     public SerialField<String> getWeaponType() {
-        return this.WeaponType;
+        return this.weaponType;
     }
 
     public void setWeaponType(SerialField<String> WeaponType) {
-        this.WeaponType = WeaponType;
+        this.weaponType = WeaponType;
     }
 
     public SerialField<String> getFirearmType() {
-        return this.FirearmType;
+        return this.firearmType;
     }
 
     public void setFirearmType(SerialField<String> FirearmType) {
-        this.FirearmType = FirearmType;
+        this.firearmType = FirearmType;
     }
 
     public SerialField<CharLimitedInteger> getFirearmCaliber() {
-        return this.FirearmCaliber;
+        return this.firearmCaliber;
     }
 
     public void setFirearmCaliber(SerialField<CharLimitedInteger> FirearmCaliber) {
-        this.FirearmCaliber = FirearmCaliber;
+        this.firearmCaliber = FirearmCaliber;
     }
 
     public SerialField<CharLimitedInteger> getFirearmGauge() {
-        return this.FirearmGauge;
+        return this.firearmGauge;
     }
 
     public void setFirearmGauge(SerialField<CharLimitedInteger> FirearmGauge) {
-        this.FirearmGauge = FirearmGauge;
+        this.firearmGauge = FirearmGauge;
     }
 
     public SerialField<CharLimitedInteger> getFirearmMake() {
-        return this.FirearmMake;
+        return this.firearmMake;
     }
 
     public void setFirearmMake(SerialField<CharLimitedInteger> FirearmMake) {
-        this.FirearmMake = FirearmMake;
+        this.firearmMake = FirearmMake;
     }
 
     public SerialField<CharLimitedInteger> getFirearmModel() {
-        return this.FirearmModel;
+        return this.firearmModel;
     }
 
     public void setFirearmModel(SerialField<CharLimitedInteger> FirearmModel) {
-        this.FirearmModel = FirearmModel;
+        this.firearmModel = FirearmModel;
     }
 
     public SerialField<OneOrZero> getGunLoaded() {
-        return this.GunLoaded;
+        return this.gunLoaded;
     }
 
     public void setGunLoaded(SerialField<OneOrZero> GunLoaded) {
-        this.GunLoaded = GunLoaded;
+        this.gunLoaded = GunLoaded;
     }
 
     public SerialField<String> getGunOwner() {
-        return this.GunOwner;
+        return this.gunOwner;
     }
 
     public void setGunOwner(SerialField<String> GunOwner) {
-        this.GunOwner = GunOwner;
+        this.gunOwner = GunOwner;
     }
 
     public SerialField<CharLimitedInteger> getGunStoredLocked() {
-        return this.GunStoredLocked;
+        return this.gunStoredLocked;
     }
 
     public void setGunStoredLocked(SerialField<CharLimitedInteger> GunStoredLocked) {
-        this.GunStoredLocked = GunStoredLocked;
+        this.gunStoredLocked = GunStoredLocked;
     }
 
     public SerialField<OneOrZero> getFirearmStolen() {
-        return this.FirearmStolen;
+        return this.firearmStolen;
     }
 
     public void setFirearmStolen(SerialField<OneOrZero> FirearmStolen) {
-        this.FirearmStolen = FirearmStolen;
+        this.firearmStolen = FirearmStolen;
     }
 
     public SerialField<String> getSuspectSex() {
-        return this.SuspectSex;
+        return this.suspectSex;
     }
 
     public void setSuspectSex(SerialField<String> SuspectSex) {
-        this.SuspectSex = SuspectSex;
+        this.suspectSex = SuspectSex;
     }
 
     public SerialField<String> getVictimSuspectRelationshipPrimary() {
-        return this.VictimSuspectRelationshipPrimary;
+        return this.victimSuspectRelationshipPrimary;
     }
 
     public void setVictimSuspectRelationshipPrimary(SerialField<String> VictimSuspectRelationshipPrimary) {
-        this.VictimSuspectRelationshipPrimary = VictimSuspectRelationshipPrimary;
+        this.victimSuspectRelationshipPrimary = VictimSuspectRelationshipPrimary;
     }
 
     public SerialField<String> getVictimSuspectRelationshipSecondary() {
-        return this.VictimSuspectRelationshipSecondary;
+        return this.victimSuspectRelationshipSecondary;
     }
 
     public void setVictimSuspectRelationshipSecondary(SerialField<String> VictimSuspectRelationshipSecondary) {
-        this.VictimSuspectRelationshipSecondary = VictimSuspectRelationshipSecondary;
+        this.victimSuspectRelationshipSecondary = VictimSuspectRelationshipSecondary;
     }
 
-    public SerialField<OneOrZero> getHasAbuseHistory() {
-        return this.HasAbuseHistory;
+    public SerialField<OneOrZero> getHasAbusehistory() {
+        return this.hasAbusehistory;
     }
 
-    public void setHasAbuseHistory(SerialField<OneOrZero> HasAbuseHistory) {
-        this.HasAbuseHistory = HasAbuseHistory;
+    public void setHasAbusehistory(SerialField<OneOrZero> HasAbusehistory) {
+        this.hasAbusehistory = HasAbusehistory;
     }
 
     public SerialField<OneOrZero> getIsCareTaker() {
-        return this.IsCareTaker;
+        return this.isCareTaker;
     }
 
     public void setIsCareTaker(SerialField<OneOrZero> IsCareTaker) {
-        this.IsCareTaker = IsCareTaker;
+        this.isCareTaker = IsCareTaker;
     }
 
     public SerialField<OneOrZero> getHasAttemptedSuicide() {
-        return this.HasAttemptedSuicide;
+        return this.hasAttemptedSuicide;
     }
 
     public void setHasAttemptedSuicide(SerialField<OneOrZero> HasAttemptedSuicide) {
-        this.HasAttemptedSuicide = HasAttemptedSuicide;
+        this.hasAttemptedSuicide = HasAttemptedSuicide;
     }
 
     public SerialField<OneOrZero> getIsSuspectAlsoVictim() {
-        return this.IsSuspectAlsoVictim;
+        return this.isSuspectAlsoVictim;
     }
 
     public void setIsSuspectAlsoVictim(SerialField<OneOrZero> IsSuspectAlsoVictim) {
-        this.IsSuspectAlsoVictim = IsSuspectAlsoVictim;
+        this.isSuspectAlsoVictim = IsSuspectAlsoVictim;
     }
 
     public SerialField<OneOrZero> getIsSuspectMentallyIll() {
-        return this.IsSuspectMentallyIll;
+        return this.isSuspectMentallyIll;
     }
 
     public void setIsSuspectMentallyIll(SerialField<OneOrZero> IsSuspectMentallyIll) {
-        this.IsSuspectMentallyIll = IsSuspectMentallyIll;
+        this.isSuspectMentallyIll = IsSuspectMentallyIll;
     }
 
     public SerialField<OneOrZero> getHasSuspectDevelopmentDisability() {
-        return this.HasSuspectDevelopmentDisability;
+        return this.hasSuspectDevelopmentDisability;
     }
 
     public void setHasSuspectDevelopmentDisability(SerialField<OneOrZero> HasSuspectDevelopmentDisability) {
-        this.HasSuspectDevelopmentDisability = HasSuspectDevelopmentDisability;
+        this.hasSuspectDevelopmentDisability = HasSuspectDevelopmentDisability;
     }
 
     public SerialField<OneOrZero> getIsSuspectAlcoholUseSuspected() {
-        return this.IsSuspectAlcoholUseSuspected;
+        return this.isSuspectAlcoholUseSuspected;
     }
 
     public void setIsSuspectAlcoholUseSuspected(SerialField<OneOrZero> IsSuspectAlcoholUseSuspected) {
-        this.IsSuspectAlcoholUseSuspected = IsSuspectAlcoholUseSuspected;
+        this.isSuspectAlcoholUseSuspected = IsSuspectAlcoholUseSuspected;
     }
 
     public SerialField<OneOrZero> getIsSuspectSubstanceUseSuspected() {
-        return this.IsSuspectSubstanceUseSuspected;
+        return this.isSuspectSubstanceUseSuspected;
     }
 
     public void setIsSuspectSubstanceUseSuspected(SerialField<OneOrZero> IsSuspectSubstanceUseSuspected) {
-        this.IsSuspectSubstanceUseSuspected = IsSuspectSubstanceUseSuspected;
+        this.isSuspectSubstanceUseSuspected = IsSuspectSubstanceUseSuspected;
     }
 
     public SerialField<OneOrZero> getIsSuspectContactPolice() {
-        return this.IsSuspectContactPolice;
+        return this.isSuspectContactPolice;
     }
 
     public void setIsSuspectContactPolice(SerialField<OneOrZero> IsSuspectContactPolice) {
-        this.IsSuspectContactPolice = IsSuspectContactPolice;
+        this.isSuspectContactPolice = IsSuspectContactPolice;
     }
 
     public SerialField<OneOrZero> getSuspectRecentRelease() {
-        return this.SuspectRecentRelease;
+        return this.suspectRecentRelease;
     }
 
     public void setSuspectRecentRelease(SerialField<OneOrZero> SuspectRecentRelease) {
-        this.SuspectRecentRelease = SuspectRecentRelease;
+        this.suspectRecentRelease = SuspectRecentRelease;
     }
 
     public SerialField<OneOrZero> getIsSuspectCaucasian() {
-        return this.IsSuspectCaucasian;
+        return this.isSuspectCaucasian;
     }
 
     public void setIsSuspectCaucasian(SerialField<OneOrZero> IsSuspectCaucasian) {
-        this.IsSuspectCaucasian = IsSuspectCaucasian;
+        this.isSuspectCaucasian = IsSuspectCaucasian;
     }
 
     public SerialField<OneOrZero> getIsSuspectAfricanAmerican() {
-        return this.IsSuspectAfricanAmerican;
+        return this.isSuspectAfricanAmerican;
     }
 
     public void setIsSuspectAfricanAmerican(SerialField<OneOrZero> IsSuspectAfricanAmerican) {
-        this.IsSuspectAfricanAmerican = IsSuspectAfricanAmerican;
+        this.isSuspectAfricanAmerican = IsSuspectAfricanAmerican;
     }
 
     public SerialField<OneOrZero> getIsSuspectAsian() {
-        return this.IsSuspectAsian;
+        return this.isSuspectAsian;
     }
 
     public void setIsSuspectAsian(SerialField<OneOrZero> IsSuspectAsian) {
-        this.IsSuspectAsian = IsSuspectAsian;
+        this.isSuspectAsian = IsSuspectAsian;
     }
 
     public SerialField<OneOrZero> getIsSuspectPacificIslander() {
-        return this.IsSuspectPacificIslander;
+        return this.isSuspectPacificIslander;
     }
 
     public void setIsSuspectPacificIslander(SerialField<OneOrZero> IsSuspectPacificIslander) {
-        this.IsSuspectPacificIslander = IsSuspectPacificIslander;
+        this.isSuspectPacificIslander = IsSuspectPacificIslander;
     }
 
     public SerialField<OneOrZero> getIsSuspectAmericanIndian() {
-        return this.IsSuspectAmericanIndian;
+        return this.isSuspectAmericanIndian;
     }
 
     public void setIsSuspectAmericanIndian(SerialField<OneOrZero> IsSuspectAmericanIndian) {
-        this.IsSuspectAmericanIndian = IsSuspectAmericanIndian;
+        this.isSuspectAmericanIndian = IsSuspectAmericanIndian;
     }
 
     public SerialField<OneOrZero> getIsSuspectRaceUnspecified() {
-        return this.IsSuspectRaceUnspecified;
+        return this.isSuspectRaceUnspecified;
     }
 
     public void setIsSuspectRaceUnspecified(SerialField<OneOrZero> IsSuspectRaceUnspecified) {
-        this.IsSuspectRaceUnspecified = IsSuspectRaceUnspecified;
+        this.isSuspectRaceUnspecified = IsSuspectRaceUnspecified;
     }
 
     public SerialField<String> getSuspectEthnicity() {
-        return this.SuspectEthnicity;
+        return this.suspectEthnicity;
     }
 
     public void setSuspectEthnicity(SerialField<String> SuspectEthnicity) {
-        this.SuspectEthnicity = SuspectEthnicity;
+        this.suspectEthnicity = SuspectEthnicity;
     }
 
     public SerialField<OneOrZero> getIsTreatmentNonAdherenceCME() {
-        return this.IsTreatmentNonAdherenceCME;
+        return this.isTreatmentNonAdherenceCME;
     }
 
     public void setIsTreatmentNonAdherenceCME(SerialField<OneOrZero> IsTreatmentNonAdherenceCME) {
-        this.IsTreatmentNonAdherenceCME = IsTreatmentNonAdherenceCME;
+        this.isTreatmentNonAdherenceCME = IsTreatmentNonAdherenceCME;
     }
 
-    public SerialField<OneOrZero> getIsTraumaticBrainInjuryHistoryCME() {
-        return this.IsTraumaticBrainInjuryHistoryCME;
+    public SerialField<OneOrZero> getIsTraumaticBrainInjuryhistoryCME() {
+        return this.isTraumaticBrainInjuryhistoryCME;
     }
 
-    public void setIsTraumaticBrainInjuryHistoryCME(SerialField<OneOrZero> IsTraumaticBrainInjuryHistoryCME) {
-        this.IsTraumaticBrainInjuryHistoryCME = IsTraumaticBrainInjuryHistoryCME;
+    public void setIsTraumaticBrainInjuryhistoryCME(SerialField<OneOrZero> IsTraumaticBrainInjuryhistoryCME) {
+        this.isTraumaticBrainInjuryhistoryCME = IsTraumaticBrainInjuryhistoryCME;
     }
 
     public SerialField<OneOrZero> getIsFamilyStressorsCME() {
-        return this.IsFamilyStressorsCME;
+        return this.isFamilyStressorsCME;
     }
 
     public void setIsFamilyStressorsCME(SerialField<OneOrZero> IsFamilyStressorsCME) {
-        this.IsFamilyStressorsCME = IsFamilyStressorsCME;
+        this.isFamilyStressorsCME = IsFamilyStressorsCME;
     }
 
     public SerialField<OneOrZero> getIsCrisisFamilyStressorCME() {
-        return this.IsCrisisFamilyStressorCME;
+        return this.isCrisisFamilyStressorCME;
     }
 
     public void setIsCrisisFamilyStressorCME(SerialField<OneOrZero> IsCrisisFamilyStressorCME) {
-        this.IsCrisisFamilyStressorCME = IsCrisisFamilyStressorCME;
+        this.isCrisisFamilyStressorCME = IsCrisisFamilyStressorCME;
     }
 
     public SerialField<OneOrZero> getIsCaregiverBurdenCME() {
-        return this.IsCaregiverBurdenCME;
+        return this.isCaregiverBurdenCME;
     }
 
     public void setIsCaregiverBurdenCME(SerialField<OneOrZero> IsCaregiverBurdenCME) {
-        this.IsCaregiverBurdenCME = IsCaregiverBurdenCME;
+        this.isCaregiverBurdenCME = IsCaregiverBurdenCME;
     }
 
     public SerialField<OneOrZero> getIsFamilyStressorCME() {
-        return this.IsFamilyStressorCME;
+        return this.isFamilyStressorCME;
     }
 
     public void setIsFamilyStressorCME(SerialField<OneOrZero> IsFamilyStressorCME) {
-        this.IsFamilyStressorCME = IsFamilyStressorCME;
+        this.isFamilyStressorCME = IsFamilyStressorCME;
     }
 
     public SerialField<OneOrZero> getIsHouseholdKnownCME() {
-        return this.IsHouseholdKnownCME;
+        return this.isHouseholdKnownCME;
     }
 
     public void setIsHouseholdKnownCME(SerialField<OneOrZero> IsHouseholdKnownCME) {
-        this.IsHouseholdKnownCME = IsHouseholdKnownCME;
+        this.isHouseholdKnownCME = IsHouseholdKnownCME;
     }
 
     public SerialField<OneOrZero> getIsPriorCPSReportCME() {
-        return this.IsPriorCPSReportCME;
+        return this.isPriorCPSReportCME;
     }
 
     public void setIsPriorCPSReportCME(SerialField<OneOrZero> IsPriorCPSReportCME) {
-        this.IsPriorCPSReportCME = IsPriorCPSReportCME;
+        this.isPriorCPSReportCME = IsPriorCPSReportCME;
     }
 
     public SerialField<OneOrZero> getIsHouseholdSubstanceAbuseCME() {
-        return this.IsHouseholdSubstanceAbuseCME;
+        return this.isHouseholdSubstanceAbuseCME;
     }
 
     public void setIsHouseholdSubstanceAbuseCME(SerialField<OneOrZero> IsHouseholdSubstanceAbuseCME) {
-        this.IsHouseholdSubstanceAbuseCME = IsHouseholdSubstanceAbuseCME;
+        this.isHouseholdSubstanceAbuseCME = IsHouseholdSubstanceAbuseCME;
     }
 
     public SerialField<OneOrZero> getIsLivingTransitionCME() {
-        return this.IsLivingTransitionCME;
+        return this.isLivingTransitionCME;
     }
 
     public void setIsLivingTransitionCME(SerialField<OneOrZero> IsLivingTransitionCME) {
-        this.IsLivingTransitionCME = IsLivingTransitionCME;
+        this.isLivingTransitionCME = IsLivingTransitionCME;
     }
 
     public SerialField<OneOrZero> getIsCorporalPunishmentCME() {
-        return this.IsCorporalPunishmentCME;
+        return this.isCorporalPunishmentCME;
     }
 
     public void setIsCorporalPunishmentCME(SerialField<OneOrZero> IsCorporalPunishmentCME) {
-        this.IsCorporalPunishmentCME = IsCorporalPunishmentCME;
+        this.isCorporalPunishmentCME = IsCorporalPunishmentCME;
     }
 
-    public SerialField<OneOrZero> getIsHistorySelfHarmCME() {
-        return this.IsHistorySelfHarmCME;
+    public SerialField<OneOrZero> getIshistorySelfHarmCME() {
+        return this.ishistorySelfHarmCME;
     }
 
-    public void setIsHistorySelfHarmCME(SerialField<OneOrZero> IsHistorySelfHarmCME) {
-        this.IsHistorySelfHarmCME = IsHistorySelfHarmCME;
+    public void setIshistorySelfHarmCME(SerialField<OneOrZero> IshistorySelfHarmCME) {
+        this.ishistorySelfHarmCME = IshistorySelfHarmCME;
     }
 
     public SerialField<OneOrZero> getIsTreatmentNonAdherenceLE() {
-        return this.IsTreatmentNonAdherenceLE;
+        return this.isTreatmentNonAdherenceLE;
     }
 
     public void setIsTreatmentNonAdherenceLE(SerialField<OneOrZero> IsTreatmentNonAdherenceLE) {
-        this.IsTreatmentNonAdherenceLE = IsTreatmentNonAdherenceLE;
+        this.isTreatmentNonAdherenceLE = IsTreatmentNonAdherenceLE;
     }
 
-    public SerialField<OneOrZero> getIsTraumaticBrainInjuryHistoryLE() {
-        return this.IsTraumaticBrainInjuryHistoryLE;
+    public SerialField<OneOrZero> getIsTraumaticBrainInjuryhistoryLE() {
+        return this.isTraumaticBrainInjuryhistoryLE;
     }
 
-    public void setIsTraumaticBrainInjuryHistoryLE(SerialField<OneOrZero> IsTraumaticBrainInjuryHistoryLE) {
-        this.IsTraumaticBrainInjuryHistoryLE = IsTraumaticBrainInjuryHistoryLE;
+    public void setIsTraumaticBrainInjuryhistoryLE(SerialField<OneOrZero> IsTraumaticBrainInjuryhistoryLE) {
+        this.isTraumaticBrainInjuryhistoryLE = IsTraumaticBrainInjuryhistoryLE;
     }
 
     public SerialField<OneOrZero> getIsFamilyStressorsLE() {
-        return this.IsFamilyStressorsLE;
+        return this.isFamilyStressorsLE;
     }
 
     public void setIsFamilyStressorsLE(SerialField<OneOrZero> IsFamilyStressorsLE) {
-        this.IsFamilyStressorsLE = IsFamilyStressorsLE;
+        this.isFamilyStressorsLE = IsFamilyStressorsLE;
     }
 
     public SerialField<OneOrZero> getIsCrisisFamilyStressorLE() {
-        return this.IsCrisisFamilyStressorLE;
+        return this.isCrisisFamilyStressorLE;
     }
 
     public void setIsCrisisFamilyStressorLE(SerialField<OneOrZero> IsCrisisFamilyStressorLE) {
-        this.IsCrisisFamilyStressorLE = IsCrisisFamilyStressorLE;
+        this.isCrisisFamilyStressorLE = IsCrisisFamilyStressorLE;
     }
 
     public SerialField<OneOrZero> getIsCaregiverBurdenLE() {
-        return this.IsCaregiverBurdenLE;
+        return this.isCaregiverBurdenLE;
     }
 
     public void setIsCaregiverBurdenLE(SerialField<OneOrZero> IsCaregiverBurdenLE) {
-        this.IsCaregiverBurdenLE = IsCaregiverBurdenLE;
+        this.isCaregiverBurdenLE = IsCaregiverBurdenLE;
     }
 
     public SerialField<OneOrZero> getIsFamilyStressorLE() {
-        return this.IsFamilyStressorLE;
+        return this.isFamilyStressorLE;
     }
 
     public void setIsFamilyStressorLE(SerialField<OneOrZero> IsFamilyStressorLE) {
-        this.IsFamilyStressorLE = IsFamilyStressorLE;
+        this.isFamilyStressorLE = IsFamilyStressorLE;
     }
 
     public SerialField<OneOrZero> getIsHouseholdKnownLE() {
-        return this.IsHouseholdKnownLE;
+        return this.isHouseholdKnownLE;
     }
 
     public void setIsHouseholdKnownLE(SerialField<OneOrZero> IsHouseholdKnownLE) {
-        this.IsHouseholdKnownLE = IsHouseholdKnownLE;
+        this.isHouseholdKnownLE = IsHouseholdKnownLE;
     }
 
     public SerialField<OneOrZero> getIsPriorCPSReportLE() {
-        return this.IsPriorCPSReportLE;
+        return this.isPriorCPSReportLE;
     }
 
     public void setIsPriorCPSReportLE(SerialField<OneOrZero> IsPriorCPSReportLE) {
-        this.IsPriorCPSReportLE = IsPriorCPSReportLE;
+        this.isPriorCPSReportLE = IsPriorCPSReportLE;
     }
 
     public SerialField<OneOrZero> getIsHouseholdSubstanceAbuseLE() {
-        return this.IsHouseholdSubstanceAbuseLE;
+        return this.isHouseholdSubstanceAbuseLE;
     }
 
     public void setIsHouseholdSubstanceAbuseLE(SerialField<OneOrZero> IsHouseholdSubstanceAbuseLE) {
-        this.IsHouseholdSubstanceAbuseLE = IsHouseholdSubstanceAbuseLE;
+        this.isHouseholdSubstanceAbuseLE = IsHouseholdSubstanceAbuseLE;
     }
 
     public SerialField<OneOrZero> getIsLivingTransitionLE() {
-        return this.IsLivingTransitionLE;
+        return this.isLivingTransitionLE;
     }
 
     public void setIsLivingTransitionLE(SerialField<OneOrZero> IsLivingTransitionLE) {
-        this.IsLivingTransitionLE = IsLivingTransitionLE;
+        this.isLivingTransitionLE = IsLivingTransitionLE;
     }
 
     public SerialField<OneOrZero> getIsCorporalPunishmentLE() {
-        return this.IsCorporalPunishmentLE;
+        return this.isCorporalPunishmentLE;
     }
 
     public void setIsCorporalPunishmentLE(SerialField<OneOrZero> IsCorporalPunishmentLE) {
-        this.IsCorporalPunishmentLE = IsCorporalPunishmentLE;
+        this.isCorporalPunishmentLE = IsCorporalPunishmentLE;
     }
 
-    public SerialField<OneOrZero> getIsHistorySelfHarmLE() {
-        return this.IsHistorySelfHarmLE;
+    public SerialField<OneOrZero> getIshistorySelfHarmLE() {
+        return this.ishistorySelfHarmLE;
     }
 
-    public void setIsHistorySelfHarmLE(SerialField<OneOrZero> IsHistorySelfHarmLE) {
-        this.IsHistorySelfHarmLE = IsHistorySelfHarmLE;
+    public void setIshistorySelfHarmLE(SerialField<OneOrZero> IshistorySelfHarmLE) {
+        this.ishistorySelfHarmLE = IshistorySelfHarmLE;
     }
 
     public SerialField<CharLimitedInteger> getTypeOfPoisoning() {
-        return this.TypeOfPoisoning;
+        return this.typeOfPoisoning;
     }
 
     public void setTypeOfPoisoning(SerialField<CharLimitedInteger> TypeOfPoisoning) {
-        this.TypeOfPoisoning = TypeOfPoisoning;
+        this.typeOfPoisoning = TypeOfPoisoning;
     }
 
     public SerialField<MilitaryTime> getLastSeenAliveTime() {
-        return this.LastSeenAliveTime;
+        return this.lastSeenAliveTime;
     }
 
     public void setLastSeenAliveTime(SerialField<MilitaryTime> LastSeenAliveTime) {
-        this.LastSeenAliveTime = LastSeenAliveTime;
+        this.lastSeenAliveTime = LastSeenAliveTime;
     }
 
     public SerialField<MilitaryTime> getFoundUnresponsiveTime() {
-        return this.FoundUnresponsiveTime;
+        return this.foundUnresponsiveTime;
     }
 
     public void setFoundUnresponsiveTime(SerialField<MilitaryTime> FoundUnresponsiveTime) {
-        this.FoundUnresponsiveTime = FoundUnresponsiveTime;
+        this.foundUnresponsiveTime = FoundUnresponsiveTime;
     }
 
     public SerialField<CharLimitedInteger> getLastSeenAliveMonth() {
-        return this.LastSeenAliveMonth;
+        return this.lastSeenAliveMonth;
     }
 
     public void setLastSeenAliveMonth(SerialField<CharLimitedInteger> LastSeenAliveMonth) {
-        this.LastSeenAliveMonth = LastSeenAliveMonth;
+        this.lastSeenAliveMonth = LastSeenAliveMonth;
     }
 
     public SerialField<CharLimitedInteger> getLastSeenAliveDay() {
-        return this.LastSeenAliveDay;
+        return this.lastSeenAliveDay;
     }
 
     public void setLastSeenAliveDay(SerialField<CharLimitedInteger> LastSeenAliveDay) {
-        this.LastSeenAliveDay = LastSeenAliveDay;
+        this.lastSeenAliveDay = LastSeenAliveDay;
     }
 
     public SerialField<CharLimitedInteger> getLastSeenAliveYear() {
-        return this.LastSeenAliveYear;
+        return this.lastSeenAliveYear;
     }
 
     public void setLastSeenAliveYear(SerialField<CharLimitedInteger> LastSeenAliveYear) {
-        this.LastSeenAliveYear = LastSeenAliveYear;
+        this.lastSeenAliveYear = LastSeenAliveYear;
     }
 
     public SerialField<CharLimitedInteger> getFoundUnresponsiveMonth() {
-        return this.FoundUnresponsiveMonth;
+        return this.foundUnresponsiveMonth;
     }
 
     public void setFoundUnresponsiveMonth(SerialField<CharLimitedInteger> FoundUnresponsiveMonth) {
-        this.FoundUnresponsiveMonth = FoundUnresponsiveMonth;
+        this.foundUnresponsiveMonth = FoundUnresponsiveMonth;
     }
 
     public SerialField<CharLimitedInteger> getFoundUnresponsiveDay() {
-        return this.FoundUnresponsiveDay;
+        return this.foundUnresponsiveDay;
     }
 
     public void setFoundUnresponsiveDay(SerialField<CharLimitedInteger> FoundUnresponsiveDay) {
-        this.FoundUnresponsiveDay = FoundUnresponsiveDay;
+        this.foundUnresponsiveDay = FoundUnresponsiveDay;
     }
 
     public SerialField<CharLimitedInteger> getFoundUnresponsiveYear() {
-        return this.FoundUnresponsiveYear;
+        return this.foundUnresponsiveYear;
     }
 
     public void setFoundUnresponsiveYear(SerialField<CharLimitedInteger> FoundUnresponsiveYear) {
-        this.FoundUnresponsiveYear = FoundUnresponsiveYear;
+        this.foundUnresponsiveYear = FoundUnresponsiveYear;
     }
 
     public SerialField<OneOrZero> getPreviousOverdose() {
-        return this.PreviousOverdose;
+        return this.previousOverdose;
     }
 
     public void setPreviousOverdose(SerialField<OneOrZero> PreviousOverdose) {
-        this.PreviousOverdose = PreviousOverdose;
+        this.previousOverdose = PreviousOverdose;
     }
 
     public SerialField<OneOrZero> getOverdose0to2DaysPrior() {
-        return this.Overdose0to2DaysPrior;
+        return this.overdose0to2DaysPrior;
     }
 
     public void setOverdose0to2DaysPrior(SerialField<OneOrZero> Overdose0to2DaysPrior) {
-        this.Overdose0to2DaysPrior = Overdose0to2DaysPrior;
+        this.overdose0to2DaysPrior = Overdose0to2DaysPrior;
     }
 
     public SerialField<OneOrZero> getOverdose3to7DaysPrior() {
-        return this.Overdose3to7DaysPrior;
+        return this.overdose3to7DaysPrior;
     }
 
     public void setOverdose3to7DaysPrior(SerialField<OneOrZero> Overdose3to7DaysPrior) {
-        this.Overdose3to7DaysPrior = Overdose3to7DaysPrior;
+        this.overdose3to7DaysPrior = Overdose3to7DaysPrior;
     }
 
     public SerialField<OneOrZero> getRecentOpioidUse() {
-        return this.RecentOpioidUse;
+        return this.recentOpioidUse;
     }
 
     public void setRecentOpioidUse(SerialField<OneOrZero> RecentOpioidUse) {
-        this.RecentOpioidUse = RecentOpioidUse;
+        this.recentOpioidUse = RecentOpioidUse;
     }
 
     public SerialField<OneOrZero> getRecentEmergencyDept() {
-        return this.RecentEmergencyDept;
+        return this.recentEmergencyDept;
     }
 
     public void setRecentEmergencyDept(SerialField<OneOrZero> RecentEmergencyDept) {
-        this.RecentEmergencyDept = RecentEmergencyDept;
+        this.recentEmergencyDept = RecentEmergencyDept;
     }
 
-    public SerialField<OneOrZero> getHistDrugNoEvidence() {
-        return this.HistDrugNoEvidence;
+    public SerialField<OneOrZero> gethisdrugNoEvidence() {
+        return this.histDrugNoEvidence;
     }
 
-    public void setHistDrugNoEvidence(SerialField<OneOrZero> HistDrugNoEvidence) {
-        this.HistDrugNoEvidence = HistDrugNoEvidence;
+    public void sethisdrugNoEvidence(SerialField<OneOrZero> histDrugNoEvidence) {
+        this.histDrugNoEvidence = histDrugNoEvidence;
     }
 
-    public SerialField<OneOrZero> getHistHeroin() {
-        return this.HistHeroin;
+    public SerialField<OneOrZero> gethisheroin() {
+        return this.histHeroin;
     }
 
-    public void setHistHeroin(SerialField<OneOrZero> HistHeroin) {
-        this.HistHeroin = HistHeroin;
+    public void sethisheroin(SerialField<OneOrZero> histHeroin) {
+        this.histHeroin = histHeroin;
     }
 
-    public SerialField<OneOrZero> getHistRxOpioid() {
-        return this.HistRxOpioid;
+    public SerialField<OneOrZero> gethisrxOpioid() {
+        return this.histRxOpioid;
     }
 
-    public void setHistRxOpioid(SerialField<OneOrZero> HistRxOpioid) {
-        this.HistRxOpioid = HistRxOpioid;
+    public void sethisrxOpioid(SerialField<OneOrZero> histRxOpioid) {
+        this.histRxOpioid = histRxOpioid;
     }
 
-    public SerialField<OneOrZero> getHistAnyOpioid() {
-        return this.HistAnyOpioid;
+    public SerialField<OneOrZero> gethisanyOpioid() {
+        return this.histAnyOpioid;
     }
 
-    public void setHistAnyOpioid(SerialField<OneOrZero> HistAnyOpioid) {
-        this.HistAnyOpioid = HistAnyOpioid;
+    public void sethisanyOpioid(SerialField<OneOrZero> histAnyOpioid) {
+        this.histAnyOpioid = histAnyOpioid;
     }
 
-    public SerialField<OneOrZero> getHistFentanyl() {
-        return this.HistFentanyl;
+    public SerialField<OneOrZero> gethisfentanyl() {
+        return this.histFentanyl;
     }
 
-    public void setHistFentanyl(SerialField<OneOrZero> HistFentanyl) {
-        this.HistFentanyl = HistFentanyl;
+    public void sethisfentanyl(SerialField<OneOrZero> histFentanyl) {
+        this.histFentanyl = histFentanyl;
     }
 
-    public SerialField<OneOrZero> getHistCocaine() {
-        return this.HistCocaine;
+    public SerialField<OneOrZero> gethiscocaine() {
+        return this.histCocaine;
     }
 
-    public void setHistCocaine(SerialField<OneOrZero> HistCocaine) {
-        this.HistCocaine = HistCocaine;
+    public void sethiscocaine(SerialField<OneOrZero> histCocaine) {
+        this.histCocaine = histCocaine;
     }
 
-    public SerialField<OneOrZero> getHistMeth() {
-        return this.HistMeth;
+    public SerialField<OneOrZero> gethismeth() {
+        return this.histMeth;
     }
 
-    public void setHistMeth(SerialField<OneOrZero> HistMeth) {
-        this.HistMeth = HistMeth;
+    public void sethismeth(SerialField<OneOrZero> histMeth) {
+        this.histMeth = histMeth;
     }
 
-    public SerialField<OneOrZero> getHistBenzo() {
-        return this.HistBenzo;
+    public SerialField<OneOrZero> gethisbenzo() {
+        return this.histBenzo;
     }
 
-    public void setHistBenzo(SerialField<OneOrZero> HistBenzo) {
-        this.HistBenzo = HistBenzo;
+    public void sethisbenzo(SerialField<OneOrZero> histBenzo) {
+        this.histBenzo = histBenzo;
     }
 
-    public SerialField<OneOrZero> getHistCannabis() {
-        return this.HistCannabis;
+    public SerialField<OneOrZero> gethiscannabis() {
+        return this.histCannabis;
     }
 
-    public void setHistCannabis(SerialField<OneOrZero> HistCannabis) {
-        this.HistCannabis = HistCannabis;
+    public void sethiscannabis(SerialField<OneOrZero> histCannabis) {
+        this.histCannabis = histCannabis;
     }
 
-    public SerialField<OneOrZero> getHistUnspecified() {
-        return this.HistUnspecified;
+    public SerialField<OneOrZero> gethisunspecified() {
+        return this.histUnspecified;
     }
 
-    public void setHistUnspecified(SerialField<OneOrZero> HistUnspecified) {
-        this.HistUnspecified = HistUnspecified;
+    public void sethisunspecified(SerialField<OneOrZero> histUnspecified) {
+        this.histUnspecified = histUnspecified;
     }
 
-    public SerialField<OneOrZero> getHistOther() {
-        return this.HistOther;
+    public SerialField<OneOrZero> gethisother() {
+        return this.histOther;
     }
 
-    public void setHistOther(SerialField<OneOrZero> HistOther) {
-        this.HistOther = HistOther;
+    public void sethisother(SerialField<OneOrZero> histOther) {
+        this.histOther = histOther;
     }
 
-    public SerialField<String> getHistOtherDesc() {
-        return this.HistOtherDesc;
+    public SerialField<String> gethisotherDesc() {
+        return this.histOtherDesc;
     }
 
-    public void setHistOtherDesc(SerialField<String> HistOtherDesc) {
-        this.HistOtherDesc = HistOtherDesc;
+    public void sethisotherDesc(SerialField<String> histOtherDesc) {
+        this.histOtherDesc = histOtherDesc;
     }
 
     public SerialField<OneOrZero> getTreatmentForSubstanceAbuse() {
-        return this.TreatmentForSubstanceAbuse;
+        return this.treatmentForSubstanceAbuse;
     }
 
     public void setTreatmentForSubstanceAbuse(SerialField<OneOrZero> TreatmentForSubstanceAbuse) {
-        this.TreatmentForSubstanceAbuse = TreatmentForSubstanceAbuse;
+        this.treatmentForSubstanceAbuse = TreatmentForSubstanceAbuse;
     }
 
     public SerialField<OneOrZero> getSubstanceTreatmentRehab() {
-        return this.SubstanceTreatmentRehab;
+        return this.substanceTreatmentRehab;
     }
 
     public void setSubstanceTreatmentRehab(SerialField<OneOrZero> SubstanceTreatmentRehab) {
-        this.SubstanceTreatmentRehab = SubstanceTreatmentRehab;
+        this.substanceTreatmentRehab = SubstanceTreatmentRehab;
     }
 
     public SerialField<OneOrZero> getSubstanceTreatmentMATcog() {
-        return this.SubstanceTreatmentMATcog;
+        return this.substanceTreatmentMATcog;
     }
 
     public void setSubstanceTreatmentMATcog(SerialField<OneOrZero> SubstanceTreatmentMATcog) {
-        this.SubstanceTreatmentMATcog = SubstanceTreatmentMATcog;
+        this.substanceTreatmentMATcog = SubstanceTreatmentMATcog;
     }
 
     public SerialField<OneOrZero> getSubstanceTreatmentMATNoCog() {
-        return this.SubstanceTreatmentMATNoCog;
+        return this.substanceTreatmentMATNoCog;
     }
 
     public void setSubstanceTreatmentMATNoCog(SerialField<OneOrZero> SubstanceTreatmentMATNoCog) {
-        this.SubstanceTreatmentMATNoCog = SubstanceTreatmentMATNoCog;
+        this.substanceTreatmentMATNoCog = SubstanceTreatmentMATNoCog;
     }
 
     public SerialField<OneOrZero> getSubstanceTreatmentMAT() {
-        return this.SubstanceTreatmentMAT;
+        return this.substanceTreatmentMAT;
     }
 
     public void setSubstanceTreatmentMAT(SerialField<OneOrZero> SubstanceTreatmentMAT) {
-        this.SubstanceTreatmentMAT = SubstanceTreatmentMAT;
+        this.substanceTreatmentMAT = SubstanceTreatmentMAT;
     }
 
     public SerialField<OneOrZero> getSubstanceTreatmentCogTherapy() {
-        return this.SubstanceTreatmentCogTherapy;
+        return this.substanceTreatmentCogTherapy;
     }
 
     public void setSubstanceTreatmentCogTherapy(SerialField<OneOrZero> SubstanceTreatmentCogTherapy) {
-        this.SubstanceTreatmentCogTherapy = SubstanceTreatmentCogTherapy;
+        this.substanceTreatmentCogTherapy = SubstanceTreatmentCogTherapy;
     }
 
     public SerialField<OneOrZero> getSubstanceTreatmentNA() {
-        return this.SubstanceTreatmentNA;
+        return this.substanceTreatmentNA;
     }
 
     public void setSubstanceTreatmentNA(SerialField<OneOrZero> SubstanceTreatmentNA) {
-        this.SubstanceTreatmentNA = SubstanceTreatmentNA;
+        this.substanceTreatmentNA = SubstanceTreatmentNA;
     }
 
     public SerialField<OneOrZero> getSubstanceTreatmentOther() {
-        return this.SubstanceTreatmentOther;
+        return this.substanceTreatmentOther;
     }
 
     public void setSubstanceTreatmentOther(SerialField<OneOrZero> SubstanceTreatmentOther) {
-        this.SubstanceTreatmentOther = SubstanceTreatmentOther;
+        this.substanceTreatmentOther = SubstanceTreatmentOther;
     }
 
     public SerialField<String> getSubstanceTreatmentOtherSpecify() {
-        return this.SubstanceTreatmentOtherSpecify;
+        return this.substanceTreatmentOtherSpecify;
     }
 
     public void setSubstanceTreatmentOtherSpecify(SerialField<String> SubstanceTreatmentOtherSpecify) {
-        this.SubstanceTreatmentOtherSpecify = SubstanceTreatmentOtherSpecify;
+        this.substanceTreatmentOtherSpecify = SubstanceTreatmentOtherSpecify;
     }
 
     public SerialField<OneOrZero> getInvolveCriminalJustice() {
-        return this.InvolveCriminalJustice;
+        return this.involveCriminalJustice;
     }
 
     public void setInvolveCriminalJustice(SerialField<OneOrZero> InvolveCriminalJustice) {
-        this.InvolveCriminalJustice = InvolveCriminalJustice;
+        this.involveCriminalJustice = InvolveCriminalJustice;
     }
 
     public SerialField<OneOrZero> getHasIndicationsDrugPara() {
-        return this.HasIndicationsDrugPara;
+        return this.hasIndicationsDrugPara;
     }
 
     public void setHasIndicationsDrugPara(SerialField<OneOrZero> HasIndicationsDrugPara) {
-        this.HasIndicationsDrugPara = HasIndicationsDrugPara;
+        this.hasIndicationsDrugPara = HasIndicationsDrugPara;
     }
 
     public SerialField<OneOrZero> getHasIndicationsNone() {
-        return this.HasIndicationsNone;
+        return this.hasIndicationsNone;
     }
 
     public void setHasIndicationsNone(SerialField<OneOrZero> HasIndicationsNone) {
-        this.HasIndicationsNone = HasIndicationsNone;
+        this.hasIndicationsNone = HasIndicationsNone;
     }
 
     public SerialField<OneOrZero> getHasIndicationsNonSpecific() {
-        return this.HasIndicationsNonSpecific;
+        return this.hasIndicationsNonSpecific;
     }
 
     public void setHasIndicationsNonSpecific(SerialField<OneOrZero> HasIndicationsNonSpecific) {
-        this.HasIndicationsNonSpecific = HasIndicationsNonSpecific;
+        this.hasIndicationsNonSpecific = HasIndicationsNonSpecific;
     }
 
     public SerialField<OneOrZero> getHasRapidOverdoseEvidence() {
-        return this.HasRapidOverdoseEvidence;
+        return this.hasRapidOverdoseEvidence;
     }
 
     public void setHasRapidOverdoseEvidence(SerialField<OneOrZero> HasRapidOverdoseEvidence) {
-        this.HasRapidOverdoseEvidence = HasRapidOverdoseEvidence;
+        this.hasRapidOverdoseEvidence = HasRapidOverdoseEvidence;
     }
 
     public SerialField<OneOrZero> getIsTourniquetAroundArm() {
-        return this.IsTourniquetAroundArm;
+        return this.isTourniquetAroundArm;
     }
 
     public void setIsTourniquetAroundArm(SerialField<OneOrZero> IsTourniquetAroundArm) {
-        this.IsTourniquetAroundArm = IsTourniquetAroundArm;
+        this.isTourniquetAroundArm = IsTourniquetAroundArm;
     }
 
     public SerialField<OneOrZero> getBodyPosition() {
-        return this.BodyPosition;
+        return this.bodyPosition;
     }
 
     public void setBodyPosition(SerialField<OneOrZero> BodyPosition) {
-        this.BodyPosition = BodyPosition;
+        this.bodyPosition = BodyPosition;
     }
 
     public SerialField<OneOrZero> getNeedleLocation() {
-        return this.NeedleLocation;
+        return this.needleLocation;
     }
 
     public void setNeedleLocation(SerialField<OneOrZero> NeedleLocation) {
-        this.NeedleLocation = NeedleLocation;
+        this.needleLocation = NeedleLocation;
     }
 
     public SerialField<OneOrZero> getRapidOverdoseWitnessReport() {
-        return this.RapidOverdoseWitnessReport;
+        return this.rapidOverdoseWitnessReport;
     }
 
     public void setRapidOverdoseWitnessReport(SerialField<OneOrZero> RapidOverdoseWitnessReport) {
-        this.RapidOverdoseWitnessReport = RapidOverdoseWitnessReport;
+        this.rapidOverdoseWitnessReport = RapidOverdoseWitnessReport;
     }
 
     public SerialField<OneOrZero> getHasRapidOverdoseOther() {
-        return this.HasRapidOverdoseOther;
+        return this.hasRapidOverdoseOther;
     }
 
     public void setHasRapidOverdoseOther(SerialField<OneOrZero> HasRapidOverdoseOther) {
-        this.HasRapidOverdoseOther = HasRapidOverdoseOther;
+        this.hasRapidOverdoseOther = HasRapidOverdoseOther;
     }
 
     public SerialField<String> getRapidOverdoseOtherDescription() {
-        return this.RapidOverdoseOtherDescription;
+        return this.rapidOverdoseOtherDescription;
     }
 
     public void setRapidOverdoseOtherDescription(SerialField<String> RapidOverdoseOtherDescription) {
-        this.RapidOverdoseOtherDescription = RapidOverdoseOtherDescription;
+        this.rapidOverdoseOtherDescription = RapidOverdoseOtherDescription;
     }
 
     public SerialField<OneOrZero> getHasRouteUnknown() {
-        return this.HasRouteUnknown;
+        return this.hasRouteUnknown;
     }
 
     public void setHasRouteUnknown(SerialField<OneOrZero> HasRouteUnknown) {
-        this.HasRouteUnknown = HasRouteUnknown;
+        this.hasRouteUnknown = HasRouteUnknown;
     }
 
     public SerialField<OneOrZero> getHasRouteInjection() {
-        return this.HasRouteInjection;
+        return this.hasRouteInjection;
     }
 
     public void setHasRouteInjection(SerialField<OneOrZero> HasRouteInjection) {
-        this.HasRouteInjection = HasRouteInjection;
+        this.hasRouteInjection = HasRouteInjection;
     }
 
     public SerialField<OneOrZero> getHasIndicationsTracks() {
-        return this.HasIndicationsTracks;
+        return this.hasIndicationsTracks;
     }
 
     public void setHasIndicationsTracks(SerialField<OneOrZero> HasIndicationsTracks) {
-        this.HasIndicationsTracks = HasIndicationsTracks;
+        this.hasIndicationsTracks = HasIndicationsTracks;
     }
 
     public SerialField<OneOrZero> getHasEvidenceOfInjectionTourniquet() {
-        return this.HasEvidenceOfInjectionTourniquet;
+        return this.hasEvidenceOfInjectionTourniquet;
     }
 
     public void setHasEvidenceOfInjectionTourniquet(SerialField<OneOrZero> HasEvidenceOfInjectionTourniquet) {
-        this.HasEvidenceOfInjectionTourniquet = HasEvidenceOfInjectionTourniquet;
+        this.hasEvidenceOfInjectionTourniquet = HasEvidenceOfInjectionTourniquet;
     }
 
     public SerialField<OneOrZero> getHasEvidenceOfInjectionCooker() {
-        return this.HasEvidenceOfInjectionCooker;
+        return this.hasEvidenceOfInjectionCooker;
     }
 
     public void setHasEvidenceOfInjectionCooker(SerialField<OneOrZero> HasEvidenceOfInjectionCooker) {
-        this.HasEvidenceOfInjectionCooker = HasEvidenceOfInjectionCooker;
+        this.hasEvidenceOfInjectionCooker = HasEvidenceOfInjectionCooker;
     }
 
     public SerialField<OneOrZero> getHasEvidenceOfinjectionNeedle() {
-        return this.HasEvidenceOfinjectionNeedle;
+        return this.hasEvidenceOfinjectionNeedle;
     }
 
     public void setHasEvidenceOfinjectionNeedle(SerialField<OneOrZero> HasEvidenceOfinjectionNeedle) {
-        this.HasEvidenceOfinjectionNeedle = HasEvidenceOfinjectionNeedle;
+        this.hasEvidenceOfinjectionNeedle = HasEvidenceOfinjectionNeedle;
     }
 
     public SerialField<OneOrZero> getHasEvidenceOfInjectionFilter() {
-        return this.HasEvidenceOfInjectionFilter;
+        return this.hasEvidenceOfInjectionFilter;
     }
 
     public void setHasEvidenceOfInjectionFilter(SerialField<OneOrZero> HasEvidenceOfInjectionFilter) {
-        this.HasEvidenceOfInjectionFilter = HasEvidenceOfInjectionFilter;
+        this.hasEvidenceOfInjectionFilter = HasEvidenceOfInjectionFilter;
     }
 
     public SerialField<OneOrZero> getHasEvidenceOfInjectionWitnessReport() {
-        return this.HasEvidenceOfInjectionWitnessReport;
+        return this.hasEvidenceOfInjectionWitnessReport;
     }
 
     public void setHasEvidenceOfInjectionWitnessReport(SerialField<OneOrZero> HasEvidenceOfInjectionWitnessReport) {
-        this.HasEvidenceOfInjectionWitnessReport = HasEvidenceOfInjectionWitnessReport;
+        this.hasEvidenceOfInjectionWitnessReport = HasEvidenceOfInjectionWitnessReport;
     }
 
     public SerialField<CharLimitedInteger> getHasEvidenceOfInjectionOther() {
-        return this.HasEvidenceOfInjectionOther;
+        return this.hasEvidenceOfInjectionOther;
     }
 
     public void setHasEvidenceOfInjectionOther(SerialField<CharLimitedInteger> HasEvidenceOfInjectionOther) {
-        this.HasEvidenceOfInjectionOther = HasEvidenceOfInjectionOther;
+        this.hasEvidenceOfInjectionOther = HasEvidenceOfInjectionOther;
     }
 
     public SerialField<String> getHasEvidenceOfInjectionOtherDescription() {
-        return this.HasEvidenceOfInjectionOtherDescription;
+        return this.hasEvidenceOfInjectionOtherDescription;
     }
 
     public void setHasEvidenceOfInjectionOtherDescription(SerialField<String> HasEvidenceOfInjectionOtherDescription) {
-        this.HasEvidenceOfInjectionOtherDescription = HasEvidenceOfInjectionOtherDescription;
+        this.hasEvidenceOfInjectionOtherDescription = HasEvidenceOfInjectionOtherDescription;
     }
 
     public SerialField<OneOrZero> getHasRouteSnorting() {
-        return this.HasRouteSnorting;
+        return this.hasRouteSnorting;
     }
 
     public void setHasRouteSnorting(SerialField<OneOrZero> HasRouteSnorting) {
-        this.HasRouteSnorting = HasRouteSnorting;
+        this.hasRouteSnorting = HasRouteSnorting;
     }
 
     public SerialField<OneOrZero> getSnortingStraw() {
-        return this.SnortingStraw;
+        return this.snortingStraw;
     }
 
     public void setSnortingStraw(SerialField<OneOrZero> SnortingStraw) {
-        this.SnortingStraw = SnortingStraw;
+        this.snortingStraw = SnortingStraw;
     }
 
     public SerialField<OneOrZero> getSnortingRolled() {
-        return this.SnortingRolled;
+        return this.snortingRolled;
     }
 
     public void setSnortingRolled(SerialField<OneOrZero> SnortingRolled) {
-        this.SnortingRolled = SnortingRolled;
+        this.snortingRolled = SnortingRolled;
     }
 
     public SerialField<OneOrZero> getSnortingRazor() {
-        return this.SnortingRazor;
+        return this.snortingRazor;
     }
 
     public void setSnortingRazor(SerialField<OneOrZero> SnortingRazor) {
-        this.SnortingRazor = SnortingRazor;
+        this.snortingRazor = SnortingRazor;
     }
 
     public SerialField<OneOrZero> getSnortingPowderMirror() {
-        return this.SnortingPowderMirror;
+        return this.snortingPowderMirror;
     }
 
     public void setSnortingPowderMirror(SerialField<OneOrZero> SnortingPowderMirror) {
-        this.SnortingPowderMirror = SnortingPowderMirror;
+        this.snortingPowderMirror = SnortingPowderMirror;
     }
 
     public SerialField<OneOrZero> getSnortingPowderNose() {
-        return this.SnortingPowderNose;
+        return this.snortingPowderNose;
     }
 
     public void setSnortingPowderNose(SerialField<OneOrZero> SnortingPowderNose) {
-        this.SnortingPowderNose = SnortingPowderNose;
+        this.snortingPowderNose = SnortingPowderNose;
     }
 
     public SerialField<OneOrZero> getSnortingWitness() {
-        return this.SnortingWitness;
+        return this.snortingWitness;
     }
 
     public void setSnortingWitness(SerialField<OneOrZero> SnortingWitness) {
-        this.SnortingWitness = SnortingWitness;
+        this.snortingWitness = SnortingWitness;
     }
 
     public SerialField<OneOrZero> getSnortingOther() {
-        return this.SnortingOther;
+        return this.snortingOther;
     }
 
     public void setSnortingOther(SerialField<OneOrZero> SnortingOther) {
-        this.SnortingOther = SnortingOther;
+        this.snortingOther = SnortingOther;
     }
 
     public SerialField<String> getSnortingOtherDesc() {
-        return this.SnortingOtherDesc;
+        return this.snortingOtherDesc;
     }
 
     public void setSnortingOtherDesc(SerialField<String> SnortingOtherDesc) {
-        this.SnortingOtherDesc = SnortingOtherDesc;
+        this.snortingOtherDesc = SnortingOtherDesc;
     }
 
     public SerialField<OneOrZero> getHasRouteSmoking() {
-        return this.HasRouteSmoking;
+        return this.hasRouteSmoking;
     }
 
     public void setHasRouteSmoking(SerialField<OneOrZero> HasRouteSmoking) {
-        this.HasRouteSmoking = HasRouteSmoking;
+        this.hasRouteSmoking = HasRouteSmoking;
     }
 
     public SerialField<OneOrZero> getSmokingPipe() {
-        return this.SmokingPipe;
+        return this.smokingPipe;
     }
 
     public void setSmokingPipe(SerialField<OneOrZero> SmokingPipe) {
-        this.SmokingPipe = SmokingPipe;
+        this.smokingPipe = SmokingPipe;
     }
 
     public SerialField<OneOrZero> getSmokingTinfoil() {
@@ -4680,100 +4680,100 @@ public class LECMEFormat extends BaseSerializedFormat{
         this.treatedforPain = treatedforPain;
     }
 
-    public SerialField<OneOrZero> getMedHistCopd() {
-        return this.medHistCopd;
+    public SerialField<OneOrZero> getMedhistCopd() {
+        return this.medhistCopd;
     }
 
-    public void setMedHistCopd(SerialField<OneOrZero> medHistCopd) {
-        this.medHistCopd = medHistCopd;
+    public void setMedhistCopd(SerialField<OneOrZero> medhistCopd) {
+        this.medhistCopd = medhistCopd;
     }
 
-    public SerialField<OneOrZero> getMedHistAsthma() {
-        return this.medHistAsthma;
+    public SerialField<OneOrZero> getMedhistAsthma() {
+        return this.medhistAsthma;
     }
 
-    public void setMedHistAsthma(SerialField<OneOrZero> medHistAsthma) {
-        this.medHistAsthma = medHistAsthma;
+    public void setMedhistAsthma(SerialField<OneOrZero> medhistAsthma) {
+        this.medhistAsthma = medhistAsthma;
     }
 
-    public SerialField<OneOrZero> getMedHistApnea() {
-        return this.medHistApnea;
+    public SerialField<OneOrZero> getMedhistApnea() {
+        return this.medhistApnea;
     }
 
-    public void setMedHistApnea(SerialField<OneOrZero> medHistApnea) {
-        this.medHistApnea = medHistApnea;
+    public void setMedhistApnea(SerialField<OneOrZero> medhistApnea) {
+        this.medhistApnea = medhistApnea;
     }
 
-    public SerialField<OneOrZero> getMedHistHeart() {
-        return this.medHistHeart;
+    public SerialField<OneOrZero> getMedhistHeart() {
+        return this.medhistHeart;
     }
 
-    public void setMedHistHeart(SerialField<OneOrZero> medHistHeart) {
-        this.medHistHeart = medHistHeart;
+    public void setMedhistHeart(SerialField<OneOrZero> medhistHeart) {
+        this.medhistHeart = medhistHeart;
     }
 
-    public SerialField<OneOrZero> getMedHistObesity() {
-        return this.medHistObesity;
+    public SerialField<OneOrZero> getMedhistObesity() {
+        return this.medhistObesity;
     }
 
-    public void setMedHistObesity(SerialField<OneOrZero> medHistObesity) {
-        this.medHistObesity = medHistObesity;
+    public void setMedhistObesity(SerialField<OneOrZero> medhistObesity) {
+        this.medhistObesity = medhistObesity;
     }
 
-    public SerialField<OneOrZero> getMedHistInjury() {
-        return this.medHistInjury;
+    public SerialField<OneOrZero> getMedhistInjury() {
+        return this.medhistInjury;
     }
 
-    public void setMedHistInjury(SerialField<OneOrZero> medHistInjury) {
-        this.medHistInjury = medHistInjury;
+    public void setMedhistInjury(SerialField<OneOrZero> medhistInjury) {
+        this.medhistInjury = medhistInjury;
     }
 
-    public SerialField<OneOrZero> getMedHistMigraine() {
-        return this.medHistMigraine;
+    public SerialField<OneOrZero> getMedhistMigraine() {
+        return this.medhistMigraine;
     }
 
-    public void setMedHistMigraine(SerialField<OneOrZero> medHistMigraine) {
-        this.medHistMigraine = medHistMigraine;
+    public void setMedhistMigraine(SerialField<OneOrZero> medhistMigraine) {
+        this.medhistMigraine = medhistMigraine;
     }
 
-    public SerialField<OneOrZero> getMedHistBackpain() {
-        return this.medHistBackpain;
+    public SerialField<OneOrZero> getMedhistBackpain() {
+        return this.medhistBackpain;
     }
 
-    public void setMedHistBackpain(SerialField<OneOrZero> medHistBackpain) {
-        this.medHistBackpain = medHistBackpain;
+    public void setMedhistBackpain(SerialField<OneOrZero> medhistBackpain) {
+        this.medhistBackpain = medhistBackpain;
     }
 
-    public SerialField<OneOrZero> getMedicalHistHepc() {
-        return this.medicalHistHepc;
+    public SerialField<OneOrZero> getMedicalhistHepc() {
+        return this.medicalhistHepc;
     }
 
-    public void setMedicalHistHepc(SerialField<OneOrZero> medicalHistHepc) {
-        this.medicalHistHepc = medicalHistHepc;
+    public void setMedicalhistHepc(SerialField<OneOrZero> medicalhistHepc) {
+        this.medicalhistHepc = medicalhistHepc;
     }
 
-    public SerialField<OneOrZero> getMedicalHistHIV() {
-        return this.medicalHistHIV;
+    public SerialField<OneOrZero> getMedicalhistHIV() {
+        return this.medicalhistHIV;
     }
 
-    public void setMedicalHistHIV(SerialField<OneOrZero> medicalHistHIV) {
-        this.medicalHistHIV = medicalHistHIV;
+    public void setMedicalhistHIV(SerialField<OneOrZero> medicalhistHIV) {
+        this.medicalhistHIV = medicalhistHIV;
     }
 
-    public SerialField<OneOrZero> getMedHistOtherpain() {
-        return this.medHistOtherpain;
+    public SerialField<OneOrZero> getMedhistOtherpain() {
+        return this.medhistOtherpain;
     }
 
-    public void setMedHistOtherpain(SerialField<OneOrZero> medHistOtherpain) {
-        this.medHistOtherpain = medHistOtherpain;
+    public void setMedhistOtherpain(SerialField<OneOrZero> medhistOtherpain) {
+        this.medhistOtherpain = medhistOtherpain;
     }
 
-    public SerialField<OneOrZero> getMedHistOtherbreathing() {
-        return this.medHistOtherbreathing;
+    public SerialField<OneOrZero> getMedhistOtherbreathing() {
+        return this.medhistOtherbreathing;
     }
 
-    public void setMedHistOtherbreathing(SerialField<OneOrZero> medHistOtherbreathing) {
-        this.medHistOtherbreathing = medHistOtherbreathing;
+    public void setMedhistOtherbreathing(SerialField<OneOrZero> medhistOtherbreathing) {
+        this.medhistOtherbreathing = medhistOtherbreathing;
     }
 
     public SerialField<OneOrZero> getPrescriptionMorphine() {
@@ -5906,8 +5906,8 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat historyMentalIllnessTreatmentCME(SerialField<OneOrZero> historyMentalIllnessTreatmentCME) {
-        setHistoryMentalIllnessTreatmentCME(historyMentalIllnessTreatmentCME);
+    public LECMEFormat hisoryMentalIllnessTreatmentCME(SerialField<OneOrZero> hisoryMentalIllnessTreatmentCME) {
+        sethisryMentalIllnessTreatmentCME(hisoryMentalIllnessTreatmentCME);
         return this;
     }
 
@@ -6076,8 +6076,8 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat suicideAttemptHistoryCME(SerialField<OneOrZero> suicideAttemptHistoryCME) {
-        setSuicideAttemptHistoryCME(suicideAttemptHistoryCME);
+    public LECMEFormat suicideAttempthisoryCME(SerialField<OneOrZero> suicideAttempthisoryCME) {
+        setsuicideAttempthisoryCME(suicideAttempthisoryCME);
         return this;
     }
 
@@ -6091,8 +6091,8 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat suicideThoughtHistoryCME(SerialField<OneOrZero> suicideThoughtHistoryCME) {
-        setSuicideThoughtHistoryCME(suicideThoughtHistoryCME);
+    public LECMEFormat suicideThoughthisoryCME(SerialField<OneOrZero> suicideThoughthisoryCME) {
+        setsuicideThoughthisoryCME(suicideThoughthisoryCME);
         return this;
     }
 
@@ -6416,8 +6416,8 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat historyMentalIllnessTreatmentLE(SerialField<OneOrZero> historyMentalIllnessTreatmentLE) {
-        setHistoryMentalIllnessTreatmentLE(historyMentalIllnessTreatmentLE);
+    public LECMEFormat hisoryMentalIllnessTreatmentLE(SerialField<OneOrZero> hisoryMentalIllnessTreatmentLE) {
+        sethisryMentalIllnessTreatmentLE(hisoryMentalIllnessTreatmentLE);
         return this;
     }
 
@@ -6586,8 +6586,8 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat suicideAttemptHistoryLE(SerialField<OneOrZero> suicideAttemptHistoryLE) {
-        setSuicideAttemptHistoryLE(suicideAttemptHistoryLE);
+    public LECMEFormat suicideAttempthisoryLE(SerialField<OneOrZero> suicideAttempthisoryLE) {
+        setsuicideAttempthisoryLE(suicideAttempthisoryLE);
         return this;
     }
 
@@ -6601,8 +6601,8 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat suicideThoughtHistoryLE(SerialField<OneOrZero> suicideThoughtHistoryLE) {
-        setSuicideThoughtHistoryLE(suicideThoughtHistoryLE);
+    public LECMEFormat suicideThoughthisoryLE(SerialField<OneOrZero> suicideThoughthisoryLE) {
+        setsuicideThoughthisoryLE(suicideThoughthisoryLE);
         return this;
     }
 
@@ -6701,8 +6701,8 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat HasAbuseHistory(SerialField<OneOrZero> HasAbuseHistory) {
-        setHasAbuseHistory(HasAbuseHistory);
+    public LECMEFormat HasAbusehistory(SerialField<OneOrZero> HasAbusehistory) {
+        setHasAbusehistory(HasAbusehistory);
         return this;
     }
 
@@ -6791,8 +6791,8 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat IsTraumaticBrainInjuryHistoryCME(SerialField<OneOrZero> IsTraumaticBrainInjuryHistoryCME) {
-        setIsTraumaticBrainInjuryHistoryCME(IsTraumaticBrainInjuryHistoryCME);
+    public LECMEFormat IsTraumaticBrainInjuryhistoryCME(SerialField<OneOrZero> IsTraumaticBrainInjuryhistoryCME) {
+        setIsTraumaticBrainInjuryhistoryCME(IsTraumaticBrainInjuryhistoryCME);
         return this;
     }
 
@@ -6841,8 +6841,8 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat IsHistorySelfHarmCME(SerialField<OneOrZero> IsHistorySelfHarmCME) {
-        setIsHistorySelfHarmCME(IsHistorySelfHarmCME);
+    public LECMEFormat IshistorySelfHarmCME(SerialField<OneOrZero> IshistorySelfHarmCME) {
+        setIshistorySelfHarmCME(IshistorySelfHarmCME);
         return this;
     }
 
@@ -6851,8 +6851,8 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat IsTraumaticBrainInjuryHistoryLE(SerialField<OneOrZero> IsTraumaticBrainInjuryHistoryLE) {
-        setIsTraumaticBrainInjuryHistoryLE(IsTraumaticBrainInjuryHistoryLE);
+    public LECMEFormat IsTraumaticBrainInjuryhistoryLE(SerialField<OneOrZero> IsTraumaticBrainInjuryhistoryLE) {
+        setIsTraumaticBrainInjuryhistoryLE(IsTraumaticBrainInjuryhistoryLE);
         return this;
     }
 
@@ -6901,8 +6901,8 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat IsHistorySelfHarmLE(SerialField<OneOrZero> IsHistorySelfHarmLE) {
-        setIsHistorySelfHarmLE(IsHistorySelfHarmLE);
+    public LECMEFormat IshistorySelfHarmLE(SerialField<OneOrZero> IshistorySelfHarmLE) {
+        setIshistorySelfHarmLE(IshistorySelfHarmLE);
         return this;
     }
 
@@ -6976,63 +6976,63 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat HistDrugNoEvidence(SerialField<OneOrZero> HistDrugNoEvidence) {
-        setHistDrugNoEvidence(HistDrugNoEvidence);
+    public LECMEFormat histDrugNoEvidence(SerialField<OneOrZero> histDrugNoEvidence) {
+        sethisdrugNoEvidence(histDrugNoEvidence);
         return this;
     }
 
-    public LECMEFormat HistHeroin(SerialField<OneOrZero> HistHeroin) {
-        setHistHeroin(HistHeroin);
+    public LECMEFormat histHeroin(SerialField<OneOrZero> histHeroin) {
+        sethisheroin(histHeroin);
         return this;
     }
 
-    public LECMEFormat HistRxOpioid(SerialField<OneOrZero> HistRxOpioid) {
-        setHistRxOpioid(HistRxOpioid);
+    public LECMEFormat histRxOpioid(SerialField<OneOrZero> histRxOpioid) {
+        sethisrxOpioid(histRxOpioid);
         return this;
     }
 
-    public LECMEFormat HistAnyOpioid(SerialField<OneOrZero> HistAnyOpioid) {
-        setHistAnyOpioid(HistAnyOpioid);
+    public LECMEFormat histAnyOpioid(SerialField<OneOrZero> histAnyOpioid) {
+        sethisanyOpioid(histAnyOpioid);
         return this;
     }
 
-    public LECMEFormat HistFentanyl(SerialField<OneOrZero> HistFentanyl) {
-        setHistFentanyl(HistFentanyl);
+    public LECMEFormat histFentanyl(SerialField<OneOrZero> histFentanyl) {
+        sethisfentanyl(histFentanyl);
         return this;
     }
 
-    public LECMEFormat HistCocaine(SerialField<OneOrZero> HistCocaine) {
-        setHistCocaine(HistCocaine);
+    public LECMEFormat histCocaine(SerialField<OneOrZero> histCocaine) {
+        sethiscocaine(histCocaine);
         return this;
     }
 
-    public LECMEFormat HistMeth(SerialField<OneOrZero> HistMeth) {
-        setHistMeth(HistMeth);
+    public LECMEFormat histMeth(SerialField<OneOrZero> histMeth) {
+        sethismeth(histMeth);
         return this;
     }
 
-    public LECMEFormat HistBenzo(SerialField<OneOrZero> HistBenzo) {
-        setHistBenzo(HistBenzo);
+    public LECMEFormat histBenzo(SerialField<OneOrZero> histBenzo) {
+        sethisbenzo(histBenzo);
         return this;
     }
 
-    public LECMEFormat HistCannabis(SerialField<OneOrZero> HistCannabis) {
-        setHistCannabis(HistCannabis);
+    public LECMEFormat histCannabis(SerialField<OneOrZero> histCannabis) {
+        sethiscannabis(histCannabis);
         return this;
     }
 
-    public LECMEFormat HistUnspecified(SerialField<OneOrZero> HistUnspecified) {
-        setHistUnspecified(HistUnspecified);
+    public LECMEFormat histUnspecified(SerialField<OneOrZero> histUnspecified) {
+        sethisunspecified(histUnspecified);
         return this;
     }
 
-    public LECMEFormat HistOther(SerialField<OneOrZero> HistOther) {
-        setHistOther(HistOther);
+    public LECMEFormat histOther(SerialField<OneOrZero> histOther) {
+        sethisother(histOther);
         return this;
     }
 
-    public LECMEFormat HistOtherDesc(SerialField<String> HistOtherDesc) {
-        setHistOtherDesc(HistOtherDesc);
+    public LECMEFormat histOtherDesc(SerialField<String> histOtherDesc) {
+        sethisotherDesc(histOtherDesc);
         return this;
     }
 
@@ -7581,63 +7581,63 @@ public class LECMEFormat extends BaseSerializedFormat{
         return this;
     }
 
-    public LECMEFormat medHistCopd(SerialField<OneOrZero> medHistCopd) {
-        setMedHistCopd(medHistCopd);
+    public LECMEFormat medhistCopd(SerialField<OneOrZero> medhistCopd) {
+        setMedhistCopd(medhistCopd);
         return this;
     }
 
-    public LECMEFormat medHistAsthma(SerialField<OneOrZero> medHistAsthma) {
-        setMedHistAsthma(medHistAsthma);
+    public LECMEFormat medhistAsthma(SerialField<OneOrZero> medhistAsthma) {
+        setMedhistAsthma(medhistAsthma);
         return this;
     }
 
-    public LECMEFormat medHistApnea(SerialField<OneOrZero> medHistApnea) {
-        setMedHistApnea(medHistApnea);
+    public LECMEFormat medhistApnea(SerialField<OneOrZero> medhistApnea) {
+        setMedhistApnea(medhistApnea);
         return this;
     }
 
-    public LECMEFormat medHistHeart(SerialField<OneOrZero> medHistHeart) {
-        setMedHistHeart(medHistHeart);
+    public LECMEFormat medhistHeart(SerialField<OneOrZero> medhistHeart) {
+        setMedhistHeart(medhistHeart);
         return this;
     }
 
-    public LECMEFormat medHistObesity(SerialField<OneOrZero> medHistObesity) {
-        setMedHistObesity(medHistObesity);
+    public LECMEFormat medhistObesity(SerialField<OneOrZero> medhistObesity) {
+        setMedhistObesity(medhistObesity);
         return this;
     }
 
-    public LECMEFormat medHistInjury(SerialField<OneOrZero> medHistInjury) {
-        setMedHistInjury(medHistInjury);
+    public LECMEFormat medhistInjury(SerialField<OneOrZero> medhistInjury) {
+        setMedhistInjury(medhistInjury);
         return this;
     }
 
-    public LECMEFormat medHistMigraine(SerialField<OneOrZero> medHistMigraine) {
-        setMedHistMigraine(medHistMigraine);
+    public LECMEFormat medhistMigraine(SerialField<OneOrZero> medhistMigraine) {
+        setMedhistMigraine(medhistMigraine);
         return this;
     }
 
-    public LECMEFormat medHistBackpain(SerialField<OneOrZero> medHistBackpain) {
-        setMedHistBackpain(medHistBackpain);
+    public LECMEFormat medhistBackpain(SerialField<OneOrZero> medhistBackpain) {
+        setMedhistBackpain(medhistBackpain);
         return this;
     }
 
-    public LECMEFormat medicalHistHepc(SerialField<OneOrZero> medicalHistHepc) {
-        setMedicalHistHepc(medicalHistHepc);
+    public LECMEFormat medicalhistHepc(SerialField<OneOrZero> medicalhistHepc) {
+        setMedicalhistHepc(medicalhistHepc);
         return this;
     }
 
-    public LECMEFormat medicalHistHIV(SerialField<OneOrZero> medicalHistHIV) {
-        setMedicalHistHIV(medicalHistHIV);
+    public LECMEFormat medicalhistHIV(SerialField<OneOrZero> medicalhistHIV) {
+        setMedicalhistHIV(medicalhistHIV);
         return this;
     }
 
-    public LECMEFormat medHistOtherpain(SerialField<OneOrZero> medHistOtherpain) {
-        setMedHistOtherpain(medHistOtherpain);
+    public LECMEFormat medhistOtherpain(SerialField<OneOrZero> medhistOtherpain) {
+        setMedhistOtherpain(medhistOtherpain);
         return this;
     }
 
-    public LECMEFormat medHistOtherbreathing(SerialField<OneOrZero> medHistOtherbreathing) {
-        setMedHistOtherbreathing(medHistOtherbreathing);
+    public LECMEFormat medhistOtherbreathing(SerialField<OneOrZero> medhistOtherbreathing) {
+        setMedhistOtherbreathing(medhistOtherbreathing);
         return this;
     }
 
@@ -7789,22 +7789,6 @@ public class LECMEFormat extends BaseSerializedFormat{
     public LECMEFormat americanIndianTribeOther(SerialField<String> americanIndianTribeOther) {
         setAmericanIndianTribeOther(americanIndianTribeOther);
         return this;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (o == this)
-            return true;
-        if (!(o instanceof LECMEFormat)) {
-            return false;
-        }
-        LECMEFormat lECMEFormat = (LECMEFormat) o;
-        return Objects.equals(forceNewRecord, lECMEFormat.forceNewRecord) && Objects.equals(overwriteConflicts, lECMEFormat.overwriteConflicts) && Objects.equals(incidentYear, lECMEFormat.incidentYear) && Objects.equals(incidentNumber, lECMEFormat.incidentNumber) && Objects.equals(victimNumber, lECMEFormat.victimNumber) && Objects.equals(lastFourDCNumber, lECMEFormat.lastFourDCNumber) && Objects.equals(lastFourCMENumber, lECMEFormat.lastFourCMENumber) && Objects.equals(initialOfLastName, lECMEFormat.initialOfLastName) && Objects.equals(birthDayOfMonth, lECMEFormat.birthDayOfMonth) && Objects.equals(deathMannerAbstractor, lECMEFormat.deathMannerAbstractor) && Objects.equals(deathMannerDC, lECMEFormat.deathMannerDC) && Objects.equals(deathMannerCME, lECMEFormat.deathMannerCME) && Objects.equals(deathMannerLE, lECMEFormat.deathMannerLE) && Objects.equals(deathDateYear, lECMEFormat.deathDateYear) && Objects.equals(deathDateMonth, lECMEFormat.deathDateMonth) && Objects.equals(deathDateDay, lECMEFormat.deathDateDay) && Objects.equals(deathState, lECMEFormat.deathState) && Objects.equals(deathCounty, lECMEFormat.deathCounty) && Objects.equals(deathPronouncedDateYear, lECMEFormat.deathPronouncedDateYear) && Objects.equals(deathPronouncedDateMonth, lECMEFormat.deathPronouncedDateMonth) && Objects.equals(deathPronouncedDateDay, lECMEFormat.deathPronouncedDateDay) && Objects.equals(deathPlace, lECMEFormat.deathPlace) && Objects.equals(deathPlaceText, lECMEFormat.deathPlaceText) && Objects.equals(autopsyPerformed, lECMEFormat.autopsyPerformed) && Objects.equals(injuryDateYear, lECMEFormat.injuryDateYear) && Objects.equals(injuryDateMonth, lECMEFormat.injuryDateMonth) && Objects.equals(injuryDateDay, lECMEFormat.injuryDateDay) && Objects.equals(injuryTime, lECMEFormat.injuryTime) && Objects.equals(survivalTime, lECMEFormat.survivalTime) && Objects.equals(survivalTimeUnit, lECMEFormat.survivalTimeUnit) && Objects.equals(injuryLocation, lECMEFormat.injuryLocation) && Objects.equals(injuredAtWork, lECMEFormat.injuredAtWork) && Objects.equals(injuredAtVictimHome, lECMEFormat.injuredAtVictimHome) && Objects.equals(eMSPresent, lECMEFormat.eMSPresent) && Objects.equals(victimInCustody, lECMEFormat.victimInCustody) && Objects.equals(alcoholUseSuspected, lECMEFormat.alcoholUseSuspected) && Objects.equals(injuryState, lECMEFormat.injuryState) && Objects.equals(injuryCounty, lECMEFormat.injuryCounty) && Objects.equals(injuryCity, lECMEFormat.injuryCity) && Objects.equals(injuryZip, lECMEFormat.injuryZip) && Objects.equals(censusTract, lECMEFormat.censusTract) && Objects.equals(censusBlock, lECMEFormat.censusBlock) && Objects.equals(sexVictim, lECMEFormat.sexVictim) && Objects.equals(sexualOrientation, lECMEFormat.sexualOrientation) && Objects.equals(transgender, lECMEFormat.transgender) && Objects.equals(age, lECMEFormat.age) && Objects.equals(ageUnit, lECMEFormat.ageUnit) && Objects.equals(ethnicityVictim, lECMEFormat.ethnicityVictim) && Objects.equals(raceWhiteVictim, lECMEFormat.raceWhiteVictim) && Objects.equals(raceBlackVictim, lECMEFormat.raceBlackVictim) && Objects.equals(raceAmericanIndianVictim, lECMEFormat.raceAmericanIndianVictim) && Objects.equals(raceAsianVictim, lECMEFormat.raceAsianVictim) && Objects.equals(racePacificIslanderVictim, lECMEFormat.racePacificIslanderVictim) && Objects.equals(raceOtherVictim, lECMEFormat.raceOtherVictim) && Objects.equals(raceUnspecifiedVictim, lECMEFormat.raceUnspecifiedVictim) && Objects.equals(heightFeet, lECMEFormat.heightFeet) && Objects.equals(heightInches, lECMEFormat.heightInches) && Objects.equals(weight, lECMEFormat.weight) && Objects.equals(pregnant, lECMEFormat.pregnant) && Objects.equals(maritalStatus, lECMEFormat.maritalStatus) && Objects.equals(military, lECMEFormat.military) && Objects.equals(homeless, lECMEFormat.homeless) && Objects.equals(recentRelease, lECMEFormat.recentRelease) && Objects.equals(educationLevel, lECMEFormat.educationLevel) && Objects.equals(educationYears, lECMEFormat.educationYears) && Objects.equals(industry, lECMEFormat.industry) && Objects.equals(industryText, lECMEFormat.industryText) && Objects.equals(occupationText, lECMEFormat.occupationText) && Objects.equals(usualOccupation, lECMEFormat.usualOccupation) && Objects.equals(occupationCurrentText, lECMEFormat.occupationCurrentText) && Objects.equals(birthPlace, lECMEFormat.birthPlace) && Objects.equals(birthCountryOther, lECMEFormat.birthCountryOther) && Objects.equals(country, lECMEFormat.country) && Objects.equals(residenceState, lECMEFormat.residenceState) && Objects.equals(residenceCounty, lECMEFormat.residenceCounty) && Objects.equals(residenceCity, lECMEFormat.residenceCity) && Objects.equals(residenceZip, lECMEFormat.residenceZip) && Objects.equals(residenceCensusTract, lECMEFormat.residenceCensusTract) && Objects.equals(residenceCensusBlock, lECMEFormat.residenceCensusBlock) && Objects.equals(toxicologyNotAvailable, lECMEFormat.toxicologyNotAvailable) && Objects.equals(specimensDateYear, lECMEFormat.specimensDateYear) && Objects.equals(specimensDateMonth, lECMEFormat.specimensDateMonth) && Objects.equals(specimensDateDay, lECMEFormat.specimensDateDay) && Objects.equals(specimensTime, lECMEFormat.specimensTime) && Objects.equals(alcoholTested, lECMEFormat.alcoholTested) && Objects.equals(alcoholResult, lECMEFormat.alcoholResult) && Objects.equals(alcoholLevel, lECMEFormat.alcoholLevel) && Objects.equals(amphetamineTested, lECMEFormat.amphetamineTested) && Objects.equals(amphetamineResult, lECMEFormat.amphetamineResult) && Objects.equals(anticonvulsantsTested, lECMEFormat.anticonvulsantsTested) && Objects.equals(anticonvulsantsResult, lECMEFormat.anticonvulsantsResult) && Objects.equals(antidepressantTested, lECMEFormat.antidepressantTested) && Objects.equals(antidepressantResult, lECMEFormat.antidepressantResult) && Objects.equals(antipsychoticTested, lECMEFormat.antipsychoticTested) && Objects.equals(antipsychoticResult, lECMEFormat.antipsychoticResult) && Objects.equals(barbituratesTested, lECMEFormat.barbituratesTested) && Objects.equals(barbituratesResult, lECMEFormat.barbituratesResult) && Objects.equals(benzodiazepinesTested, lECMEFormat.benzodiazepinesTested) && Objects.equals(benzodiazepinesResult, lECMEFormat.benzodiazepinesResult) && Objects.equals(carbonMonoxideTested, lECMEFormat.carbonMonoxideTested) && Objects.equals(carbonMonoxideResult, lECMEFormat.carbonMonoxideResult) && Objects.equals(carbonMonoxideSource, lECMEFormat.carbonMonoxideSource) && Objects.equals(cocaineTested, lECMEFormat.cocaineTested) && Objects.equals(cocaineResult, lECMEFormat.cocaineResult) && Objects.equals(marijuanaTested, lECMEFormat.marijuanaTested) && Objects.equals(marijuanaResult, lECMEFormat.marijuanaResult) && Objects.equals(muscleRelaxorTested, lECMEFormat.muscleRelaxorTested) && Objects.equals(muscleRelaxorResult, lECMEFormat.muscleRelaxorResult) && Objects.equals(opiateTested, lECMEFormat.opiateTested) && Objects.equals(opiateResult, lECMEFormat.opiateResult) && Objects.equals(numberWounds, lECMEFormat.numberWounds) && Objects.equals(numberBullets, lECMEFormat.numberBullets) && Objects.equals(woundToHead, lECMEFormat.woundToHead) && Objects.equals(woundToFace, lECMEFormat.woundToFace) && Objects.equals(woundToNeck, lECMEFormat.woundToNeck) && Objects.equals(woundToUpperExtremity, lECMEFormat.woundToUpperExtremity) && Objects.equals(woundToSpine, lECMEFormat.woundToSpine) && Objects.equals(woundToThorax, lECMEFormat.woundToThorax) && Objects.equals(woundToAbdomen, lECMEFormat.woundToAbdomen) && Objects.equals(woundToLowerExtremity, lECMEFormat.woundToLowerExtremity) && Objects.equals(circumstancesKnownCME, lECMEFormat.circumstancesKnownCME) && Objects.equals(abusedAsChildCME, lECMEFormat.abusedAsChildCME) && Objects.equals(alcoholProblemCME, lECMEFormat.alcoholProblemCME) && Objects.equals(argumentCME, lECMEFormat.argumentCME) && Objects.equals(argumentOtherCME, lECMEFormat.argumentOtherCME) && Objects.equals(argumentTimingCME, lECMEFormat.argumentTimingCME) && Objects.equals(brawlCME, lECMEFormat.brawlCME) && Objects.equals(bulletRicochetCME, lECMEFormat.bulletRicochetCME) && Objects.equals(bystanderCME, lECMEFormat.bystanderCME) && Objects.equals(celebratoryFiringCME, lECMEFormat.celebratoryFiringCME) && Objects.equals(circumstancesOtherCME, lECMEFormat.circumstancesOtherCME) && Objects.equals(circumstancesOtherTextCME, lECMEFormat.circumstancesOtherTextCME) && Objects.equals(crisisProstitutionCME, lECMEFormat.crisisProstitutionCME) && Objects.equals(crisisAlcoholProblemCME, lECMEFormat.crisisAlcoholProblemCME) && Objects.equals(crisisCivilLegalCME, lECMEFormat.crisisCivilLegalCME) && Objects.equals(crisisCriminalCME, lECMEFormat.crisisCriminalCME) && Objects.equals(crisisDisasterExposureCME, lECMEFormat.crisisDisasterExposureCME) && Objects.equals(crisisEvictionCME, lECMEFormat.crisisEvictionCME) && Objects.equals(crisisFamilyStressorCME, lECMEFormat.crisisFamilyStressorCME) && Objects.equals(crisisFinancialCME, lECMEFormat.crisisFinancialCME) && Objects.equals(crisisIntimatePartnerProblemCME, lECMEFormat.crisisIntimatePartnerProblemCME) && Objects.equals(crisisJealousyCME, lECMEFormat.crisisJealousyCME) && Objects.equals(crisisJobCME, lECMEFormat.crisisJobCME) && Objects.equals(crisisMentalHealthCME, lECMEFormat.crisisMentalHealthCME) && Objects.equals(crisisOtherAddictionCME, lECMEFormat.crisisOtherAddictionCME) && Objects.equals(crisisPhysicalHealthCME, lECMEFormat.crisisPhysicalHealthCME) && Objects.equals(crisisRelatedDeathFriendOrFamilyOtherCME, lECMEFormat.crisisRelatedDeathFriendOrFamilyOtherCME) && Objects.equals(crisisRelatedSuicideFriendOrFamilyCME, lECMEFormat.crisisRelatedSuicideFriendOrFamilyCME) && Objects.equals(crisisRelationshipProblemOtherCME, lECMEFormat.crisisRelationshipProblemOtherCME) && Objects.equals(crisisSchoolCME, lECMEFormat.crisisSchoolCME) && Objects.equals(crisisStalkingCME, lECMEFormat.crisisStalkingCME) && Objects.equals(crisisSubstanceAbuseCME, lECMEFormat.crisisSubstanceAbuseCME) && Objects.equals(deathAbuseCME, lECMEFormat.deathAbuseCME) && Objects.equals(deathFriendOrFamilyOtherCME, lECMEFormat.deathFriendOrFamilyOtherCME) && Objects.equals(depressedMoodCME, lECMEFormat.depressedMoodCME) && Objects.equals(disasterExposureCME, lECMEFormat.disasterExposureCME) && Objects.equals(disclosedIntentToWhomCME, lECMEFormat.disclosedIntentToWhomCME) && Objects.equals(driveByShootingCME, lECMEFormat.driveByShootingCME) && Objects.equals(drugInvolvementCME, lECMEFormat.drugInvolvementCME) && Objects.equals(evictionOrLossOfHomeCME, lECMEFormat.evictionOrLossOfHomeCME) && Objects.equals(fightBetweenTwoPeopleCME, lECMEFormat.fightBetweenTwoPeopleCME) && Objects.equals(financialProblemCME, lECMEFormat.financialProblemCME) && Objects.equals(unused1, lECMEFormat.unused1) && Objects.equals(gangRelatedCME, lECMEFormat.gangRelatedCME) && Objects.equals(gunCleaningCME, lECMEFormat.gunCleaningCME) && Objects.equals(gunDefectMalfunctionCME, lECMEFormat.gunDefectMalfunctionCME) && Objects.equals(gunDroppedCME, lECMEFormat.gunDroppedCME) && Objects.equals(gunFiredHolsteringCME, lECMEFormat.gunFiredHolsteringCME) && Objects.equals(gunFiredLoadingUnloadingCME, lECMEFormat.gunFiredLoadingUnloadingCME) && Objects.equals(gunFiredOperatingSafetyLockCME, lECMEFormat.gunFiredOperatingSafetyLockCME) && Objects.equals(gunPlayingCME, lECMEFormat.gunPlayingCME) && Objects.equals(gunShowingCME, lECMEFormat.gunShowingCME) && Objects.equals(gunThoughtSafetyEngagedCME, lECMEFormat.gunThoughtSafetyEngagedCME) && Objects.equals(gunThoughtToyCME, lECMEFormat.gunThoughtToyCME) && Objects.equals(gunThoughtUnloadedMagazineDisengagedCME, lECMEFormat.gunThoughtUnloadedMagazineDisengagedCME) && Objects.equals(gunThoughtUnloadedOtherCME, lECMEFormat.gunThoughtUnloadedOtherCME) && Objects.equals(gunUnintentionallyPulledTriggerCME, lECMEFormat.gunUnintentionallyPulledTriggerCME) && Objects.equals(hateCrimeCME, lECMEFormat.hateCrimeCME) && Objects.equals(historyMentalIllnessTreatmentCME, lECMEFormat.historyMentalIllnessTreatmentCME) && Objects.equals(huntingCME, lECMEFormat.huntingCME) && Objects.equals(interpersonalViolencePerpetratorCME, lECMEFormat.interpersonalViolencePerpetratorCME) && Objects.equals(interpersonalViolenceVictimCME, lECMEFormat.interpersonalViolenceVictimCME) && Objects.equals(intervenerAssistingVictimCME, lECMEFormat.intervenerAssistingVictimCME) && Objects.equals(intimatePartnerProblemCME, lECMEFormat.intimatePartnerProblemCME) && Objects.equals(intimatePartnerViolenceCME, lECMEFormat.intimatePartnerViolenceCME) && Objects.equals(jealouslyCME, lECMEFormat.jealouslyCME) && Objects.equals(jobProblemCME, lECMEFormat.jobProblemCME) && Objects.equals(justifiableSelfDefenseCME, lECMEFormat.justifiableSelfDefenseCME) && Objects.equals(legalProblemOtherCME, lECMEFormat.legalProblemOtherCME) && Objects.equals(mentalHealthDiagnosis1CME, lECMEFormat.mentalHealthDiagnosis1CME) && Objects.equals(mentalHealthDiagnosis2CME, lECMEFormat.mentalHealthDiagnosis2CME) && Objects.equals(mentalHealthDiagnosisOtherCME, lECMEFormat.mentalHealthDiagnosisOtherCME) && Objects.equals(mentalHealthProblemCME, lECMEFormat.mentalHealthProblemCME) && Objects.equals(mentalIllnessTreatmentCurrentCME, lECMEFormat.mentalIllnessTreatmentCurrentCME) && Objects.equals(mercyKillingCME, lECMEFormat.mercyKillingCME) && Objects.equals(natureOtherCrime1CME, lECMEFormat.natureOtherCrime1CME) && Objects.equals(natureOtherCrime2CME, lECMEFormat.natureOtherCrime2CME) && Objects.equals(otherAddictionCME, lECMEFormat.otherAddictionCME) && Objects.equals(otherContextInjuryCME, lECMEFormat.otherContextInjuryCME) && Objects.equals(otherCrimeInProgressCME, lECMEFormat.otherCrimeInProgressCME) && Objects.equals(otherMechanismInjuryCME, lECMEFormat.otherMechanismInjuryCME) && Objects.equals(precipitatedByOtherCrimeCME, lECMEFormat.precipitatedByOtherCrimeCME) && Objects.equals(physicalHealthProblemCME, lECMEFormat.physicalHealthProblemCME) && Objects.equals(prostitutionCME, lECMEFormat.prostitutionCME) && Objects.equals(randomViolenceCME, lECMEFormat.randomViolenceCME) && Objects.equals(recentCriminalLegalProblemCME, lECMEFormat.recentCriminalLegalProblemCME) && Objects.equals(recentSuicideFriendFamilyCME, lECMEFormat.recentSuicideFriendFamilyCME) && Objects.equals(relationshipProblemOtherCME, lECMEFormat.relationshipProblemOtherCME) && Objects.equals(schoolProblemCME, lECMEFormat.schoolProblemCME) && Objects.equals(selfDefenseCME, lECMEFormat.selfDefenseCME) && Objects.equals(stalkingCME, lECMEFormat.stalkingCME) && Objects.equals(substanceAbuseOtherCME, lECMEFormat.substanceAbuseOtherCME) && Objects.equals(suicideAttemptHistoryCME, lECMEFormat.suicideAttemptHistoryCME) && Objects.equals(suicideIntentDisclosedCME, lECMEFormat.suicideIntentDisclosedCME) && Objects.equals(suicideNoteCME, lECMEFormat.suicideNoteCME) && Objects.equals(suicideThoughtHistoryCME, lECMEFormat.suicideThoughtHistoryCME) && Objects.equals(targetShootingCME, lECMEFormat.targetShootingCME) && Objects.equals(terroristAttackCME, lECMEFormat.terroristAttackCME) && Objects.equals(traumaticAnniversaryCME, lECMEFormat.traumaticAnniversaryCME) && Objects.equals(victimPoliceOfficerOnDutyCME, lECMEFormat.victimPoliceOfficerOnDutyCME) && Objects.equals(victimUsedWeaponCME, lECMEFormat.victimUsedWeaponCME) && Objects.equals(walkByAssaultCME, lECMEFormat.walkByAssaultCME) && Objects.equals(circumstancesOtherLE, lECMEFormat.circumstancesOtherLE) && Objects.equals(abusedAsChildLE, lECMEFormat.abusedAsChildLE) && Objects.equals(alcoholProblemLE, lECMEFormat.alcoholProblemLE) && Objects.equals(argumentLE, lECMEFormat.argumentLE) && Objects.equals(argumentOtherLE, lECMEFormat.argumentOtherLE) && Objects.equals(argumentTimingLE, lECMEFormat.argumentTimingLE) && Objects.equals(brawlLE, lECMEFormat.brawlLE) && Objects.equals(bulletRicochetLE, lECMEFormat.bulletRicochetLE) && Objects.equals(bystanderLE, lECMEFormat.bystanderLE) && Objects.equals(celebratoryFiringLE, lECMEFormat.celebratoryFiringLE) && Objects.equals(isCircumstancesKnown, lECMEFormat.isCircumstancesKnown) && Objects.equals(circumstancesOtherTextLE, lECMEFormat.circumstancesOtherTextLE) && Objects.equals(cririsProstitutionLE, lECMEFormat.cririsProstitutionLE) && Objects.equals(crisisAlcoholProblemLE, lECMEFormat.crisisAlcoholProblemLE) && Objects.equals(crisisCivilLegalLE, lECMEFormat.crisisCivilLegalLE) && Objects.equals(crisisCriminalLE, lECMEFormat.crisisCriminalLE) && Objects.equals(crisisDisasterExposureLE, lECMEFormat.crisisDisasterExposureLE) && Objects.equals(crisisEvictionLE, lECMEFormat.crisisEvictionLE) && Objects.equals(crisisFamilyStressorLE, lECMEFormat.crisisFamilyStressorLE) && Objects.equals(crisisFinancialLE, lECMEFormat.crisisFinancialLE) && Objects.equals(crisisIntimatePartnerProblemLE, lECMEFormat.crisisIntimatePartnerProblemLE) && Objects.equals(crisisJealousyLE, lECMEFormat.crisisJealousyLE) && Objects.equals(crisisJobLE, lECMEFormat.crisisJobLE) && Objects.equals(crisisMentalHealthLE, lECMEFormat.crisisMentalHealthLE) && Objects.equals(crisisOtherAddictionLE, lECMEFormat.crisisOtherAddictionLE) && Objects.equals(crisisPhysicalHealthLE, lECMEFormat.crisisPhysicalHealthLE) && Objects.equals(crisisRelatedDeathFriendOrFamilyOtherLE, lECMEFormat.crisisRelatedDeathFriendOrFamilyOtherLE) && Objects.equals(crisisRelatedSuicideFriendOrFamilyLE, lECMEFormat.crisisRelatedSuicideFriendOrFamilyLE) && Objects.equals(crisisRelationshipProblemOtherLE, lECMEFormat.crisisRelationshipProblemOtherLE) && Objects.equals(crisisSchoolLE, lECMEFormat.crisisSchoolLE) && Objects.equals(crisisStalkingLE, lECMEFormat.crisisStalkingLE) && Objects.equals(crisisSubstanceAbuseLE, lECMEFormat.crisisSubstanceAbuseLE) && Objects.equals(deathAbuseLE, lECMEFormat.deathAbuseLE) && Objects.equals(deathFriendOrFamilyOtherLE, lECMEFormat.deathFriendOrFamilyOtherLE) && Objects.equals(depressedMoodLE, lECMEFormat.depressedMoodLE) && Objects.equals(disasterExposureLE, lECMEFormat.disasterExposureLE) && Objects.equals(disclosedIntentToWhomLE, lECMEFormat.disclosedIntentToWhomLE) && Objects.equals(driveByShootingLE, lECMEFormat.driveByShootingLE) && Objects.equals(drugInvolvementLE, lECMEFormat.drugInvolvementLE) && Objects.equals(evictionOrLossOfHomeLE, lECMEFormat.evictionOrLossOfHomeLE) && Objects.equals(fightBetweenTwoPeopleLE, lECMEFormat.fightBetweenTwoPeopleLE) && Objects.equals(financialProblemLE, lECMEFormat.financialProblemLE) && Objects.equals(unused2, lECMEFormat.unused2) && Objects.equals(gangRelatedLE, lECMEFormat.gangRelatedLE) && Objects.equals(gunCleaningLE, lECMEFormat.gunCleaningLE) && Objects.equals(gunDefectMalfunctionLE, lECMEFormat.gunDefectMalfunctionLE) && Objects.equals(gunDroppedLE, lECMEFormat.gunDroppedLE) && Objects.equals(gunFiredHolsteringLE, lECMEFormat.gunFiredHolsteringLE) && Objects.equals(gunFiredLoadingUnloadingLE, lECMEFormat.gunFiredLoadingUnloadingLE) && Objects.equals(gunFiredOperatingSafetyLockLE, lECMEFormat.gunFiredOperatingSafetyLockLE) && Objects.equals(gunPlayingLE, lECMEFormat.gunPlayingLE) && Objects.equals(gunShowingLE, lECMEFormat.gunShowingLE) && Objects.equals(gunThoughtSafetyEngagedLE, lECMEFormat.gunThoughtSafetyEngagedLE) && Objects.equals(gunThoughtToyLE, lECMEFormat.gunThoughtToyLE) && Objects.equals(gunThoughtUnloadedMagazineDisengagedLE, lECMEFormat.gunThoughtUnloadedMagazineDisengagedLE) && Objects.equals(gunThoughtUnloadedOtherLE, lECMEFormat.gunThoughtUnloadedOtherLE) && Objects.equals(gunUnintentionallyPulledTriggerLE, lECMEFormat.gunUnintentionallyPulledTriggerLE) && Objects.equals(hateCrimeLE, lECMEFormat.hateCrimeLE) && Objects.equals(historyMentalIllnessTreatmentLE, lECMEFormat.historyMentalIllnessTreatmentLE) && Objects.equals(huntingLE, lECMEFormat.huntingLE) && Objects.equals(interpersonalViolencePerpetratorLE, lECMEFormat.interpersonalViolencePerpetratorLE) && Objects.equals(interpersonalViolenceVictimLE, lECMEFormat.interpersonalViolenceVictimLE) && Objects.equals(intervenerAssistingVictimLE, lECMEFormat.intervenerAssistingVictimLE) && Objects.equals(intimatePartnerProblemLE, lECMEFormat.intimatePartnerProblemLE) && Objects.equals(intimatePartnerViolenceLE, lECMEFormat.intimatePartnerViolenceLE) && Objects.equals(jealouslyLE, lECMEFormat.jealouslyLE) && Objects.equals(jobProblemLE, lECMEFormat.jobProblemLE) && Objects.equals(justifiableSelfDefenseLE, lECMEFormat.justifiableSelfDefenseLE) && Objects.equals(legalProblemOtherLE, lECMEFormat.legalProblemOtherLE) && Objects.equals(mentalHealthDiagnosis1LE, lECMEFormat.mentalHealthDiagnosis1LE) && Objects.equals(mentalHealthDiagnosis2LE, lECMEFormat.mentalHealthDiagnosis2LE) && Objects.equals(mentalHealthDiagnosisOtherLE, lECMEFormat.mentalHealthDiagnosisOtherLE) && Objects.equals(mentalHealthProblemLE, lECMEFormat.mentalHealthProblemLE) && Objects.equals(mentalIllnessTreatmentCurrentLE, lECMEFormat.mentalIllnessTreatmentCurrentLE) && Objects.equals(mercyKillingLE, lECMEFormat.mercyKillingLE) && Objects.equals(natureOtherCrime1LE, lECMEFormat.natureOtherCrime1LE) && Objects.equals(natureOtherCrime2LE, lECMEFormat.natureOtherCrime2LE) && Objects.equals(otherAddictionLE, lECMEFormat.otherAddictionLE) && Objects.equals(otherContextInjuryLE, lECMEFormat.otherContextInjuryLE) && Objects.equals(otherCrimeInProgressLE, lECMEFormat.otherCrimeInProgressLE) && Objects.equals(otherMechanismInjuryLE, lECMEFormat.otherMechanismInjuryLE) && Objects.equals(precipitatedByOtherCrimeLE, lECMEFormat.precipitatedByOtherCrimeLE) && Objects.equals(physicalHealthProblemLE, lECMEFormat.physicalHealthProblemLE) && Objects.equals(prostitutionLE, lECMEFormat.prostitutionLE) && Objects.equals(randomViolenceLE, lECMEFormat.randomViolenceLE) && Objects.equals(recentCriminalLegalProblemLE, lECMEFormat.recentCriminalLegalProblemLE) && Objects.equals(recentSuicideFriendFamilyLE, lECMEFormat.recentSuicideFriendFamilyLE) && Objects.equals(relationshipProblemOtherLE, lECMEFormat.relationshipProblemOtherLE) && Objects.equals(schoolProblemLE, lECMEFormat.schoolProblemLE) && Objects.equals(selfDefenseLE, lECMEFormat.selfDefenseLE) && Objects.equals(stalkingLE, lECMEFormat.stalkingLE) && Objects.equals(substanceAbuseOtherLE, lECMEFormat.substanceAbuseOtherLE) && Objects.equals(suicideAttemptHistoryLE, lECMEFormat.suicideAttemptHistoryLE) && Objects.equals(suicideIntentDisclosedLE, lECMEFormat.suicideIntentDisclosedLE) && Objects.equals(suicideNoteLE, lECMEFormat.suicideNoteLE) && Objects.equals(suicideThoughtHistoryLE, lECMEFormat.suicideThoughtHistoryLE) && Objects.equals(targetShootingLE, lECMEFormat.targetShootingLE) && Objects.equals(terroristAttackLE, lECMEFormat.terroristAttackLE) && Objects.equals(TraumaticAnniversaryLE, lECMEFormat.TraumaticAnniversaryLE) && Objects.equals(VictimPoliceOfficeOnDutyLE, lECMEFormat.VictimPoliceOfficeOnDutyLE) && Objects.equals(VictimUsedWeaponLE, lECMEFormat.VictimUsedWeaponLE) && Objects.equals(WalkByAssaultLE, lECMEFormat.WalkByAssaultLE) && Objects.equals(WeaponType, lECMEFormat.WeaponType) && Objects.equals(FirearmType, lECMEFormat.FirearmType) && Objects.equals(FirearmCaliber, lECMEFormat.FirearmCaliber) && Objects.equals(FirearmGauge, lECMEFormat.FirearmGauge) && Objects.equals(FirearmMake, lECMEFormat.FirearmMake) && Objects.equals(FirearmModel, lECMEFormat.FirearmModel) && Objects.equals(GunLoaded, lECMEFormat.GunLoaded) && Objects.equals(GunOwner, lECMEFormat.GunOwner) && Objects.equals(GunStoredLocked, lECMEFormat.GunStoredLocked) && Objects.equals(FirearmStolen, lECMEFormat.FirearmStolen) && Objects.equals(SuspectSex, lECMEFormat.SuspectSex) && Objects.equals(VictimSuspectRelationshipPrimary, lECMEFormat.VictimSuspectRelationshipPrimary) && Objects.equals(VictimSuspectRelationshipSecondary, lECMEFormat.VictimSuspectRelationshipSecondary) && Objects.equals(HasAbuseHistory, lECMEFormat.HasAbuseHistory) && Objects.equals(IsCareTaker, lECMEFormat.IsCareTaker) && Objects.equals(HasAttemptedSuicide, lECMEFormat.HasAttemptedSuicide) && Objects.equals(IsSuspectAlsoVictim, lECMEFormat.IsSuspectAlsoVictim) && Objects.equals(IsSuspectMentallyIll, lECMEFormat.IsSuspectMentallyIll) && Objects.equals(HasSuspectDevelopmentDisability, lECMEFormat.HasSuspectDevelopmentDisability) && Objects.equals(IsSuspectAlcoholUseSuspected, lECMEFormat.IsSuspectAlcoholUseSuspected) && Objects.equals(IsSuspectSubstanceUseSuspected, lECMEFormat.IsSuspectSubstanceUseSuspected) && Objects.equals(IsSuspectContactPolice, lECMEFormat.IsSuspectContactPolice) && Objects.equals(SuspectRecentRelease, lECMEFormat.SuspectRecentRelease) && Objects.equals(IsSuspectCaucasian, lECMEFormat.IsSuspectCaucasian) && Objects.equals(IsSuspectAfricanAmerican, lECMEFormat.IsSuspectAfricanAmerican) && Objects.equals(IsSuspectAsian, lECMEFormat.IsSuspectAsian) && Objects.equals(IsSuspectPacificIslander, lECMEFormat.IsSuspectPacificIslander) && Objects.equals(IsSuspectAmericanIndian, lECMEFormat.IsSuspectAmericanIndian) && Objects.equals(IsSuspectRaceUnspecified, lECMEFormat.IsSuspectRaceUnspecified) && Objects.equals(SuspectEthnicity, lECMEFormat.SuspectEthnicity) && Objects.equals(IsTreatmentNonAdherenceCME, lECMEFormat.IsTreatmentNonAdherenceCME) && Objects.equals(IsTraumaticBrainInjuryHistoryCME, lECMEFormat.IsTraumaticBrainInjuryHistoryCME) && Objects.equals(IsFamilyStressorsCME, lECMEFormat.IsFamilyStressorsCME) && Objects.equals(IsCrisisFamilyStressorCME, lECMEFormat.IsCrisisFamilyStressorCME) && Objects.equals(IsCaregiverBurdenCME, lECMEFormat.IsCaregiverBurdenCME) && Objects.equals(IsFamilyStressorCME, lECMEFormat.IsFamilyStressorCME) && Objects.equals(IsHouseholdKnownCME, lECMEFormat.IsHouseholdKnownCME) && Objects.equals(IsPriorCPSReportCME, lECMEFormat.IsPriorCPSReportCME) && Objects.equals(IsHouseholdSubstanceAbuseCME, lECMEFormat.IsHouseholdSubstanceAbuseCME) && Objects.equals(IsLivingTransitionCME, lECMEFormat.IsLivingTransitionCME) && Objects.equals(IsCorporalPunishmentCME, lECMEFormat.IsCorporalPunishmentCME) && Objects.equals(IsHistorySelfHarmCME, lECMEFormat.IsHistorySelfHarmCME) && Objects.equals(IsTreatmentNonAdherenceLE, lECMEFormat.IsTreatmentNonAdherenceLE) && Objects.equals(IsTraumaticBrainInjuryHistoryLE, lECMEFormat.IsTraumaticBrainInjuryHistoryLE) && Objects.equals(IsFamilyStressorsLE, lECMEFormat.IsFamilyStressorsLE) && Objects.equals(IsCrisisFamilyStressorLE, lECMEFormat.IsCrisisFamilyStressorLE) && Objects.equals(IsCaregiverBurdenLE, lECMEFormat.IsCaregiverBurdenLE) && Objects.equals(IsFamilyStressorLE, lECMEFormat.IsFamilyStressorLE) && Objects.equals(IsHouseholdKnownLE, lECMEFormat.IsHouseholdKnownLE) && Objects.equals(IsPriorCPSReportLE, lECMEFormat.IsPriorCPSReportLE) && Objects.equals(IsHouseholdSubstanceAbuseLE, lECMEFormat.IsHouseholdSubstanceAbuseLE) && Objects.equals(IsLivingTransitionLE, lECMEFormat.IsLivingTransitionLE) && Objects.equals(IsCorporalPunishmentLE, lECMEFormat.IsCorporalPunishmentLE) && Objects.equals(IsHistorySelfHarmLE, lECMEFormat.IsHistorySelfHarmLE) && Objects.equals(TypeOfPoisoning, lECMEFormat.TypeOfPoisoning) && Objects.equals(LastSeenAliveTime, lECMEFormat.LastSeenAliveTime) && Objects.equals(FoundUnresponsiveTime, lECMEFormat.FoundUnresponsiveTime) && Objects.equals(LastSeenAliveMonth, lECMEFormat.LastSeenAliveMonth) && Objects.equals(LastSeenAliveDay, lECMEFormat.LastSeenAliveDay) && Objects.equals(LastSeenAliveYear, lECMEFormat.LastSeenAliveYear) && Objects.equals(FoundUnresponsiveMonth, lECMEFormat.FoundUnresponsiveMonth) && Objects.equals(FoundUnresponsiveDay, lECMEFormat.FoundUnresponsiveDay) && Objects.equals(FoundUnresponsiveYear, lECMEFormat.FoundUnresponsiveYear) && Objects.equals(PreviousOverdose, lECMEFormat.PreviousOverdose) && Objects.equals(Overdose0to2DaysPrior, lECMEFormat.Overdose0to2DaysPrior) && Objects.equals(Overdose3to7DaysPrior, lECMEFormat.Overdose3to7DaysPrior) && Objects.equals(RecentOpioidUse, lECMEFormat.RecentOpioidUse) && Objects.equals(RecentEmergencyDept, lECMEFormat.RecentEmergencyDept) && Objects.equals(HistDrugNoEvidence, lECMEFormat.HistDrugNoEvidence) && Objects.equals(HistHeroin, lECMEFormat.HistHeroin) && Objects.equals(HistRxOpioid, lECMEFormat.HistRxOpioid) && Objects.equals(HistAnyOpioid, lECMEFormat.HistAnyOpioid) && Objects.equals(HistFentanyl, lECMEFormat.HistFentanyl) && Objects.equals(HistCocaine, lECMEFormat.HistCocaine) && Objects.equals(HistMeth, lECMEFormat.HistMeth) && Objects.equals(HistBenzo, lECMEFormat.HistBenzo) && Objects.equals(HistCannabis, lECMEFormat.HistCannabis) && Objects.equals(HistUnspecified, lECMEFormat.HistUnspecified) && Objects.equals(HistOther, lECMEFormat.HistOther) && Objects.equals(HistOtherDesc, lECMEFormat.HistOtherDesc) && Objects.equals(TreatmentForSubstanceAbuse, lECMEFormat.TreatmentForSubstanceAbuse) && Objects.equals(SubstanceTreatmentRehab, lECMEFormat.SubstanceTreatmentRehab) && Objects.equals(SubstanceTreatmentMATcog, lECMEFormat.SubstanceTreatmentMATcog) && Objects.equals(SubstanceTreatmentMATNoCog, lECMEFormat.SubstanceTreatmentMATNoCog) && Objects.equals(SubstanceTreatmentMAT, lECMEFormat.SubstanceTreatmentMAT) && Objects.equals(SubstanceTreatmentCogTherapy, lECMEFormat.SubstanceTreatmentCogTherapy) && Objects.equals(SubstanceTreatmentNA, lECMEFormat.SubstanceTreatmentNA) && Objects.equals(SubstanceTreatmentOther, lECMEFormat.SubstanceTreatmentOther) && Objects.equals(SubstanceTreatmentOtherSpecify, lECMEFormat.SubstanceTreatmentOtherSpecify) && Objects.equals(InvolveCriminalJustice, lECMEFormat.InvolveCriminalJustice) && Objects.equals(HasIndicationsDrugPara, lECMEFormat.HasIndicationsDrugPara) && Objects.equals(HasIndicationsNone, lECMEFormat.HasIndicationsNone) && Objects.equals(HasIndicationsNonSpecific, lECMEFormat.HasIndicationsNonSpecific) && Objects.equals(HasRapidOverdoseEvidence, lECMEFormat.HasRapidOverdoseEvidence) && Objects.equals(IsTourniquetAroundArm, lECMEFormat.IsTourniquetAroundArm) && Objects.equals(BodyPosition, lECMEFormat.BodyPosition) && Objects.equals(NeedleLocation, lECMEFormat.NeedleLocation) && Objects.equals(RapidOverdoseWitnessReport, lECMEFormat.RapidOverdoseWitnessReport) && Objects.equals(HasRapidOverdoseOther, lECMEFormat.HasRapidOverdoseOther) && Objects.equals(RapidOverdoseOtherDescription, lECMEFormat.RapidOverdoseOtherDescription) && Objects.equals(HasRouteUnknown, lECMEFormat.HasRouteUnknown) && Objects.equals(HasRouteInjection, lECMEFormat.HasRouteInjection) && Objects.equals(HasIndicationsTracks, lECMEFormat.HasIndicationsTracks) && Objects.equals(HasEvidenceOfInjectionTourniquet, lECMEFormat.HasEvidenceOfInjectionTourniquet) && Objects.equals(HasEvidenceOfInjectionCooker, lECMEFormat.HasEvidenceOfInjectionCooker) && Objects.equals(HasEvidenceOfinjectionNeedle, lECMEFormat.HasEvidenceOfinjectionNeedle) && Objects.equals(HasEvidenceOfInjectionFilter, lECMEFormat.HasEvidenceOfInjectionFilter) && Objects.equals(HasEvidenceOfInjectionWitnessReport, lECMEFormat.HasEvidenceOfInjectionWitnessReport) && Objects.equals(HasEvidenceOfInjectionOther, lECMEFormat.HasEvidenceOfInjectionOther) && Objects.equals(HasEvidenceOfInjectionOtherDescription, lECMEFormat.HasEvidenceOfInjectionOtherDescription) && Objects.equals(HasRouteSnorting, lECMEFormat.HasRouteSnorting) && Objects.equals(SnortingStraw, lECMEFormat.SnortingStraw) && Objects.equals(SnortingRolled, lECMEFormat.SnortingRolled) && Objects.equals(SnortingRazor, lECMEFormat.SnortingRazor) && Objects.equals(SnortingPowderMirror, lECMEFormat.SnortingPowderMirror) && Objects.equals(SnortingPowderNose, lECMEFormat.SnortingPowderNose) && Objects.equals(SnortingWitness, lECMEFormat.SnortingWitness) && Objects.equals(SnortingOther, lECMEFormat.SnortingOther) && Objects.equals(SnortingOtherDesc, lECMEFormat.SnortingOtherDesc) && Objects.equals(HasRouteSmoking, lECMEFormat.HasRouteSmoking) && Objects.equals(SmokingPipe, lECMEFormat.SmokingPipe) && Objects.equals(smokingTinfoil, lECMEFormat.smokingTinfoil) && Objects.equals(smokingVape, lECMEFormat.smokingVape) && Objects.equals(smokingBongBowl, lECMEFormat.smokingBongBowl) && Objects.equals(smokingWitness, lECMEFormat.smokingWitness) && Objects.equals(smokingOther, lECMEFormat.smokingOther) && Objects.equals(smokingOtherDesc, lECMEFormat.smokingOtherDesc) && Objects.equals(hasRouteTransdermal, lECMEFormat.hasRouteTransdermal) && Objects.equals(hasRouteIngestion, lECMEFormat.hasRouteIngestion) && Objects.equals(hasRouteSuppository, lECMEFormat.hasRouteSuppository) && Objects.equals(hasRouteSublingual, lECMEFormat.hasRouteSublingual) && Objects.equals(hasRouteBuccal, lECMEFormat.hasRouteBuccal) && Objects.equals(nonSpecificRx, lECMEFormat.nonSpecificRx) && Objects.equals(hasEvidenceOfPrescriptionDrug, lECMEFormat.hasEvidenceOfPrescriptionDrug) && Objects.equals(isPrescribedToVictim, lECMEFormat.isPrescribedToVictim) && Objects.equals(isUnknownWhoPrescribed, lECMEFormat.isUnknownWhoPrescribed) && Objects.equals(hasIndicationsRxDrugs, lECMEFormat.hasIndicationsRxDrugs) && Objects.equals(prescriptionOtherDescription, lECMEFormat.prescriptionOtherDescription) && Objects.equals(hasIndicationsDrugatScene, lECMEFormat.hasIndicationsDrugatScene) && Objects.equals(haveEvidenceIllicitPowder, lECMEFormat.haveEvidenceIllicitPowder) && Objects.equals(hasEvidenceIllicitTar, lECMEFormat.hasEvidenceIllicitTar) && Objects.equals(hasEvidenceOfIllicitWitnessReport, lECMEFormat.hasEvidenceOfIllicitWitnessReport) && Objects.equals(hasEvidenceCrystal, lECMEFormat.hasEvidenceCrystal) && Objects.equals(otherFormDescription, lECMEFormat.otherFormDescription) && Objects.equals(bystandersPresent, lECMEFormat.bystandersPresent) && Objects.equals(bystanderOtherSpecify, lECMEFormat.bystanderOtherSpecify) && Objects.equals(witnessedDrugUse, lECMEFormat.witnessedDrugUse) && Objects.equals(bystanderCPR, lECMEFormat.bystanderCPR) && Objects.equals(bystanderBreathing, lECMEFormat.bystanderBreathing) && Objects.equals(bystanderSternal, lECMEFormat.bystanderSternal) && Objects.equals(bystanderStimulation, lECMEFormat.bystanderStimulation) && Objects.equals(bystanderIntrvOther, lECMEFormat.bystanderIntrvOther) && Objects.equals(bystanderIntrvOtherSpecify, lECMEFormat.bystanderIntrvOtherSpecify) && Objects.equals(wasNaloxoneAdministered, lECMEFormat.wasNaloxoneAdministered) && Objects.equals(isNaloxoneNotAdmin, lECMEFormat.isNaloxoneNotAdmin) && Objects.equals(isNaloxoneUnknown, lECMEFormat.isNaloxoneUnknown) && Objects.equals(naloxoneTotalResponder, lECMEFormat.naloxoneTotalResponder) && Objects.equals(naloxoneTotalBystander, lECMEFormat.naloxoneTotalBystander) && Objects.equals(isNaloxoneAdminUnknown, lECMEFormat.isNaloxoneAdminUnknown) && Objects.equals(isNaloxoneAdminLaw, lECMEFormat.isNaloxoneAdminLaw) && Objects.equals(isNaloxoneAdminEms, lECMEFormat.isNaloxoneAdminEms) && Objects.equals(isNaloxoneAdminHospital, lECMEFormat.isNaloxoneAdminHospital) && Objects.equals(isNaloxoneAdminOther, lECMEFormat.isNaloxoneAdminOther) && Objects.equals(isNaloxoneAdminBystander, lECMEFormat.isNaloxoneAdminBystander) && Objects.equals(isNaloxoneWhoPerson, lECMEFormat.isNaloxoneWhoPerson) && Objects.equals(isNaloxoneWhoPartner, lECMEFormat.isNaloxoneWhoPartner) && Objects.equals(isNaloxoneWhoFriend, lECMEFormat.isNaloxoneWhoFriend) && Objects.equals(isNaloxoneWhoOtherFamily, lECMEFormat.isNaloxoneWhoOtherFamily) && Objects.equals(isNaloxoneWhoRoomate, lECMEFormat.isNaloxoneWhoRoomate) && Objects.equals(isNaloxoneWhoStranger, lECMEFormat.isNaloxoneWhoStranger) && Objects.equals(isNaloxoneWhoOther, lECMEFormat.isNaloxoneWhoOther) && Objects.equals(isNaloxoneWhoOtherDescription, lECMEFormat.isNaloxoneWhoOtherDescription) && Objects.equals(hadPulse, lECMEFormat.hadPulse) && Objects.equals(intrvCPR, lECMEFormat.intrvCPR) && Objects.equals(intrvBreathing, lECMEFormat.intrvBreathing) && Objects.equals(intrvEpinephrine, lECMEFormat.intrvEpinephrine) && Objects.equals(intrvTransport, lECMEFormat.intrvTransport) && Objects.equals(intrvOxygen, lECMEFormat.intrvOxygen) && Objects.equals(intrvOther, lECMEFormat.intrvOther) && Objects.equals(intrvOtherSpecify, lECMEFormat.intrvOtherSpecify) && Objects.equals(bystanderNotRecognize, lECMEFormat.bystanderNotRecognize) && Objects.equals(bystanderUsing, lECMEFormat.bystanderUsing) && Objects.equals(bystanderPublic, lECMEFormat.bystanderPublic) && Objects.equals(bystanderNoOverdose, lECMEFormat.bystanderNoOverdose) && Objects.equals(bystanderSeperated, lECMEFormat.bystanderSeperated) && Objects.equals(bystanderUnaware, lECMEFormat.bystanderUnaware) && Objects.equals(bystanderReasonOther, lECMEFormat.bystanderReasonOther) && Objects.equals(bystanderReasonOtherSpecify, lECMEFormat.bystanderReasonOtherSpecify) && Objects.equals(treatedforPain, lECMEFormat.treatedforPain) && Objects.equals(medHistCopd, lECMEFormat.medHistCopd) && Objects.equals(medHistAsthma, lECMEFormat.medHistAsthma) && Objects.equals(medHistApnea, lECMEFormat.medHistApnea) && Objects.equals(medHistHeart, lECMEFormat.medHistHeart) && Objects.equals(medHistObesity, lECMEFormat.medHistObesity) && Objects.equals(medHistInjury, lECMEFormat.medHistInjury) && Objects.equals(medHistMigraine, lECMEFormat.medHistMigraine) && Objects.equals(medHistBackpain, lECMEFormat.medHistBackpain) && Objects.equals(medicalHistHepc, lECMEFormat.medicalHistHepc) && Objects.equals(medicalHistHIV, lECMEFormat.medicalHistHIV) && Objects.equals(medHistOtherpain, lECMEFormat.medHistOtherpain) && Objects.equals(medHistOtherbreathing, lECMEFormat.medHistOtherbreathing) && Objects.equals(prescriptionMorphine, lECMEFormat.prescriptionMorphine) && Objects.equals(prescriptionMorphineNarrative, lECMEFormat.prescriptionMorphineNarrative) && Objects.equals(buprenorphineRx, lECMEFormat.buprenorphineRx) && Objects.equals(buprenorphineRxForPain, lECMEFormat.buprenorphineRxForPain) && Objects.equals(buprenorphineRxForMat, lECMEFormat.buprenorphineRxForMat) && Objects.equals(buprenorphineRxForUnk, lECMEFormat.buprenorphineRxForUnk) && Objects.equals(methadoneRx, lECMEFormat.methadoneRx) && Objects.equals(methadoneRxForPain, lECMEFormat.methadoneRxForPain) && Objects.equals(methadoneRxForMat, lECMEFormat.methadoneRxForMat) && Objects.equals(methadoneRxUnk, lECMEFormat.methadoneRxUnk) && Objects.equals(naltrexoneRx, lECMEFormat.naltrexoneRx) && Objects.equals(fentanylRx, lECMEFormat.fentanylRx) && Objects.equals(numScripsPast30Days, lECMEFormat.numScripsPast30Days) && Objects.equals(numPharmaciesPast30Days, lECMEFormat.numPharmaciesPast30Days) && Objects.equals(numDoctorsPrescribing30Days, lECMEFormat.numDoctorsPrescribing30Days) && Objects.equals(isAsianIndian, lECMEFormat.isAsianIndian) && Objects.equals(isAsianChinese, lECMEFormat.isAsianChinese) && Objects.equals(isAsianFilipino, lECMEFormat.isAsianFilipino) && Objects.equals(isAsianJapanese, lECMEFormat.isAsianJapanese) && Objects.equals(isAsianKorean, lECMEFormat.isAsianKorean) && Objects.equals(isAsianVietnamese, lECMEFormat.isAsianVietnamese) && Objects.equals(isAsianOther, lECMEFormat.isAsianOther) && Objects.equals(isAsianOtherText, lECMEFormat.isAsianOtherText) && Objects.equals(isPacificIslanderHawaii, lECMEFormat.isPacificIslanderHawaii) && Objects.equals(isPacificIslanderGuam, lECMEFormat.isPacificIslanderGuam) && Objects.equals(isPacificIslanderSamoa, lECMEFormat.isPacificIslanderSamoa) && Objects.equals(isPacificIslanderOther, lECMEFormat.isPacificIslanderOther) && Objects.equals(isPacificIslanderOtherText, lECMEFormat.isPacificIslanderOtherText) && Objects.equals(americanIndianTribe, lECMEFormat.americanIndianTribe) && Objects.equals(americanIndianTribeOther, lECMEFormat.americanIndianTribeOther);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(forceNewRecord, overwriteConflicts, incidentYear, incidentNumber, victimNumber, lastFourDCNumber, lastFourCMENumber, initialOfLastName, birthDayOfMonth, deathMannerAbstractor, deathMannerDC, deathMannerCME, deathMannerLE, deathDateYear, deathDateMonth, deathDateDay, deathState, deathCounty, deathPronouncedDateYear, deathPronouncedDateMonth, deathPronouncedDateDay, deathPlace, deathPlaceText, autopsyPerformed, injuryDateYear, injuryDateMonth, injuryDateDay, injuryTime, survivalTime, survivalTimeUnit, injuryLocation, injuredAtWork, injuredAtVictimHome, eMSPresent, victimInCustody, alcoholUseSuspected, injuryState, injuryCounty, injuryCity, injuryZip, censusTract, censusBlock, sexVictim, sexualOrientation, transgender, age, ageUnit, ethnicityVictim, raceWhiteVictim, raceBlackVictim, raceAmericanIndianVictim, raceAsianVictim, racePacificIslanderVictim, raceOtherVictim, raceUnspecifiedVictim, heightFeet, heightInches, weight, pregnant, maritalStatus, military, homeless, recentRelease, educationLevel, educationYears, industry, industryText, occupationText, usualOccupation, occupationCurrentText, birthPlace, birthCountryOther, country, residenceState, residenceCounty, residenceCity, residenceZip, residenceCensusTract, residenceCensusBlock, toxicologyNotAvailable, specimensDateYear, specimensDateMonth, specimensDateDay, specimensTime, alcoholTested, alcoholResult, alcoholLevel, amphetamineTested, amphetamineResult, anticonvulsantsTested, anticonvulsantsResult, antidepressantTested, antidepressantResult, antipsychoticTested, antipsychoticResult, barbituratesTested, barbituratesResult, benzodiazepinesTested, benzodiazepinesResult, carbonMonoxideTested, carbonMonoxideResult, carbonMonoxideSource, cocaineTested, cocaineResult, marijuanaTested, marijuanaResult, muscleRelaxorTested, muscleRelaxorResult, opiateTested, opiateResult, numberWounds, numberBullets, woundToHead, woundToFace, woundToNeck, woundToUpperExtremity, woundToSpine, woundToThorax, woundToAbdomen, woundToLowerExtremity, circumstancesKnownCME, abusedAsChildCME, alcoholProblemCME, argumentCME, argumentOtherCME, argumentTimingCME, brawlCME, bulletRicochetCME, bystanderCME, celebratoryFiringCME, circumstancesOtherCME, circumstancesOtherTextCME, crisisProstitutionCME, crisisAlcoholProblemCME, crisisCivilLegalCME, crisisCriminalCME, crisisDisasterExposureCME, crisisEvictionCME, crisisFamilyStressorCME, crisisFinancialCME, crisisIntimatePartnerProblemCME, crisisJealousyCME, crisisJobCME, crisisMentalHealthCME, crisisOtherAddictionCME, crisisPhysicalHealthCME, crisisRelatedDeathFriendOrFamilyOtherCME, crisisRelatedSuicideFriendOrFamilyCME, crisisRelationshipProblemOtherCME, crisisSchoolCME, crisisStalkingCME, crisisSubstanceAbuseCME, deathAbuseCME, deathFriendOrFamilyOtherCME, depressedMoodCME, disasterExposureCME, disclosedIntentToWhomCME, driveByShootingCME, drugInvolvementCME, evictionOrLossOfHomeCME, fightBetweenTwoPeopleCME, financialProblemCME, unused1, gangRelatedCME, gunCleaningCME, gunDefectMalfunctionCME, gunDroppedCME, gunFiredHolsteringCME, gunFiredLoadingUnloadingCME, gunFiredOperatingSafetyLockCME, gunPlayingCME, gunShowingCME, gunThoughtSafetyEngagedCME, gunThoughtToyCME, gunThoughtUnloadedMagazineDisengagedCME, gunThoughtUnloadedOtherCME, gunUnintentionallyPulledTriggerCME, hateCrimeCME, historyMentalIllnessTreatmentCME, huntingCME, interpersonalViolencePerpetratorCME, interpersonalViolenceVictimCME, intervenerAssistingVictimCME, intimatePartnerProblemCME, intimatePartnerViolenceCME, jealouslyCME, jobProblemCME, justifiableSelfDefenseCME, legalProblemOtherCME, mentalHealthDiagnosis1CME, mentalHealthDiagnosis2CME, mentalHealthDiagnosisOtherCME, mentalHealthProblemCME, mentalIllnessTreatmentCurrentCME, mercyKillingCME, natureOtherCrime1CME, natureOtherCrime2CME, otherAddictionCME, otherContextInjuryCME, otherCrimeInProgressCME, otherMechanismInjuryCME, precipitatedByOtherCrimeCME, physicalHealthProblemCME, prostitutionCME, randomViolenceCME, recentCriminalLegalProblemCME, recentSuicideFriendFamilyCME, relationshipProblemOtherCME, schoolProblemCME, selfDefenseCME, stalkingCME, substanceAbuseOtherCME, suicideAttemptHistoryCME, suicideIntentDisclosedCME, suicideNoteCME, suicideThoughtHistoryCME, targetShootingCME, terroristAttackCME, traumaticAnniversaryCME, victimPoliceOfficerOnDutyCME, victimUsedWeaponCME, walkByAssaultCME, circumstancesOtherLE, abusedAsChildLE, alcoholProblemLE, argumentLE, argumentOtherLE, argumentTimingLE, brawlLE, bulletRicochetLE, bystanderLE, celebratoryFiringLE, isCircumstancesKnown, circumstancesOtherTextLE, cririsProstitutionLE, crisisAlcoholProblemLE, crisisCivilLegalLE, crisisCriminalLE, crisisDisasterExposureLE, crisisEvictionLE, crisisFamilyStressorLE, crisisFinancialLE, crisisIntimatePartnerProblemLE, crisisJealousyLE, crisisJobLE, crisisMentalHealthLE, crisisOtherAddictionLE, crisisPhysicalHealthLE, crisisRelatedDeathFriendOrFamilyOtherLE, crisisRelatedSuicideFriendOrFamilyLE, crisisRelationshipProblemOtherLE, crisisSchoolLE, crisisStalkingLE, crisisSubstanceAbuseLE, deathAbuseLE, deathFriendOrFamilyOtherLE, depressedMoodLE, disasterExposureLE, disclosedIntentToWhomLE, driveByShootingLE, drugInvolvementLE, evictionOrLossOfHomeLE, fightBetweenTwoPeopleLE, financialProblemLE, unused2, gangRelatedLE, gunCleaningLE, gunDefectMalfunctionLE, gunDroppedLE, gunFiredHolsteringLE, gunFiredLoadingUnloadingLE, gunFiredOperatingSafetyLockLE, gunPlayingLE, gunShowingLE, gunThoughtSafetyEngagedLE, gunThoughtToyLE, gunThoughtUnloadedMagazineDisengagedLE, gunThoughtUnloadedOtherLE, gunUnintentionallyPulledTriggerLE, hateCrimeLE, historyMentalIllnessTreatmentLE, huntingLE, interpersonalViolencePerpetratorLE, interpersonalViolenceVictimLE, intervenerAssistingVictimLE, intimatePartnerProblemLE, intimatePartnerViolenceLE, jealouslyLE, jobProblemLE, justifiableSelfDefenseLE, legalProblemOtherLE, mentalHealthDiagnosis1LE, mentalHealthDiagnosis2LE, mentalHealthDiagnosisOtherLE, mentalHealthProblemLE, mentalIllnessTreatmentCurrentLE, mercyKillingLE, natureOtherCrime1LE, natureOtherCrime2LE, otherAddictionLE, otherContextInjuryLE, otherCrimeInProgressLE, otherMechanismInjuryLE, precipitatedByOtherCrimeLE, physicalHealthProblemLE, prostitutionLE, randomViolenceLE, recentCriminalLegalProblemLE, recentSuicideFriendFamilyLE, relationshipProblemOtherLE, schoolProblemLE, selfDefenseLE, stalkingLE, substanceAbuseOtherLE, suicideAttemptHistoryLE, suicideIntentDisclosedLE, suicideNoteLE, suicideThoughtHistoryLE, targetShootingLE, terroristAttackLE, TraumaticAnniversaryLE, VictimPoliceOfficeOnDutyLE, VictimUsedWeaponLE, WalkByAssaultLE, WeaponType, FirearmType, FirearmCaliber, FirearmGauge, FirearmMake, FirearmModel, GunLoaded, GunOwner, GunStoredLocked, FirearmStolen, SuspectSex, VictimSuspectRelationshipPrimary, VictimSuspectRelationshipSecondary, HasAbuseHistory, IsCareTaker, HasAttemptedSuicide, IsSuspectAlsoVictim, IsSuspectMentallyIll, HasSuspectDevelopmentDisability, IsSuspectAlcoholUseSuspected, IsSuspectSubstanceUseSuspected, IsSuspectContactPolice, SuspectRecentRelease, IsSuspectCaucasian, IsSuspectAfricanAmerican, IsSuspectAsian, IsSuspectPacificIslander, IsSuspectAmericanIndian, IsSuspectRaceUnspecified, SuspectEthnicity, IsTreatmentNonAdherenceCME, IsTraumaticBrainInjuryHistoryCME, IsFamilyStressorsCME, IsCrisisFamilyStressorCME, IsCaregiverBurdenCME, IsFamilyStressorCME, IsHouseholdKnownCME, IsPriorCPSReportCME, IsHouseholdSubstanceAbuseCME, IsLivingTransitionCME, IsCorporalPunishmentCME, IsHistorySelfHarmCME, IsTreatmentNonAdherenceLE, IsTraumaticBrainInjuryHistoryLE, IsFamilyStressorsLE, IsCrisisFamilyStressorLE, IsCaregiverBurdenLE, IsFamilyStressorLE, IsHouseholdKnownLE, IsPriorCPSReportLE, IsHouseholdSubstanceAbuseLE, IsLivingTransitionLE, IsCorporalPunishmentLE, IsHistorySelfHarmLE, TypeOfPoisoning, LastSeenAliveTime, FoundUnresponsiveTime, LastSeenAliveMonth, LastSeenAliveDay, LastSeenAliveYear, FoundUnresponsiveMonth, FoundUnresponsiveDay, FoundUnresponsiveYear, PreviousOverdose, Overdose0to2DaysPrior, Overdose3to7DaysPrior, RecentOpioidUse, RecentEmergencyDept, HistDrugNoEvidence, HistHeroin, HistRxOpioid, HistAnyOpioid, HistFentanyl, HistCocaine, HistMeth, HistBenzo, HistCannabis, HistUnspecified, HistOther, HistOtherDesc, TreatmentForSubstanceAbuse, SubstanceTreatmentRehab, SubstanceTreatmentMATcog, SubstanceTreatmentMATNoCog, SubstanceTreatmentMAT, SubstanceTreatmentCogTherapy, SubstanceTreatmentNA, SubstanceTreatmentOther, SubstanceTreatmentOtherSpecify, InvolveCriminalJustice, HasIndicationsDrugPara, HasIndicationsNone, HasIndicationsNonSpecific, HasRapidOverdoseEvidence, IsTourniquetAroundArm, BodyPosition, NeedleLocation, RapidOverdoseWitnessReport, HasRapidOverdoseOther, RapidOverdoseOtherDescription, HasRouteUnknown, HasRouteInjection, HasIndicationsTracks, HasEvidenceOfInjectionTourniquet, HasEvidenceOfInjectionCooker, HasEvidenceOfinjectionNeedle, HasEvidenceOfInjectionFilter, HasEvidenceOfInjectionWitnessReport, HasEvidenceOfInjectionOther, HasEvidenceOfInjectionOtherDescription, HasRouteSnorting, SnortingStraw, SnortingRolled, SnortingRazor, SnortingPowderMirror, SnortingPowderNose, SnortingWitness, SnortingOther, SnortingOtherDesc, HasRouteSmoking, SmokingPipe, smokingTinfoil, smokingVape, smokingBongBowl, smokingWitness, smokingOther, smokingOtherDesc, hasRouteTransdermal, hasRouteIngestion, hasRouteSuppository, hasRouteSublingual, hasRouteBuccal, nonSpecificRx, hasEvidenceOfPrescriptionDrug, isPrescribedToVictim, isUnknownWhoPrescribed, hasIndicationsRxDrugs, prescriptionOtherDescription, hasIndicationsDrugatScene, haveEvidenceIllicitPowder, hasEvidenceIllicitTar, hasEvidenceOfIllicitWitnessReport, hasEvidenceCrystal, otherFormDescription, bystandersPresent, bystanderOtherSpecify, witnessedDrugUse, bystanderCPR, bystanderBreathing, bystanderSternal, bystanderStimulation, bystanderIntrvOther, bystanderIntrvOtherSpecify, wasNaloxoneAdministered, isNaloxoneNotAdmin, isNaloxoneUnknown, naloxoneTotalResponder, naloxoneTotalBystander, isNaloxoneAdminUnknown, isNaloxoneAdminLaw, isNaloxoneAdminEms, isNaloxoneAdminHospital, isNaloxoneAdminOther, isNaloxoneAdminBystander, isNaloxoneWhoPerson, isNaloxoneWhoPartner, isNaloxoneWhoFriend, isNaloxoneWhoOtherFamily, isNaloxoneWhoRoomate, isNaloxoneWhoStranger, isNaloxoneWhoOther, isNaloxoneWhoOtherDescription, hadPulse, intrvCPR, intrvBreathing, intrvEpinephrine, intrvTransport, intrvOxygen, intrvOther, intrvOtherSpecify, bystanderNotRecognize, bystanderUsing, bystanderPublic, bystanderNoOverdose, bystanderSeperated, bystanderUnaware, bystanderReasonOther, bystanderReasonOtherSpecify, treatedforPain, medHistCopd, medHistAsthma, medHistApnea, medHistHeart, medHistObesity, medHistInjury, medHistMigraine, medHistBackpain, medicalHistHepc, medicalHistHIV, medHistOtherpain, medHistOtherbreathing, prescriptionMorphine, prescriptionMorphineNarrative, buprenorphineRx, buprenorphineRxForPain, buprenorphineRxForMat, buprenorphineRxForUnk, methadoneRx, methadoneRxForPain, methadoneRxForMat, methadoneRxUnk, naltrexoneRx, fentanylRx, numScripsPast30Days, numPharmaciesPast30Days, numDoctorsPrescribing30Days, isAsianIndian, isAsianChinese, isAsianFilipino, isAsianJapanese, isAsianKorean, isAsianVietnamese, isAsianOther, isAsianOtherText, isPacificIslanderHawaii, isPacificIslanderGuam, isPacificIslanderSamoa, isPacificIslanderOther, isPacificIslanderOtherText, americanIndianTribe, americanIndianTribeOther);
     }
 
     @Override
@@ -7988,7 +7972,7 @@ public class LECMEFormat extends BaseSerializedFormat{
             ", gunThoughtUnloadedOtherCME='" + getGunThoughtUnloadedOtherCME() + "'" +
             ", gunUnintentionallyPulledTriggerCME='" + getGunUnintentionallyPulledTriggerCME() + "'" +
             ", hateCrimeCME='" + getHateCrimeCME() + "'" +
-            ", historyMentalIllnessTreatmentCME='" + getHistoryMentalIllnessTreatmentCME() + "'" +
+            ", hisoryMentalIllnessTreatmentCME='" + gethisryMentalIllnessTreatmentCME() + "'" +
             ", huntingCME='" + getHuntingCME() + "'" +
             ", interpersonalViolencePerpetratorCME='" + getInterpersonalViolencePerpetratorCME() + "'" +
             ", interpersonalViolenceVictimCME='" + getInterpersonalViolenceVictimCME() + "'" +
@@ -8022,10 +8006,10 @@ public class LECMEFormat extends BaseSerializedFormat{
             ", selfDefenseCME='" + getSelfDefenseCME() + "'" +
             ", stalkingCME='" + getStalkingCME() + "'" +
             ", substanceAbuseOtherCME='" + getSubstanceAbuseOtherCME() + "'" +
-            ", suicideAttemptHistoryCME='" + getSuicideAttemptHistoryCME() + "'" +
+            ", suicideAttempthisoryCME='" + getsuicideAttempthisoryCME() + "'" +
             ", suicideIntentDisclosedCME='" + getSuicideIntentDisclosedCME() + "'" +
             ", suicideNoteCME='" + getSuicideNoteCME() + "'" +
-            ", suicideThoughtHistoryCME='" + getSuicideThoughtHistoryCME() + "'" +
+            ", suicideThoughthisoryCME='" + getsuicideThoughthisoryCME() + "'" +
             ", targetShootingCME='" + getTargetShootingCME() + "'" +
             ", terroristAttackCME='" + getTerroristAttackCME() + "'" +
             ", traumaticAnniversaryCME='" + getTraumaticAnniversaryCME() + "'" +
@@ -8090,7 +8074,7 @@ public class LECMEFormat extends BaseSerializedFormat{
             ", gunThoughtUnloadedOtherLE='" + getGunThoughtUnloadedOtherLE() + "'" +
             ", gunUnintentionallyPulledTriggerLE='" + getGunUnintentionallyPulledTriggerLE() + "'" +
             ", hateCrimeLE='" + getHateCrimeLE() + "'" +
-            ", historyMentalIllnessTreatmentLE='" + getHistoryMentalIllnessTreatmentLE() + "'" +
+            ", hisoryMentalIllnessTreatmentLE='" + gethisryMentalIllnessTreatmentLE() + "'" +
             ", huntingLE='" + getHuntingLE() + "'" +
             ", interpersonalViolencePerpetratorLE='" + getInterpersonalViolencePerpetratorLE() + "'" +
             ", interpersonalViolenceVictimLE='" + getInterpersonalViolenceVictimLE() + "'" +
@@ -8124,10 +8108,10 @@ public class LECMEFormat extends BaseSerializedFormat{
             ", selfDefenseLE='" + getSelfDefenseLE() + "'" +
             ", stalkingLE='" + getStalkingLE() + "'" +
             ", substanceAbuseOtherLE='" + getSubstanceAbuseOtherLE() + "'" +
-            ", suicideAttemptHistoryLE='" + getSuicideAttemptHistoryLE() + "'" +
+            ", suicideAttempthisoryLE='" + getSuicideAttempthisoryLE() + "'" +
             ", suicideIntentDisclosedLE='" + getSuicideIntentDisclosedLE() + "'" +
             ", suicideNoteLE='" + getSuicideNoteLE() + "'" +
-            ", suicideThoughtHistoryLE='" + getSuicideThoughtHistoryLE() + "'" +
+            ", suicideThoughthisoryLE='" + getsuicideThoughthisoryLE() + "'" +
             ", targetShootingLE='" + getTargetShootingLE() + "'" +
             ", terroristAttackLE='" + getTerroristAttackLE() + "'" +
             ", TraumaticAnniversaryLE='" + getTraumaticAnniversaryLE() + "'" +
@@ -8147,7 +8131,7 @@ public class LECMEFormat extends BaseSerializedFormat{
             ", SuspectSex='" + getSuspectSex() + "'" +
             ", VictimSuspectRelationshipPrimary='" + getVictimSuspectRelationshipPrimary() + "'" +
             ", VictimSuspectRelationshipSecondary='" + getVictimSuspectRelationshipSecondary() + "'" +
-            ", HasAbuseHistory='" + getHasAbuseHistory() + "'" +
+            ", HasAbusehistory='" + getHasAbusehistory() + "'" +
             ", IsCareTaker='" + getIsCareTaker() + "'" +
             ", HasAttemptedSuicide='" + getHasAttemptedSuicide() + "'" +
             ", IsSuspectAlsoVictim='" + getIsSuspectAlsoVictim() + "'" +
@@ -8165,7 +8149,7 @@ public class LECMEFormat extends BaseSerializedFormat{
             ", IsSuspectRaceUnspecified='" + getIsSuspectRaceUnspecified() + "'" +
             ", SuspectEthnicity='" + getSuspectEthnicity() + "'" +
             ", IsTreatmentNonAdherenceCME='" + getIsTreatmentNonAdherenceCME() + "'" +
-            ", IsTraumaticBrainInjuryHistoryCME='" + getIsTraumaticBrainInjuryHistoryCME() + "'" +
+            ", IsTraumaticBrainInjuryhistoryCME='" + getIsTraumaticBrainInjuryhistoryCME() + "'" +
             ", IsFamilyStressorsCME='" + getIsFamilyStressorsCME() + "'" +
             ", IsCrisisFamilyStressorCME='" + getIsCrisisFamilyStressorCME() + "'" +
             ", IsCaregiverBurdenCME='" + getIsCaregiverBurdenCME() + "'" +
@@ -8175,9 +8159,9 @@ public class LECMEFormat extends BaseSerializedFormat{
             ", IsHouseholdSubstanceAbuseCME='" + getIsHouseholdSubstanceAbuseCME() + "'" +
             ", IsLivingTransitionCME='" + getIsLivingTransitionCME() + "'" +
             ", IsCorporalPunishmentCME='" + getIsCorporalPunishmentCME() + "'" +
-            ", IsHistorySelfHarmCME='" + getIsHistorySelfHarmCME() + "'" +
+            ", IshistorySelfHarmCME='" + getIshistorySelfHarmCME() + "'" +
             ", IsTreatmentNonAdherenceLE='" + getIsTreatmentNonAdherenceLE() + "'" +
-            ", IsTraumaticBrainInjuryHistoryLE='" + getIsTraumaticBrainInjuryHistoryLE() + "'" +
+            ", IsTraumaticBrainInjuryhistoryLE='" + getIsTraumaticBrainInjuryhistoryLE() + "'" +
             ", IsFamilyStressorsLE='" + getIsFamilyStressorsLE() + "'" +
             ", IsCrisisFamilyStressorLE='" + getIsCrisisFamilyStressorLE() + "'" +
             ", IsCaregiverBurdenLE='" + getIsCaregiverBurdenLE() + "'" +
@@ -8187,7 +8171,7 @@ public class LECMEFormat extends BaseSerializedFormat{
             ", IsHouseholdSubstanceAbuseLE='" + getIsHouseholdSubstanceAbuseLE() + "'" +
             ", IsLivingTransitionLE='" + getIsLivingTransitionLE() + "'" +
             ", IsCorporalPunishmentLE='" + getIsCorporalPunishmentLE() + "'" +
-            ", IsHistorySelfHarmLE='" + getIsHistorySelfHarmLE() + "'" +
+            ", IshistorySelfHarmLE='" + getIshistorySelfHarmLE() + "'" +
             ", TypeOfPoisoning='" + getTypeOfPoisoning() + "'" +
             ", LastSeenAliveTime='" + getLastSeenAliveTime() + "'" +
             ", FoundUnresponsiveTime='" + getFoundUnresponsiveTime() + "'" +
@@ -8202,18 +8186,18 @@ public class LECMEFormat extends BaseSerializedFormat{
             ", Overdose3to7DaysPrior='" + getOverdose3to7DaysPrior() + "'" +
             ", RecentOpioidUse='" + getRecentOpioidUse() + "'" +
             ", RecentEmergencyDept='" + getRecentEmergencyDept() + "'" +
-            ", HistDrugNoEvidence='" + getHistDrugNoEvidence() + "'" +
-            ", HistHeroin='" + getHistHeroin() + "'" +
-            ", HistRxOpioid='" + getHistRxOpioid() + "'" +
-            ", HistAnyOpioid='" + getHistAnyOpioid() + "'" +
-            ", HistFentanyl='" + getHistFentanyl() + "'" +
-            ", HistCocaine='" + getHistCocaine() + "'" +
-            ", HistMeth='" + getHistMeth() + "'" +
-            ", HistBenzo='" + getHistBenzo() + "'" +
-            ", HistCannabis='" + getHistCannabis() + "'" +
-            ", HistUnspecified='" + getHistUnspecified() + "'" +
-            ", HistOther='" + getHistOther() + "'" +
-            ", HistOtherDesc='" + getHistOtherDesc() + "'" +
+            ", histDrugNoEvidence='" + gethisdrugNoEvidence() + "'" +
+            ", histHeroin='" + gethisheroin() + "'" +
+            ", histRxOpioid='" + gethisrxOpioid() + "'" +
+            ", histAnyOpioid='" + gethisanyOpioid() + "'" +
+            ", histFentanyl='" + gethisfentanyl() + "'" +
+            ", histCocaine='" + gethiscocaine() + "'" +
+            ", histMeth='" + gethismeth() + "'" +
+            ", histBenzo='" + gethisbenzo() + "'" +
+            ", histCannabis='" + gethiscannabis() + "'" +
+            ", histUnspecified='" + gethisunspecified() + "'" +
+            ", histOther='" + gethisother() + "'" +
+            ", histOtherDesc='" + gethisotherDesc() + "'" +
             ", TreatmentForSubstanceAbuse='" + getTreatmentForSubstanceAbuse() + "'" +
             ", SubstanceTreatmentRehab='" + getSubstanceTreatmentRehab() + "'" +
             ", SubstanceTreatmentMATcog='" + getSubstanceTreatmentMATcog() + "'" +
@@ -8323,18 +8307,18 @@ public class LECMEFormat extends BaseSerializedFormat{
             ", bystanderReasonOther='" + getBystanderReasonOther() + "'" +
             ", bystanderReasonOtherSpecify='" + getBystanderReasonOtherSpecify() + "'" +
             ", treatedforPain='" + getTreatedforPain() + "'" +
-            ", medHistCopd='" + getMedHistCopd() + "'" +
-            ", medHistAsthma='" + getMedHistAsthma() + "'" +
-            ", medHistApnea='" + getMedHistApnea() + "'" +
-            ", medHistHeart='" + getMedHistHeart() + "'" +
-            ", medHistObesity='" + getMedHistObesity() + "'" +
-            ", medHistInjury='" + getMedHistInjury() + "'" +
-            ", medHistMigraine='" + getMedHistMigraine() + "'" +
-            ", medHistBackpain='" + getMedHistBackpain() + "'" +
-            ", medicalHistHepc='" + getMedicalHistHepc() + "'" +
-            ", medicalHistHIV='" + getMedicalHistHIV() + "'" +
-            ", medHistOtherpain='" + getMedHistOtherpain() + "'" +
-            ", medHistOtherbreathing='" + getMedHistOtherbreathing() + "'" +
+            ", medhistCopd='" + getMedhistCopd() + "'" +
+            ", medhistAsthma='" + getMedhistAsthma() + "'" +
+            ", medhistApnea='" + getMedhistApnea() + "'" +
+            ", medhistHeart='" + getMedhistHeart() + "'" +
+            ", medhistObesity='" + getMedhistObesity() + "'" +
+            ", medhistInjury='" + getMedhistInjury() + "'" +
+            ", medhistMigraine='" + getMedhistMigraine() + "'" +
+            ", medhistBackpain='" + getMedhistBackpain() + "'" +
+            ", medicalhistHepc='" + getMedicalhistHepc() + "'" +
+            ", medicalhistHIV='" + getMedicalhistHIV() + "'" +
+            ", medhistOtherpain='" + getMedhistOtherpain() + "'" +
+            ", medhistOtherbreathing='" + getMedhistOtherbreathing() + "'" +
             ", prescriptionMorphine='" + getPrescriptionMorphine() + "'" +
             ", prescriptionMorphineNarrative='" + getPrescriptionMorphineNarrative() + "'" +
             ", buprenorphineRx='" + getBuprenorphineRx() + "'" +

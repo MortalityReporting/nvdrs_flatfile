@@ -8,19 +8,23 @@ public class SerialField<T> implements Comparable<SerialField>{
     protected int firstColumn;
     protected int lastColumn;
     protected T value;
+    public final Class<T> valueType;
     private int length;
 
-    public SerialField() {
+    public SerialField(Class<T> valueType) {
+        this.valueType = valueType;
     }
 
-    public SerialField(String name, int firstColumn, int lastColumn){
+    public SerialField(String name, int firstColumn, int lastColumn, Class<T> valueType){
+        this.valueType = valueType;
         this.name = name;
         this.firstColumn = firstColumn;
         this.lastColumn = lastColumn;
         this.length =  this.lastColumn - this.firstColumn + 1;
     }
 
-    public SerialField(String name, int firstColumn, int lastColumn, T value) {
+    public SerialField(String name, int firstColumn, int lastColumn, T value, Class<T> valueType) {
+        this.valueType = valueType;
         this.name = name;
         this.firstColumn = firstColumn;
         this.lastColumn = lastColumn;
@@ -76,6 +80,15 @@ public class SerialField<T> implements Comparable<SerialField>{
             throw new InvalidParameterException("The Field Name '"+name+"' can accept values of size '"+getLength()+"' but found a value of '"+value.toString()+"' with size of '"+value.toString().length()+"' instead.");
         }
         this.value = value;
+    }
+
+
+    public Class<T> getValueType() {
+        return this.valueType;
+    }
+
+    public void setLength(int length) {
+        this.length = length;
     }
 
     public SerialField name(String name) {

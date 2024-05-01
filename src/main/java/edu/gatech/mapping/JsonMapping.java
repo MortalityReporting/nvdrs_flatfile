@@ -1,18 +1,27 @@
 package edu.gatech.mapping;
 
 import java.io.IOException;
+import java.io.StringReader;
 import java.io.StringWriter;
+import java.lang.reflect.Type;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import edu.gatech.model.BaseSerializedFormat;
+import edu.gatech.model.DCFormat;
+import edu.gatech.model.LECMEFormat;
 import edu.gatech.model.SerialField;
+import edu.gatech.model.enumvalueset.BaseSerialEnum;
 
 public class JsonMapping {
 
-    public static ObjectNode mapToJson(BaseSerializedFormat baseModel) {
+    public static ObjectNode mapModelToJson(BaseSerializedFormat baseModel) {
         ObjectNode returnNode = JsonNodeFactory.instance.objectNode();
         ArrayNode schemaReport = JsonNodeFactory.instance.arrayNode();
         ArrayNode errors = JsonNodeFactory.instance.arrayNode();
@@ -23,6 +32,12 @@ public class JsonMapping {
             catch(IllegalArgumentException | IllegalAccessException e){
                 errors.add(JsonNodeFactory.instance.textNode(e.getMessage()));
             }
+        }
+        if(baseModel instanceof DCFormat){
+            returnNode.put("type", "DCFormat");
+        }
+        else if(baseModel instanceof LECMEFormat){
+            returnNode.put("type", "LECMEFormat");
         }
         for(SerialField sf:baseModel.orderedSerialFieldList){
             ObjectNode fieldNode = JsonNodeFactory.instance.objectNode();
@@ -43,5 +58,53 @@ public class JsonMapping {
         }
         returnNode.set("errors", errors);
         return returnNode;
+    }
+
+    /**
+     * Read json object as written in "mapToJson" to change back into a model class.
+     * @param rootNode
+     * @return
+     */
+    public static BaseSerializedFormat readJsonToModel(JsonNode rootNode){
+        BaseSerializedFormat returnModel = new DCFormat();
+        if(rootNode.get("type").asText().equalsIgnoreCase("DCFormat")){
+            returnModel = new DCFormat();
+        }
+        else if(rootNode.get("type").asText().equalsIgnoreCase("LECMEFormat")){
+            returnModel = new LECMEFormat();
+        }
+        try {
+            returnModel.organizeFields();
+        } catch (IllegalArgumentException | IllegalAccessException e) {
+            throw new RuntimeException("Something is wrong with the data model when trying to organize fields" + e.getMessage());
+        }
+        String serializeString = mapJsonToSerialField(rootNode);
+        try {
+            returnModel.readSerializedFormat(new StringReader(serializeString));
+        } catch (IOException | RuntimeException e) {
+            throw new RuntimeException("Could not read serialized string to model." + e.getMessage());
+        }
+        return returnModel;
+    }
+
+    public static String mapJsonToSerialField(JsonNode rootNode){
+        List<JsonNode> entriesSorted = sortJsonByFirstColumn(rootNode);
+        String returnString = "";
+        for(JsonNode entryNode:entriesSorted){
+            int firstColumn = entryNode.get("firstColumn").asInt();
+            int lastColumn = entryNode.get("lastColumn").asInt();
+            int length = lastColumn - firstColumn + 1;
+            String formatString = "%"+length+"s"; //Should look like '%4s' or "4 length of string". Left padding happens automatically
+            String serializedField = String.format(formatString, entryNode.get("value").asText());
+            returnString = returnString + serializedField;
+        }
+        return returnString;
+    }
+
+    private static List<JsonNode> sortJsonByFirstColumn(JsonNode rootNode){
+        List<JsonNode> listOfEntryNodes = rootNode.get("schemaReport").findParents("firstColumn");
+        return listOfEntryNodes.stream()
+            .sorted(Comparator.comparing(entry -> entry.get("firstColumn").asInt()))
+            .collect(Collectors.toList());
     }
 }

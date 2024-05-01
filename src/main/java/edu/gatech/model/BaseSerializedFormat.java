@@ -46,7 +46,7 @@ public abstract class BaseSerializedFormat {
      * @throws RuntimeException if there's a data model issue; major development issue here.
      */
 
-    protected BaseSerializedFormat readSerializedFormat(Reader reader) throws IOException, RuntimeException{
+    public BaseSerializedFormat readSerializedFormat(Reader reader) throws IOException, RuntimeException{
         if(!ordered){
             try{
                 organizeFields();
@@ -55,37 +55,40 @@ public abstract class BaseSerializedFormat {
                 throw new RuntimeException("Something is wrong with the data model when trying to organize fields" + e.getMessage());
             }
         }
-        for(SerialField sf:orderedSerialFieldList){
-            char[] characterBuffer = new char[sf.getLength()];
+        for(SerialField serialField:orderedSerialFieldList){
+            char[] characterBuffer = new char[serialField.getLength()];
             int readReturnChar = reader.read(characterBuffer);
             if(readReturnChar == -1){
-                String range = String.format("[%d-%d]", sf.getFirstColumn(),sf.getLastColumn());
-                throw new IOException("Tried to read up to field " + sf.getName() + "in range "+range+" but found the end of file (EOF) instead.");
+                String range = String.format("[%d-%d]", serialField.getFirstColumn(),serialField.getLastColumn());
+                throw new IOException("Tried to read up to field " + serialField.getName() + "in range "+range+" but found the end of file (EOF) instead.");
             }
             String inputString = new String(characterBuffer);
             //Work with the enumerated values
-            Object value = sf.getValue();
-            if(value instanceof Enum<?> && value instanceof BaseSerialEnum){
+            if(BaseSerialEnum.class.isAssignableFrom(serialField.getValueType())){ //If the value type is assignable to BaseSerialEnum it's one of the model enums.
                 @SuppressWarnings("unchecked") //This should be safe with the check before
-                SerialField<? super BaseSerialEnum> typedSerialField = (SerialField<? super BaseSerialEnum>) sf;
-                Class enumClass = value.getClass();
-                Object[] values = enumClass.getEnumConstants(); //get the constants
-                for(Object enumValue:values){
+                SerialField<? super BaseSerialEnum> typedSerialField = (SerialField<? super BaseSerialEnum>) serialField;
+                Object[] enumValues = serialField.getValueType().getEnumConstants(); //get the constants from the assumed enumerated type.
+                for(Object enumValue:enumValues){
                     BaseSerialEnum typedEnum = (BaseSerialEnum)enumValue; //This seems unsafe...
                     if(typedEnum.getCode().equalsIgnoreCase(inputString)){
                         typedSerialField.setValue(typedEnum);
                     }
                 }
             }
-            else if (value instanceof CharLimitedInteger){
+            else if (CharLimitedInteger.class.equals(serialField.getValueType())){
                 @SuppressWarnings("unchecked")
-                SerialField<CharLimitedInteger> typedSerialField = (SerialField<CharLimitedInteger>) sf;
-                Integer intValue = Integer.valueOf(inputString);
-                typedSerialField.setValue(new CharLimitedInteger(intValue, typedSerialField.getLength()));
+                SerialField<CharLimitedInteger> typedSerialField = (SerialField<CharLimitedInteger>) serialField;
+                try{
+                    Integer intValue = Integer.valueOf(inputString);
+                    typedSerialField.setValue(new CharLimitedInteger(intValue, typedSerialField.getLength()));
+                }
+                catch(NumberFormatException e) {
+                    continue;
+                }
             }
-            else if (value instanceof String){
+            else if (String.class.equals(serialField.getValueType())){
                 @SuppressWarnings("unchecked")
-                SerialField<String> typedSerialField = (SerialField<String>) sf;
+                SerialField<String> typedSerialField = (SerialField<String>) serialField;
                 typedSerialField.setValue(inputString);
             }
         }
