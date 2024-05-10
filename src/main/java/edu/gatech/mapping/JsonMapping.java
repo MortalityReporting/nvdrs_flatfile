@@ -34,10 +34,14 @@ public class JsonMapping {
             }
         }
         if(baseModel instanceof DCFormat){
+            returnNode.put("version", "2024");
             returnNode.put("type", "DCFormat");
+            returnNode.put("length", "3921");
         }
         else if(baseModel instanceof LECMEFormat){
+            returnNode.put("version", "2024");
             returnNode.put("type", "LECMEFormat");
+            returnNode.put("length", "1985");
         }
         for(SerialField sf:baseModel.orderedSerialFieldList){
             ObjectNode fieldNode = JsonNodeFactory.instance.objectNode();
@@ -47,7 +51,7 @@ public class JsonMapping {
             fieldNode.put("value", sf.getValue() != null ? sf.getValue().toString() : "");
             schemaReport.add(fieldNode);
         }
-        returnNode.set("schemaReport", schemaReport);
+        returnNode.set("data", schemaReport);
         try{
             StringWriter stringWriter = new StringWriter();
             baseModel.writeSerializedFormat(stringWriter);
