@@ -4,4 +4,5 @@ public interface BaseSerialEnum {
 
     public String getCode();
     public String getDescription();
+    public String toString();
 }

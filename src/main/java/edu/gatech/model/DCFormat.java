@@ -23,7 +23,7 @@ public class DCFormat extends BaseSerializedFormat {
     protected SerialField<String> forceNewRecord = new SerialField<String>("Force New Record", 1, 1, String.class);
     protected SerialField<String> overwriteConflicts = new SerialField<String>("Overwrite Conflicts", 2, 2, String.class);
     protected SerialField<CharLimitedInteger> incidentYear = new SerialField<CharLimitedInteger>("Incident Year", 3, 6, CharLimitedInteger.class);
-    protected SerialField<String> incidentNumber = new SerialField<String>("Incident Number", 7, 10, String.class);
+    protected SerialField<String> incidentNumber = new SerialField<String>("Incident Number", 7, 16, String.class);
     protected SerialField<CharLimitedInteger> nvdrsVictimNumber = new SerialField<CharLimitedInteger>("NVDRS Victim Number", 17, 20, CharLimitedInteger.class);
     protected SerialField<String> last4CharactersOfDC = new SerialField<String>("Last 4 characters of DC", 21, 24, String.class);
     protected SerialField<String> last4CharactersOfCME = new SerialField<String>("Last 4 characters of CME", 25, 28, String.class);
@@ -110,6 +110,7 @@ public class DCFormat extends BaseSerializedFormat {
     protected SerialField<String> birthCountryIfOther = new SerialField<String>("Birth country if other", 839, 868, String.class);
     protected SerialField<CharLimitedInteger> currentOrFormerMilitaryPersonnel = new SerialField<CharLimitedInteger>("Current or former military personnel", 869, 869, CharLimitedInteger.class);
     protected SerialField<String> placeOfDeathIfOther = new SerialField<String>("Place of death if other", 870, 899, String.class);
+    protected BlankSerialField unused = new BlankSerialField("Unused", 900, 1000);
     protected SerialField<CharLimitedInteger> cityWhereInjuryOccurred = new SerialField<CharLimitedInteger>("City where injury occurred", 1000, 1004, CharLimitedInteger.class);
     protected SerialField<CharLimitedInteger> usCensusBlockGroupWhereInjuryOccurred = new SerialField<CharLimitedInteger>("US Census block group where injury occurred", 1005, 1005, CharLimitedInteger.class);
     protected SerialField<String> usCensusTractWhereInjuryOccurred = new SerialField<String>("US Census tract where injury occurred", 1006, 1012, String.class);
@@ -958,6 +959,14 @@ public class DCFormat extends BaseSerializedFormat {
 
     public void setPlaceOfDeathIfOther(SerialField<String> placeOfDeathIfOther) {
         this.placeOfDeathIfOther = placeOfDeathIfOther;
+    }
+
+    public SerialField<String> getUnused() {
+        return this.unused;
+    }
+
+    public void setUnused(BlankSerialField unused) {
+        this.unused = unused;
     }
 
     public SerialField<CharLimitedInteger> getCityWhereInjuryOccurred() {

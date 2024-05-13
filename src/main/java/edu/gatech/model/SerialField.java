@@ -9,7 +9,7 @@ public class SerialField<T> implements Comparable<SerialField>{
     protected int lastColumn;
     protected T value;
     public final Class<T> valueType;
-    private int length;
+    protected int length;
 
     public SerialField(Class<T> valueType) {
         this.valueType = valueType;
@@ -73,6 +73,14 @@ public class SerialField<T> implements Comparable<SerialField>{
 
     public T getValue() {
         return this.value;
+    }
+
+    public String getValueAsString() {
+        if(value == null){
+            return " ".repeat(getLength());
+        }
+        String formatString = "%"+length+"s"; //Should look like '%4s' or "4 length of string". Left padding happens automatically
+        return String.format(formatString, value.toString());
     }
 
     public void setValue(T value) {

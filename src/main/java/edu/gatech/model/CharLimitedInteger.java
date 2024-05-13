@@ -46,6 +46,9 @@ public class CharLimitedInteger {
 
     @Override
     public String toString() {
+        if (value == null){
+            return " ".repeat(this.getSize());
+        }
         return value.toString();
     }
     

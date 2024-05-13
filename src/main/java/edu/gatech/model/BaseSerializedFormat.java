@@ -29,7 +29,7 @@ public abstract class BaseSerializedFormat {
     public List<SerialField> organizeFields() throws IllegalArgumentException, IllegalAccessException{
         orderedSerialFieldList = new ArrayList<SerialField>();
         for (Field f: this.getClass().getDeclaredFields()){
-            if(f.getType().equals(SerialField.class)){
+            if(f.getType().equals(SerialField.class) || f.getType().equals(BlankSerialField.class)){
                 orderedSerialFieldList.add((SerialField)f.get(this));
             }
         }
@@ -58,11 +58,13 @@ public abstract class BaseSerializedFormat {
         for(SerialField serialField:orderedSerialFieldList){
             char[] characterBuffer = new char[serialField.getLength()];
             int readReturnChar = reader.read(characterBuffer);
+            String inputString = "";
             if(readReturnChar == -1){
-                String range = String.format("[%d-%d]", serialField.getFirstColumn(),serialField.getLastColumn());
-                throw new IOException("Tried to read up to field " + serialField.getName() + "in range "+range+" but found the end of file (EOF) instead.");
+                inputString = " ".repeat(serialField.getLength());
             }
-            String inputString = new String(characterBuffer);
+            else{
+                inputString = new String(characterBuffer);
+            }
             //Work with the enumerated values
             if(BaseSerialEnum.class.isAssignableFrom(serialField.getValueType())){ //If the value type is assignable to BaseSerialEnum it's one of the model enums.
                 @SuppressWarnings("unchecked") //This should be safe with the check before
