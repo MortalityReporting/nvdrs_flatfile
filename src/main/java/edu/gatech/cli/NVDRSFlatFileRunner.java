@@ -90,7 +90,7 @@ public class NVDRSFlatFileRunner implements Runnable {
         }
     }
 
-    private BaseSerializedFormat createExampleNVDRSFile(String fileType) {
+    public BaseSerializedFormat createExampleNVDRSFile(String fileType) {
         // Implementation to create an example NVDRS file
         if(fileType.equalsIgnoreCase("DC")){
             System.out.println("Creating example NVDRS DC file....");
