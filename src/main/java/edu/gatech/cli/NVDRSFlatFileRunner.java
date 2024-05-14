@@ -203,10 +203,10 @@ public class NVDRSFlatFileRunner implements Runnable {
             scanner.useDelimiter("\\z");
             String serialString = scanner.next(); //Get the whole string;
             BaseSerializedFormat model = new DCFormat();
-            if(fileType.equalsIgnoreCase("DCFormat")){
+            if(fileType.equalsIgnoreCase("DC")){
                 model = new DCFormat();
             }
-            else if(fileType.equalsIgnoreCase("LECMEFormat")){
+            else if(fileType.equalsIgnoreCase("LECME")){
                 model = new LECMEFormat();
             }
             model.readSerializedFormat(new StringReader(serialString));

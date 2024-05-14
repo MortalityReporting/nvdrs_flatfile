@@ -81,6 +81,7 @@ public abstract class BaseSerializedFormat {
                 @SuppressWarnings("unchecked")
                 SerialField<CharLimitedInteger> typedSerialField = (SerialField<CharLimitedInteger>) serialField;
                 try{
+                    inputString = inputString.trim(); 
                     Integer intValue = Integer.valueOf(inputString);
                     typedSerialField.setValue(new CharLimitedInteger(intValue, typedSerialField.getLength()));
                 }
