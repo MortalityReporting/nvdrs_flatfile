@@ -67,6 +67,7 @@ public abstract class BaseSerializedFormat {
             }
             //Work with the enumerated values
             if(BaseSerialEnum.class.isAssignableFrom(serialField.getValueType())){ //If the value type is assignable to BaseSerialEnum it's one of the model enums.
+                inputString.trim(); //Trim to fit the whitespace within a specific format
                 @SuppressWarnings("unchecked") //This should be safe with the check before
                 SerialField<? super BaseSerialEnum> typedSerialField = (SerialField<? super BaseSerialEnum>) serialField;
                 Object[] enumValues = serialField.getValueType().getEnumConstants(); //get the constants from the assumed enumerated type.
